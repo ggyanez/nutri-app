@@ -1,26 +1,31 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Light, fresh palette: off-white with a green accent. The three macro
+   colors are only small markers next to a labelled number, never the only
+   way to tell the macros apart. */
+@theme {
+  --color-bg: #f5f7f1;
+  --color-surface: #ffffff;
+  --color-ink: #222a20;
+  --color-muted: #5f6959;
+  --color-faint: #99a192;
+  --color-line: #e3e8dc;
+  --color-accent: #2c7a4b;
+  --color-accent-soft: #e0f0e5;
+  --color-protein: #b5533c;
+  --color-carbs: #b0841c;
+  --color-fat: #4a78bc;
+  --color-danger: #b4432f;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-inter);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
 }

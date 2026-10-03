@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nutri App
 
-## Getting Started
+A minimal, mobile-first food diary: log what you eat each day and see calories and macros add up. Packaged products are found by scanning their barcode; anything else is typed in once and stays in your own food list.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Diario** — one day at a time, split into Desayuno, Almuerzo, Merienda and Cena, with the day's calories, protein, carbs and fat. Tap an entry to change its quantity or meal, or delete it.
+- **Agregar** — scan a barcode with the camera (or type it), or search your own foods. The quantity starts at the last amount you logged of that food, or its serving.
+- **Alimentos** — every food scanned or created, editable. Correcting a food recalculates the days it was logged on.
+- **Ajustes** — log out.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Barcodes are looked up in [Open Food Facts](https://world.openfoodfacts.org), a free, collaborative product database (ODbL). A product found there is saved locally on first scan; one that's missing or incomplete opens a form prefilled with whatever is known.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Behind a single password (a signed, long-lived cookie). Enough for one person; not a multi-user auth model.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack
 
-## Learn More
+- [Next.js](https://nextjs.org) (App Router, Server Actions) + TypeScript + Tailwind CSS
+- [Turso](https://turso.tech) (libSQL / SQLite), no ORM
+- Deployed on [Vercel](https://vercel.com), installed on Android as a PWA
 
-To learn more about Next.js, take a look at the following resources:
+Camera scanning uses the browser's `BarcodeDetector`, available in Chrome on Android. Elsewhere the barcode has to be typed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create the database and apply the migrations:
+   ```bash
+   turso db create nutri-app
+   cp .env.local.example .env.local   # fill TURSO_DATABASE_URL / TURSO_AUTH_TOKEN
+   npm install
+   npm run db:migrate
+   ```
+   For local-only development, `TURSO_DATABASE_URL=file:local.db` works without a token.
+2. Set `APP_PASSWORD` and `AUTH_SECRET` (`openssl rand -hex 32`) in `.env.local`.
+3. Run it:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Import the repo in Vercel and add the same environment variables (none are `NEXT_PUBLIC_`: they never reach the browser). On Android, open the URL in Chrome → **Install app**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Data model
+
+See [`db/migrations`](./db/migrations):
+
+- `foods` — name, brand, optional barcode, and nutrition per 100 g (or 100 ml). `source` says whether it came from Open Food Facts or was typed in.
+- `entries` — one row per thing eaten: food, diary day, meal and quantity. Nutrition is computed from the food, not copied.

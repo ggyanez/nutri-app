@@ -1,69 +1,108 @@
-import Image from "next/image";
+import Link from "next/link";
+import EntryRow from "@/components/EntryRow";
+import { getEntries } from "@/lib/data";
+import { MEALS, formatAmount, formatKcal, macrosFor, sumMacros } from "@/lib/foods";
+import { addDays, dayKey, formatDayLabel, parseDayKey } from "@/lib/time";
 
-export default function Home() {
+export default async function DiaryPage({ searchParams }: PageProps<"/">) {
+  const today = dayKey(new Date());
+  const day = parseDayKey((await searchParams).d) ?? today;
+  const entries = await getEntries(day);
+  const total = sumMacros(entries.map((e) => macrosFor(e.food, e.quantity)));
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div className="space-y-6">
+      <header className="flex items-center justify-between">
+        <DayLink day={addDays(day, -1)} label="Día anterior">
+          ‹
+        </DayLink>
+        <div className="text-center">
+          <h1 className="text-2xl font-semibold first-letter:uppercase">
+            {formatDayLabel(day, today)}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+          {day !== today && (
+            <Link href="/" className="text-sm text-accent underline underline-offset-4">
+              Volver a hoy
+            </Link>
+          )}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        <DayLink day={addDays(day, 1)} label="Día siguiente">
+          ›
+        </DayLink>
+      </header>
+
+      <section className="rounded-3xl border border-line bg-surface px-5 py-5">
+        <p className="tabular text-4xl font-semibold">
+          {formatKcal(total.kcal)} <span className="text-base font-medium text-muted">kcal</span>
+        </p>
+        <dl className="mt-4 grid grid-cols-3 gap-3">
+          <Macro label="Proteínas" value={total.protein} dot="bg-protein" />
+          <Macro label="Carbos" value={total.carbs} dot="bg-carbs" />
+          <Macro label="Grasas" value={total.fat} dot="bg-fat" />
+        </dl>
+      </section>
+
+      {MEALS.map((meal) => {
+        const items = entries.filter((e) => e.meal === meal.id);
+        const kcal = sumMacros(items.map((e) => macrosFor(e.food, e.quantity))).kcal;
+        return (
+          <section key={meal.id}>
+            <div className="mb-2 flex items-baseline justify-between px-1">
+              <h2 className="text-sm font-medium text-muted">{meal.label}</h2>
+              {items.length > 0 && (
+                <span className="tabular text-sm text-muted">{formatKcal(kcal)} kcal</span>
+              )}
+            </div>
+            <div className="overflow-hidden rounded-3xl border border-line bg-surface">
+              {items.length > 0 && (
+                <ul className="divide-y divide-line border-b border-line">
+                  {items.map((entry) => (
+                    <EntryRow key={`${entry.id}-${entry.quantity}-${entry.meal}`} entry={entry} />
+                  ))}
+                </ul>
+              )}
+              <Link
+                href={`/agregar?d=${day}&meal=${meal.id}`}
+                className="block px-4 py-3 text-sm font-medium text-accent active:bg-accent-soft"
+              >
+                + Agregar
+              </Link>
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  );
+}
+
+function DayLink({
+  day,
+  label,
+  children,
+}: {
+  day: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={`/?d=${day}`}
+      aria-label={label}
+      className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-2xl leading-none text-muted active:scale-95"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function Macro({ label, value, dot }: { label: string; value: number; dot: string }) {
+  return (
+    <div>
+      <dt className="flex items-center gap-1.5 text-xs text-muted">
+        <span className={`h-2 w-2 rounded-full ${dot}`} aria-hidden />
+        {label}
+      </dt>
+      <dd className="tabular mt-0.5 text-lg font-semibold">{formatAmount(value)} g</dd>
     </div>
   );
 }
