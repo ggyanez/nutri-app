@@ -1,7 +1,7 @@
 import Link from "next/link";
 import EntryRow from "@/components/EntryRow";
 import { getEntries } from "@/lib/data";
-import { MEALS, formatAmount, formatKcal, macrosFor, sumMacros } from "@/lib/foods";
+import { formatAmount, formatKcal, macrosFor, sumMacros } from "@/lib/foods";
 import { addDays, dayKey, formatDayLabel, parseDayKey } from "@/lib/time";
 
 export default async function DiaryPage({ searchParams }: PageProps<"/">) {
@@ -42,35 +42,24 @@ export default async function DiaryPage({ searchParams }: PageProps<"/">) {
         </dl>
       </section>
 
-      {MEALS.map((meal) => {
-        const items = entries.filter((e) => e.meal === meal.id);
-        const kcal = sumMacros(items.map((e) => macrosFor(e.food, e.quantity))).kcal;
-        return (
-          <section key={meal.id}>
-            <div className="mb-2 flex items-baseline justify-between px-1">
-              <h2 className="text-sm font-medium text-muted">{meal.label}</h2>
-              {items.length > 0 && (
-                <span className="tabular text-sm text-muted">{formatKcal(kcal)} kcal</span>
-              )}
-            </div>
-            <div className="overflow-hidden rounded-3xl border border-line bg-surface">
-              {items.length > 0 && (
-                <ul className="divide-y divide-line border-b border-line">
-                  {items.map((entry) => (
-                    <EntryRow key={`${entry.id}-${entry.quantity}-${entry.meal}`} entry={entry} />
-                  ))}
-                </ul>
-              )}
-              <Link
-                href={`/agregar?d=${day}&meal=${meal.id}`}
-                className="block px-4 py-3 text-sm font-medium text-accent active:bg-accent-soft"
-              >
-                + Agregar
-              </Link>
-            </div>
-          </section>
-        );
-      })}
+      <Link
+        href={day === today ? "/agregar" : `/agregar?d=${day}`}
+        className="block w-full rounded-3xl bg-accent py-4 text-center text-lg font-medium text-white shadow-sm transition active:scale-[0.98]"
+      >
+        + Agregar
+      </Link>
+
+      {entries.length === 0 ? (
+        <p className="rounded-3xl border border-dashed border-line px-4 py-5 text-center text-sm text-muted">
+          Todavía no hay nada registrado este día.
+        </p>
+      ) : (
+        <ul className="divide-y divide-line overflow-hidden rounded-3xl border border-line bg-surface">
+          {entries.map((entry) => (
+            <EntryRow key={`${entry.id}-${entry.quantity}-${entry.eatenAt}`} entry={entry} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

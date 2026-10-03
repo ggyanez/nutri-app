@@ -1,7 +1,6 @@
-import type { Meal } from "./foods";
-
-// The diary is organised by calendar day in this time zone, never UTC:
-// dinner after 21:00 in Argentina is already the next day in UTC.
+// Timestamps are stored as ISO-8601 UTC strings. The diary groups them by
+// calendar day in this time zone, never UTC: dinner after 21:00 in Argentina
+// is already the next day in UTC.
 export const APP_TIME_ZONE = "America/Argentina/Buenos_Aires";
 const LOCALE = "es-AR";
 
@@ -10,12 +9,6 @@ const dayKeyFormat = new Intl.DateTimeFormat("en-CA", {
   year: "numeric",
   month: "2-digit",
   day: "2-digit",
-});
-
-const hourFormat = new Intl.DateTimeFormat("en-US", {
-  timeZone: APP_TIME_ZONE,
-  hour: "numeric",
-  hourCycle: "h23",
 });
 
 /** Calendar day in the app time zone, as "YYYY-MM-DD". */
@@ -51,11 +44,18 @@ export function formatDayLabel(key: string, today: string): string {
   });
 }
 
-/** The meal someone is most likely logging at this time of day. */
-export function mealAt(date: Date): Meal {
-  const hour = Number(hourFormat.format(date));
-  if (hour < 11) return "desayuno";
-  if (hour < 16) return "almuerzo";
-  if (hour < 20) return "merienda";
-  return "cena";
+/** Time of day in the app time zone, e.g. "13:45". */
+export function formatTime(date: Date | string): string {
+  return new Date(date).toLocaleTimeString(LOCALE, {
+    timeZone: APP_TIME_ZONE,
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  });
+}
+
+/** Formats a date as a `datetime-local` value in the device's time zone. */
+export function toLocalInputValue(date: Date): string {
+  const local = new Date(date.getTime() - date.getTimezoneOffset() * 60_000);
+  return local.toISOString().slice(0, 16);
 }

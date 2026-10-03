@@ -4,8 +4,8 @@ A minimal, mobile-first food diary: log what you eat each day and see calories a
 
 ## Features
 
-- **Diario** — one day at a time, split into Desayuno, Almuerzo, Merienda and Cena, with the day's calories, protein, carbs and fat. Tap an entry to change its quantity or meal, or delete it.
-- **Agregar** — scan a barcode with the camera (or type it), or search your own foods. The quantity starts at the last amount you logged of that food, or its serving.
+- **Diario** — one day at a time: the day's calories, protein, carbs and fat, and everything eaten in chronological order. Tap an entry to change its quantity or its date and time, or delete it.
+- **Agregar** — scan a barcode with the camera (or type it), or search your own foods. The quantity starts at the last amount you logged of that food, or its serving, and the entry is timestamped now unless you change it.
 - **Alimentos** — every food scanned or created, editable. Correcting a food recalculates the days it was logged on.
 - **Ajustes** — log out.
 
@@ -46,4 +46,4 @@ Import the repo in Vercel and add the same environment variables (none are `NEXT
 See [`db/migrations`](./db/migrations):
 
 - `foods` — name, brand, optional barcode, and nutrition per 100 g (or 100 ml). `source` says whether it came from Open Food Facts or was typed in.
-- `entries` — one row per thing eaten: food, diary day, meal and quantity. Nutrition is computed from the food, not copied.
+- `entries` — one row per thing eaten: food, quantity and when it was eaten (ISO-8601 UTC; days are grouped in Argentina time). Nutrition is computed from the food, not copied.

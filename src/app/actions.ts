@@ -12,9 +12,8 @@ import {
   isValidPassword,
 } from "@/lib/auth";
 import { FOOD_COLUMNS, toFood } from "@/lib/data";
-import { isMeal, type Food, type Meal, type Unit } from "@/lib/foods";
+import type { Food, Unit } from "@/lib/foods";
 import { fetchOffProduct } from "@/lib/off";
-import { parseDayKey } from "@/lib/time";
 
 export type ActionResult<T = null> = { ok: true; data: T } | { ok: false; error: string };
 
@@ -195,30 +194,29 @@ export async function deleteFood(id: number): Promise<ActionResult> {
 
 // ---------- entries ----------
 
-function validateEntry(quantity: number, meal: Meal): string | null {
-  if (!Number.isFinite(quantity) || quantity <= 0 || quantity > 10000) return "Cantidad inválida";
-  if (!isMeal(meal)) return "Comida inválida";
+type EntryInput = { quantity: number; eatenAt: string };
+
+function validateEntry(input: EntryInput): string | null {
+  if (!Number.isFinite(input.quantity) || input.quantity <= 0 || input.quantity > 10000) {
+    return "Cantidad inválida";
+  }
+  if (Number.isNaN(new Date(input.eatenAt).getTime())) return "Fecha inválida";
   return null;
 }
 
-export async function logEntry(input: {
-  foodId: number;
-  day: string;
-  meal: Meal;
-  quantity: number;
-}): Promise<ActionResult<{ id: number }>> {
+export async function logEntry(
+  input: EntryInput & { foodId: number },
+): Promise<ActionResult<{ id: number }>> {
   await requireSession();
-  const error = validateEntry(input.quantity, input.meal);
+  const error = validateEntry(input);
   if (error) return { ok: false, error };
-  const day = parseDayKey(input.day);
-  if (!day) return { ok: false, error: "Fecha inválida" };
 
   const now = new Date().toISOString();
   const res = await getDb().execute({
-    sql: `INSERT INTO entries (food_id, day, meal, quantity, created_at, updated_at)
-          SELECT id, ?, ?, ?, ?, ? FROM foods WHERE id = ?
+    sql: `INSERT INTO entries (food_id, quantity, eaten_at, created_at, updated_at)
+          SELECT id, ?, ?, ?, ? FROM foods WHERE id = ?
           RETURNING id`,
-    args: [day, input.meal, input.quantity, now, now, input.foodId],
+    args: [input.quantity, new Date(input.eatenAt).toISOString(), now, now, input.foodId],
   });
   if (res.rows.length === 0) return { ok: false, error: "No existe ese alimento" };
 
@@ -226,17 +224,14 @@ export async function logEntry(input: {
   return { ok: true, data: { id: Number(res.rows[0].id) } };
 }
 
-export async function updateEntry(
-  id: number,
-  input: { quantity: number; meal: Meal },
-): Promise<ActionResult> {
+export async function updateEntry(id: number, input: EntryInput): Promise<ActionResult> {
   await requireSession();
-  const error = validateEntry(input.quantity, input.meal);
+  const error = validateEntry(input);
   if (error) return { ok: false, error };
 
   await getDb().execute({
-    sql: "UPDATE entries SET quantity = ?, meal = ?, updated_at = ? WHERE id = ?",
-    args: [input.quantity, input.meal, new Date().toISOString(), id],
+    sql: "UPDATE entries SET quantity = ?, eaten_at = ?, updated_at = ? WHERE id = ?",
+    args: [input.quantity, new Date(input.eatenAt).toISOString(), new Date().toISOString(), id],
   });
   revalidatePath("/", "layout");
   return { ok: true, data: null };

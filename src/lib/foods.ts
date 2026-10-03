@@ -17,24 +17,11 @@ export type Food = Macros & {
   lastQuantity: number | null;
 };
 
-export const MEALS = [
-  { id: "desayuno", label: "Desayuno" },
-  { id: "almuerzo", label: "Almuerzo" },
-  { id: "merienda", label: "Merienda" },
-  { id: "cena", label: "Cena" },
-] as const;
-
-export type Meal = (typeof MEALS)[number]["id"];
-
-export function isMeal(value: unknown): value is Meal {
-  return MEALS.some((m) => m.id === value);
-}
-
 export type Entry = {
   id: number;
-  day: string;
-  meal: Meal;
   quantity: number;
+  /** When it was eaten, ISO-8601 UTC. */
+  eatenAt: string;
   food: Food;
 };
 

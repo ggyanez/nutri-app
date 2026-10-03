@@ -4,30 +4,28 @@ import Link from "next/link";
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { logEntry, lookupBarcode } from "@/app/actions";
-import {
-  MEALS,
-  formatAmount,
-  formatKcal,
-  macrosFor,
-  parseDecimal,
-  type Food,
-  type Meal,
-} from "@/lib/foods";
+import { formatAmount, formatKcal, macrosFor, parseDecimal, type Food } from "@/lib/foods";
 import { normalize } from "@/lib/search";
+import { dayKey } from "@/lib/time";
 import BarcodeScanner from "./BarcodeScanner";
+import EatenAtField from "./EatenAtField";
 
 const MAX_RESULTS = 30;
 
-/** Two steps: pick a food (scan, type a barcode, or search mine), then how much. */
+/**
+ * Two steps: pick a food (scan, type a barcode, or search mine), then how
+ * much. `day` is the diary day it was opened from; `isToday` says whether
+ * that's today, in which case the entry is timestamped now.
+ */
 export default function AddEntry({
   foods,
   day,
-  meal,
+  isToday,
   initialFood,
 }: {
   foods: Food[];
   day: string;
-  meal: Meal;
+  isToday: boolean;
   initialFood: Food | null;
 }) {
   const router = useRouter();
@@ -40,7 +38,7 @@ export default function AddEntry({
   const [pending, startTransition] = useTransition();
 
   const newFoodHref = (barcode?: string) =>
-    `/alimentos/nuevo?d=${day}&meal=${meal}${barcode ? `&barcode=${barcode}` : ""}`;
+    `/alimentos/nuevo?d=${day}${barcode ? `&barcode=${barcode}` : ""}`;
 
   const results = useMemo(() => {
     const q = normalize(query);
@@ -67,7 +65,15 @@ export default function AddEntry({
   }
 
   if (food) {
-    return <QuantityForm key={food.id} food={food} day={day} meal={meal} onBack={() => setFood(null)} />;
+    return (
+      <QuantityForm
+        key={food.id}
+        food={food}
+        // Another day has no "now": start at noon and let the time be changed.
+        initialEatenAt={isToday ? null : `${day}T12:00`}
+        onBack={() => setFood(null)}
+      />
+    );
   }
 
   return (
@@ -165,20 +171,19 @@ export default function AddEntry({
 
 function QuantityForm({
   food,
-  day,
-  meal: initialMeal,
+  initialEatenAt,
   onBack,
 }: {
   food: Food;
-  day: string;
-  meal: Meal;
+  /** A `datetime-local` value, or null for "now". */
+  initialEatenAt: string | null;
   onBack: () => void;
 }) {
   const router = useRouter();
   const [quantity, setQuantity] = useState(
     formatAmount(food.lastQuantity ?? food.servingQuantity ?? 100),
   );
-  const [meal, setMeal] = useState<Meal>(initialMeal);
+  const [eatenAt, setEatenAt] = useState(initialEatenAt);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
@@ -194,13 +199,14 @@ function QuantityForm({
       return;
     }
     setError(null);
+    const when = eatenAt ? new Date(eatenAt) : new Date();
     startTransition(async () => {
-      const res = await logEntry({ foodId: food.id, day, meal, quantity: value });
+      const res = await logEntry({ foodId: food.id, quantity: value, eatenAt: when.toISOString() });
       if (!res.ok) {
         setError(res.error);
         return;
       }
-      router.push(`/?d=${day}`);
+      router.push(`/?d=${dayKey(when)}`);
     });
   }
 
@@ -246,20 +252,7 @@ function QuantityForm({
             </button>
           ))}
         </div>
-        <div className="flex flex-wrap gap-2">
-          {MEALS.map((m) => (
-            <button
-              key={m.id}
-              type="button"
-              onClick={() => setMeal(m.id)}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                meal === m.id ? "bg-ink text-surface" : "border border-line text-muted"
-              }`}
-            >
-              {m.label}
-            </button>
-          ))}
-        </div>
+        <EatenAtField value={eatenAt} onChange={setEatenAt} />
         <p className="tabular border-t border-line pt-4 text-sm text-muted">
           <span className="text-2xl font-semibold text-ink">{formatKcal(preview.kcal)}</span> kcal · P{" "}
           {formatAmount(preview.protein)} g · C {formatAmount(preview.carbs)} g · G{" "}

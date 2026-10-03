@@ -2,22 +2,15 @@
 
 import { useState, useTransition } from "react";
 import { deleteEntry, updateEntry } from "@/app/actions";
-import {
-  MEALS,
-  formatAmount,
-  formatKcal,
-  macrosFor,
-  parseDecimal,
-  type Entry,
-  type Meal,
-} from "@/lib/foods";
+import { formatAmount, formatKcal, macrosFor, parseDecimal, type Entry } from "@/lib/foods";
+import { formatTime, toLocalInputValue } from "@/lib/time";
 
-/** A diary line. Tapping it opens the quantity and meal for editing. */
+/** A diary line. Tapping it opens the quantity and the date and time for editing. */
 export default function EntryRow({ entry }: { entry: Entry }) {
   const { food } = entry;
   const [open, setOpen] = useState(false);
   const [quantity, setQuantity] = useState(formatAmount(entry.quantity));
-  const [meal, setMeal] = useState<Meal>(entry.meal);
+  const [eatenAt, setEatenAt] = useState(() => toLocalInputValue(new Date(entry.eatenAt)));
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
@@ -35,7 +28,11 @@ export default function EntryRow({ entry }: { entry: Entry }) {
       setError("Cantidad inválida");
       return;
     }
-    run(() => updateEntry(entry.id, { quantity: value, meal }));
+    if (!eatenAt) {
+      setError("Fecha inválida");
+      return;
+    }
+    run(() => updateEntry(entry.id, { quantity: value, eatenAt: new Date(eatenAt).toISOString() }));
   }
 
   return (
@@ -43,9 +40,10 @@ export default function EntryRow({ entry }: { entry: Entry }) {
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left"
+        className="flex w-full items-center gap-3 px-4 py-3 text-left"
       >
-        <span className="min-w-0">
+        <span className="tabular shrink-0 text-xs text-faint">{formatTime(entry.eatenAt)}</span>
+        <span className="min-w-0 flex-1">
           <span className="block truncate font-medium">{food.name}</span>
           <span className="block truncate text-xs text-muted">
             {food.brand && `${food.brand} · `}
@@ -59,20 +57,6 @@ export default function EntryRow({ entry }: { entry: Entry }) {
 
       {open && (
         <div className="space-y-3 px-4 pb-4">
-          <div className="flex flex-wrap gap-2">
-            {MEALS.map((m) => (
-              <button
-                key={m.id}
-                type="button"
-                onClick={() => setMeal(m.id)}
-                className={`rounded-full px-3 py-1.5 text-xs font-medium ${
-                  meal === m.id ? "bg-ink text-surface" : "border border-line text-muted"
-                }`}
-              >
-                {m.label}
-              </button>
-            ))}
-          </div>
           <div className="flex items-center gap-2">
             <input
               value={quantity}
@@ -82,11 +66,20 @@ export default function EntryRow({ entry }: { entry: Entry }) {
               className="tabular w-24 rounded-2xl border border-line bg-bg px-3 py-2 text-base outline-none focus:border-accent"
             />
             <span className="text-sm text-muted">{food.unit}</span>
+          </div>
+          <input
+            type="datetime-local"
+            value={eatenAt}
+            onChange={(e) => setEatenAt(e.target.value)}
+            aria-label="Fecha y hora"
+            className="w-full rounded-2xl border border-line bg-bg px-3 py-2 text-base outline-none focus:border-accent"
+          />
+          <div className="flex gap-2">
             <button
               type="button"
               onClick={save}
               disabled={pending}
-              className="ml-auto rounded-2xl bg-accent px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
+              className="flex-1 rounded-2xl bg-accent px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
             >
               Guardar
             </button>

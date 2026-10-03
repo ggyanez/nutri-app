@@ -1,6 +1,5 @@
 import Link from "next/link";
 import FoodForm, { type FoodFormValues } from "@/components/FoodForm";
-import { isMeal } from "@/lib/foods";
 import { fetchOffProduct, type OffProduct } from "@/lib/off";
 import { requireSession } from "@/lib/session";
 import { parseDayKey } from "@/lib/time";
@@ -12,8 +11,6 @@ export default async function NewFoodPage({ searchParams }: PageProps<"/alimento
   // Present when this page was reached while adding to the diary: go back
   // there afterwards, with the new food already picked.
   const day = parseDayKey(params.d);
-  const meal = isMeal(params.meal) ? params.meal : null;
-  const logging = day !== null && meal !== null;
 
   // Open Food Facts may know the product but not its whole nutrition table;
   // whatever it has is a head start.
@@ -47,7 +44,7 @@ export default async function NewFoodPage({ searchParams }: PageProps<"/alimento
     <div className="space-y-6">
       <div>
         <Link
-          href={logging ? `/agregar?d=${day}&meal=${meal}` : "/alimentos"}
+          href={day ? `/agregar?d=${day}` : "/alimentos"}
           className="text-sm text-muted"
         >
           ‹ Volver
@@ -57,7 +54,7 @@ export default async function NewFoodPage({ searchParams }: PageProps<"/alimento
       </div>
       <FoodForm
         initial={initial}
-        afterSave={logging ? `/agregar?d=${day}&meal=${meal}&food=:id` : "/alimentos"}
+        afterSave={day ? `/agregar?d=${day}&food=:id` : "/alimentos"}
       />
     </div>
   );

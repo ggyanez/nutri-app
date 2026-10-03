@@ -1,7 +1,8 @@
 import "server-only";
 import { getDb } from "./db";
 import { requireSession } from "./session";
-import type { Entry, Food, Meal, Unit } from "./foods";
+import type { Entry, Food, Unit } from "./foods";
+import { addDays, dayKey } from "./time";
 
 type Row = Record<string, unknown>;
 
@@ -67,24 +68,27 @@ export async function countEntriesOfFood(id: number): Promise<number> {
   return Number((res.rows[0] as Row).n);
 }
 
-/** What was eaten on a "YYYY-MM-DD" day, in the order it was logged. */
+/** What was eaten on a "YYYY-MM-DD" day of the app time zone, earliest first. */
 export async function getEntries(day: string): Promise<Entry[]> {
   await requireSession();
+  // The day's limits in UTC depend on the time zone, so fetch a day of slack
+  // on each side and let dayKey decide.
   const res = await getDb().execute({
-    sql: `SELECT e.id AS entry_id, e.day, e.meal, e.quantity, ${FOOD_COLUMNS}
+    sql: `SELECT e.id AS entry_id, e.quantity, e.eaten_at, ${FOOD_COLUMNS}
           FROM entries e JOIN foods f ON f.id = e.food_id
-          WHERE e.day = ?
-          ORDER BY e.created_at, e.id`,
-    args: [day],
+          WHERE e.eaten_at >= ? AND e.eaten_at < ?
+          ORDER BY e.eaten_at, e.id`,
+    args: [`${addDays(day, -1)}T00:00:00.000Z`, `${addDays(day, 2)}T00:00:00.000Z`],
   });
-  return res.rows.map((r) => {
-    const row = r as Row;
-    return {
-      id: Number(row.entry_id),
-      day: String(row.day),
-      meal: String(row.meal) as Meal,
-      quantity: Number(row.quantity),
-      food: toFood(row),
-    };
-  });
+  return res.rows
+    .map((r) => {
+      const row = r as Row;
+      return {
+        id: Number(row.entry_id),
+        quantity: Number(row.quantity),
+        eatenAt: String(row.eaten_at),
+        food: toFood(row),
+      };
+    })
+    .filter((entry) => dayKey(entry.eatenAt) === day);
 }
