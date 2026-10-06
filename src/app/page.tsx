@@ -1,14 +1,16 @@
 import Link from "next/link";
 import EntryRow from "@/components/EntryRow";
+import MealGroupRow from "@/components/MealGroupRow";
 import { getEntries } from "@/lib/data";
-import { formatAmount, formatKcal, macrosFor, sumMacros } from "@/lib/foods";
+import { formatAmount, formatKcal, totalOf, type Entry } from "@/lib/foods";
 import { addDays, dayKey, formatDayLabel, parseDayKey } from "@/lib/time";
 
 export default async function DiaryPage({ searchParams }: PageProps<"/">) {
   const today = dayKey(new Date());
   const day = parseDayKey((await searchParams).d) ?? today;
   const entries = await getEntries(day);
-  const total = sumMacros(entries.map((e) => macrosFor(e.food, e.quantity)));
+  const total = totalOf(entries);
+  const rows = groupMeals(entries);
 
   return (
     <div className="space-y-6">
@@ -55,13 +57,42 @@ export default async function DiaryPage({ searchParams }: PageProps<"/">) {
         </p>
       ) : (
         <ul className="divide-y divide-line overflow-hidden rounded-3xl border border-line bg-surface">
-          {entries.map((entry) => (
-            <EntryRow key={`${entry.id}-${entry.quantity}-${entry.eatenAt}`} entry={entry} />
-          ))}
+          {rows.map((row) =>
+            Array.isArray(row) ? (
+              <MealGroupRow
+                // Remounts with fresh fields whenever what it shows changes.
+                key={row.map((e) => `${e.id}-${e.quantity}-${e.eatenAt}`).join()}
+                name={row[0].group?.name ?? ""}
+                entries={row}
+              />
+            ) : (
+              <EntryRow key={`${row.id}-${row.quantity}-${row.eatenAt}`} entry={row} />
+            ),
+          )}
         </ul>
       )}
     </div>
   );
+}
+
+/** The day's lines in order: single entries as they are, logged meals as one list each. */
+function groupMeals(entries: Entry[]): (Entry | Entry[])[] {
+  const rows: (Entry | Entry[])[] = [];
+  const groups = new Map<string, Entry[]>();
+  for (const entry of entries) {
+    if (!entry.group) {
+      rows.push(entry);
+      continue;
+    }
+    let group = groups.get(entry.group.id);
+    if (!group) {
+      group = [];
+      groups.set(entry.group.id, group);
+      rows.push(group);
+    }
+    group.push(entry);
+  }
+  return rows;
 }
 
 function DayLink({

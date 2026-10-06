@@ -10,19 +10,46 @@ export type Food = Macros & {
   barcode: string | null;
   name: string;
   brand: string | null;
-  source: "off" | "manual";
+  /** Open Food Facts, typed in by hand, or the built-in catalog. */
+  source: "off" | "manual" | "catalog";
+  /** The catalog entry it was copied from, if any. */
+  catalogKey: string | null;
   unit: Unit;
   servingQuantity: number | null;
   /** Quantity of the most recent entry of this food, to start the form there. */
   lastQuantity: number | null;
 };
 
-export type Entry = {
+/** A generic food of the built-in catalog (src/data/catalog.json). */
+export type CatalogFood = Macros & {
+  key: string;
+  name: string;
+  category: string;
+  /** Other names it should be found by; never shown. */
+  also?: string;
+  unit: Unit;
+  serving: number | null;
+};
+
+/** A food and how much of it, in the food's unit. */
+export type Portion = { food: Food; quantity: number };
+
+/**
+ * A "comida": a saved group of foods with their quantities — a recipe, or a
+ * usual breakfast. Not a time of day.
+ */
+export type Meal = {
   id: number;
-  quantity: number;
+  name: string;
+  items: Portion[];
+};
+
+export type Entry = Portion & {
+  id: number;
   /** When it was eaten, ISO-8601 UTC. */
   eatenAt: string;
-  food: Food;
+  /** Set on the entries that were logged together as a meal. */
+  group: { id: string; name: string } | null;
 };
 
 /** What a quantity of a food adds up to. */
@@ -48,6 +75,11 @@ export function sumMacros(list: Macros[]): Macros {
   );
 }
 
+/** What a list of foods with quantities adds up to. */
+export function totalOf(portions: { food: Macros; quantity: number }[]): Macros {
+  return sumMacros(portions.map((p) => macrosFor(p.food, p.quantity)));
+}
+
 /** Parses what was typed in a number field; accepts a decimal comma. */
 export function parseDecimal(text: string): number | null {
   const trimmed = text.trim().replace(",", ".");
@@ -63,4 +95,9 @@ export function formatKcal(n: number): string {
 /** Grams, millilitres or macros: at most one decimal. */
 export function formatAmount(n: number): string {
   return n.toLocaleString("es-AR", { maximumFractionDigits: 1 });
+}
+
+/** "1 alimento", "3 alimentos". */
+export function countFoods(n: number): string {
+  return `${n} ${n === 1 ? "alimento" : "alimentos"}`;
 }

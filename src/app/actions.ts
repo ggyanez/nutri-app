@@ -11,9 +11,10 @@ import {
   expectedSessionToken,
   isValidPassword,
 } from "@/lib/auth";
-import { FOOD_COLUMNS, toFood } from "@/lib/data";
+import { CATALOG } from "@/lib/catalog";
+import { FOOD_COLUMNS, getMeal, toFood } from "@/lib/data";
 import type { Food, Unit } from "@/lib/foods";
-import { fetchOffProduct } from "@/lib/off";
+import { fetchOffProduct, searchOffProducts, type OffHit } from "@/lib/off";
 
 export type ActionResult<T = null> = { ok: true; data: T } | { ok: false; error: string };
 
@@ -105,6 +106,43 @@ export async function lookupBarcode(
   return { ok: true, data: { barcode, food: await findFoodByBarcode(barcode) } };
 }
 
+/** Packaged products by name, from Open Food Facts. Picking one goes through lookupBarcode. */
+export async function searchProducts(query: string): Promise<ActionResult<OffHit[]>> {
+  await requireSession();
+  if (query.trim().length < 3) return { ok: false, error: "Escribí al menos 3 letras" };
+  try {
+    return { ok: true, data: await searchOffProducts(query) };
+  } catch {
+    return { ok: false, error: "No se pudo consultar Open Food Facts" };
+  }
+}
+
+/** Copies a food of the built-in catalog into the user's own foods, once, and returns it. */
+export async function pickCatalogFood(key: string): Promise<ActionResult<Food>> {
+  await requireSession();
+  const item = CATALOG.find((food) => food.key === key);
+  if (!item) return { ok: false, error: "No existe ese alimento" };
+
+  const db = getDb();
+  const now = new Date().toISOString();
+  await db.execute({
+    sql: `INSERT INTO foods (catalog_key, name, source, unit, kcal, protein, carbs, fat,
+                             serving_quantity, created_at, updated_at)
+          VALUES (?, ?, 'catalog', ?, ?, ?, ?, ?, ?, ?, ?)
+          ON CONFLICT(catalog_key) DO NOTHING`,
+    args: [
+      item.key, item.name, item.unit, item.kcal, item.protein, item.carbs, item.fat,
+      item.serving, now, now,
+    ],
+  });
+  const res = await db.execute({
+    sql: `SELECT ${FOOD_COLUMNS} FROM foods f WHERE f.catalog_key = ?`,
+    args: [item.key],
+  });
+  revalidatePath("/", "layout");
+  return { ok: true, data: toFood(res.rows[0]) };
+}
+
 export type FoodInput = {
   barcode: string;
   name: string;
@@ -179,15 +217,79 @@ export async function saveFood(
 
 export async function deleteFood(id: number): Promise<ActionResult> {
   await requireSession();
-  // Foods with entries stay: deleting one would leave holes in past days.
+  // Foods in use stay: deleting one would leave holes in past days or in a meal.
   const res = await getDb().execute({
     sql: `DELETE FROM foods
-          WHERE id = ? AND NOT EXISTS (SELECT 1 FROM entries WHERE food_id = foods.id)`,
+          WHERE id = ?
+            AND NOT EXISTS (SELECT 1 FROM entries WHERE food_id = foods.id)
+            AND NOT EXISTS (SELECT 1 FROM meal_items WHERE food_id = foods.id)`,
     args: [id],
   });
   if (res.rowsAffected === 0) {
-    return { ok: false, error: "No se puede borrar: tiene registros en el diario" };
+    return { ok: false, error: "No se puede borrar: está en el diario o en una comida" };
   }
+  revalidatePath("/", "layout");
+  return { ok: true, data: null };
+}
+
+// ---------- meals ----------
+
+export type MealInput = { name: string; items: { foodId: number; quantity: number }[] };
+
+/** Creates a meal, or replaces the name and foods of the one with the given id. */
+export async function saveMeal(input: MealInput, id?: number): Promise<ActionResult<{ id: number }>> {
+  await requireSession();
+  const name = input.name.trim();
+  if (!name) return { ok: false, error: "Falta el nombre" };
+  if (input.items.length === 0) return { ok: false, error: "Agregá al menos un alimento" };
+  if (input.items.some((item) => !isQuantity(item.quantity))) {
+    return { ok: false, error: "Revisá las cantidades" };
+  }
+
+  const now = new Date().toISOString();
+  const tx = await getDb().transaction("write");
+  try {
+    const res =
+      id === undefined
+        ? await tx.execute({
+            sql: "INSERT INTO meals (name, created_at, updated_at) VALUES (?, ?, ?) RETURNING id",
+            args: [name, now, now],
+          })
+        : await tx.execute({
+            sql: "UPDATE meals SET name = ?, updated_at = ? WHERE id = ? RETURNING id",
+            args: [name, now, id],
+          });
+    if (res.rows.length === 0) {
+      await tx.rollback();
+      return { ok: false, error: "No existe esa comida" };
+    }
+    const mealId = Number(res.rows[0].id);
+    await tx.execute({ sql: "DELETE FROM meal_items WHERE meal_id = ?", args: [mealId] });
+    for (const [position, item] of input.items.entries()) {
+      await tx.execute({
+        sql: "INSERT INTO meal_items (meal_id, food_id, quantity, position) VALUES (?, ?, ?, ?)",
+        args: [mealId, item.foodId, item.quantity, position],
+      });
+    }
+    await tx.commit();
+    revalidatePath("/", "layout");
+    return { ok: true, data: { id: mealId } };
+  } catch {
+    await tx.rollback();
+    return { ok: false, error: "No se pudo guardar la comida" };
+  }
+}
+
+/** Deletes a meal. What was logged with it stays in the diary. */
+export async function deleteMeal(id: number): Promise<ActionResult> {
+  await requireSession();
+  await getDb().batch(
+    [
+      { sql: "DELETE FROM meal_items WHERE meal_id = ?", args: [id] },
+      { sql: "DELETE FROM meals WHERE id = ?", args: [id] },
+    ],
+    "write",
+  );
   revalidatePath("/", "layout");
   return { ok: true, data: null };
 }
@@ -196,11 +298,17 @@ export async function deleteFood(id: number): Promise<ActionResult> {
 
 type EntryInput = { quantity: number; eatenAt: string };
 
+function isQuantity(n: number): boolean {
+  return Number.isFinite(n) && n > 0 && n <= 10000;
+}
+
+function isDate(iso: string): boolean {
+  return !Number.isNaN(new Date(iso).getTime());
+}
+
 function validateEntry(input: EntryInput): string | null {
-  if (!Number.isFinite(input.quantity) || input.quantity <= 0 || input.quantity > 10000) {
-    return "Cantidad inválida";
-  }
-  if (Number.isNaN(new Date(input.eatenAt).getTime())) return "Fecha inválida";
+  if (!isQuantity(input.quantity)) return "Cantidad inválida";
+  if (!isDate(input.eatenAt)) return "Fecha inválida";
   return null;
 }
 
@@ -240,6 +348,91 @@ export async function updateEntry(id: number, input: EntryInput): Promise<Action
 export async function deleteEntry(id: number): Promise<ActionResult> {
   await requireSession();
   await getDb().execute({ sql: "DELETE FROM entries WHERE id = ?", args: [id] });
+  revalidatePath("/", "layout");
+  return { ok: true, data: null };
+}
+
+/**
+ * Logs a meal: each of its foods becomes an entry, scaled by `portions` (0.5
+ * for half of it), all at the same moment and sharing a group.
+ */
+export async function logMeal(input: {
+  mealId: number;
+  portions: number;
+  eatenAt: string;
+}): Promise<ActionResult> {
+  await requireSession();
+  if (!Number.isFinite(input.portions) || input.portions <= 0 || input.portions > 100) {
+    return { ok: false, error: "Porciones inválidas" };
+  }
+  if (!isDate(input.eatenAt)) return { ok: false, error: "Fecha inválida" };
+  const meal = await getMeal(input.mealId);
+  if (!meal) return { ok: false, error: "No existe esa comida" };
+  if (meal.items.length === 0) return { ok: false, error: "Esa comida no tiene alimentos" };
+
+  const now = new Date().toISOString();
+  const eatenAt = new Date(input.eatenAt).toISOString();
+  const groupId = crypto.randomUUID();
+  await getDb().batch(
+    meal.items.map((item) => ({
+      sql: `INSERT INTO entries (food_id, quantity, eaten_at, group_id, group_name,
+                                 created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      args: [
+        item.food.id, Math.round(item.quantity * input.portions * 10) / 10,
+        eatenAt, groupId, meal.name, now, now,
+      ],
+    })),
+    "write",
+  );
+  revalidatePath("/", "layout");
+  return { ok: true, data: null };
+}
+
+/**
+ * Edits a logged meal: its date and time, and the quantity of each of its
+ * foods. A food left without quantity (null or 0) is taken out.
+ */
+export async function updateGroup(
+  groupId: string,
+  input: { eatenAt: string; items: { id: number; quantity: number | null }[] },
+): Promise<ActionResult> {
+  await requireSession();
+  if (!isDate(input.eatenAt)) return { ok: false, error: "Fecha inválida" };
+  const kept = input.items.filter((item) => item.quantity !== null && item.quantity !== 0);
+  if (kept.some((item) => !isQuantity(item.quantity as number))) {
+    return { ok: false, error: "Revisá las cantidades" };
+  }
+
+  const now = new Date().toISOString();
+  const eatenAt = new Date(input.eatenAt).toISOString();
+  const keptIds = new Set(kept.map((item) => item.id));
+  await getDb().batch(
+    [
+      ...input.items
+        .filter((item) => !keptIds.has(item.id))
+        .map((item) => ({
+          sql: "DELETE FROM entries WHERE id = ? AND group_id = ?",
+          args: [item.id, groupId],
+        })),
+      ...kept.map((item) => ({
+        sql: "UPDATE entries SET quantity = ?, updated_at = ? WHERE id = ? AND group_id = ?",
+        args: [item.quantity, now, item.id, groupId],
+      })),
+      {
+        sql: "UPDATE entries SET eaten_at = ?, updated_at = ? WHERE group_id = ?",
+        args: [eatenAt, now, groupId],
+      },
+    ],
+    "write",
+  );
+  revalidatePath("/", "layout");
+  return { ok: true, data: null };
+}
+
+export async function deleteGroup(groupId: string): Promise<ActionResult> {
+  await requireSession();
+  await getDb().execute({ sql: "DELETE FROM entries WHERE group_id = ?", args: [groupId] });
   revalidatePath("/", "layout");
   return { ok: true, data: null };
 }

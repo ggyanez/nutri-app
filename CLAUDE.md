@@ -2,7 +2,9 @@
 
 # Nutri App
 
-Personal food diary: what was eaten each day, with calories and macros. Entries are a plain timestamped list — **no** meal categories (desayuno, almuerzo…): the user asked to remove them. Packaged products are found by barcode in Open Food Facts; everything scanned or typed in is kept in the app's own food database. Single user, installable PWA (Android).
+Personal food diary: what was eaten each day, with calories and macros. Entries are a plain timestamped list — **no** time-of-day categories (desayuno, almuerzo…): the user asked to remove them. Foods come from three places — packaged products in Open Food Facts (by barcode or name), a built-in catalog of generic foods, or typed in by hand — and whatever gets used is kept in the app's own food database. Single user, installable PWA (Android).
+
+Vocabulary: an *alimento* is a `food`; a *comida* is a `meal` — a saved group of foods with quantities (a recipe, a usual breakfast), never a time of day.
 
 ## Conventions
 
@@ -11,8 +13,12 @@ Personal food diary: what was eaten each day, with calories and macros. Entries 
 - Pages are Server Components reading through `src/lib/data.ts`; mutations are Server Actions in `src/app/actions.ts`. Every data function, action and page that fetches calls `requireSession()` — the proxy (`src/proxy.ts`) only redirects.
 - `foods` holds nutrition **per 100 g** (or per 100 ml when `unit` is `ml`). `entries` holds only a quantity: nutrition is computed from the food (`macrosFor` in `src/lib/foods.ts`), so editing a food also changes the days it was logged on.
 - Timestamps are ISO-8601 UTC strings. `entries.eaten_at` is when it was eaten (defaults to the moment of logging, editable); the diary day an entry belongs to is the calendar day of `eaten_at` in `APP_TIME_ZONE` (`src/lib/time.ts`), never UTC.
+- Logging a meal copies its foods into `entries` (scaled by the portions), sharing a `group_id` and the meal's name at that moment in `group_name`. The diary shows a group as one line. Editing or deleting a meal never touches what was already logged.
+- `src/components/FoodPicker.tsx` is the one way to find a food (diary and meal form): the user's foods and the catalog filter as you type, Open Food Facts is asked by name only on request (its search is rate-limited), and a typed or scanned barcode goes through `lookupBarcode`.
+- The catalog (`src/data/catalog.json`, ~330 generic foods with Argentine names) is **generated** by `scripts/catalog/build.mjs` from USDA FoodData Central SR Legacy (public domain) — never edit it or type nutrition values by hand. To add a food, add an entry with its `fdcId` to `scripts/catalog/source.json` and rebuild. Picking a catalog food copies it into `foods` (`source = 'catalog'`, `catalog_key`).
 - Open Food Facts (`src/lib/off.ts`) is read-only and server-side. A product is saved as a food only when it has a name and all four values; otherwise the new-food form opens prefilled with whatever it has.
-- Barcode scanning uses the browser's native `BarcodeDetector` (`src/components/BarcodeScanner.tsx`), with typing the code as the fallback. No scanning library.
+- Barcode scanning uses the browser's native `BarcodeDetector` (`src/components/BarcodeScanner.tsx`), with typing the code in the search box as the fallback. No scanning library.
+- A food that's in the diary or in a meal can't be deleted.
 - Number fields accept a decimal comma: parse with `parseDecimal`, display with `formatAmount` / `formatKcal`.
 - Light palette defined as Tailwind theme tokens in `src/app/globals.css`.
 - Local dev uses `TURSO_DATABASE_URL=file:local.db` (gitignored); the Turso credentials live only in Vercel.

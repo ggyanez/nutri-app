@@ -12,6 +12,12 @@ const ITEMS = [
     paths: ["M8 6h12", "M8 12h12", "M8 18h12", "M4 6h.01", "M4 12h.01", "M4 18h.01"],
   },
   {
+    href: "/comidas",
+    label: "Comidas",
+    match: (path: string) => path.startsWith("/comidas"),
+    paths: ["M3 11h18", "M5 11a7 7 0 0 0 14 0", "M9 20h6", "M12 4v3", "M8 5v2", "M16 5v2"],
+  },
+  {
     href: "/alimentos",
     label: "Alimentos",
     match: (path: string) => path.startsWith("/alimentos"),

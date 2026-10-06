@@ -1,0 +1,2552 @@
+[
+ {
+  "key": "banana",
+  "name": "Banana",
+  "category": "Frutas",
+  "fdcId": 173944,
+  "usda": "Bananas, raw",
+  "portion": {
+   "usda": "medium (7\" to 7-7/8\" long)",
+   "grams": 118.0
+  }
+ },
+ {
+  "key": "manzana",
+  "name": "Manzana",
+  "category": "Frutas",
+  "fdcId": 171688,
+  "usda": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
+  "portion": {
+   "usda": "medium (3\" dia)",
+   "grams": 182.0
+  }
+ },
+ {
+  "key": "manzana-verde",
+  "name": "Manzana verde",
+  "category": "Frutas",
+  "fdcId": 168203,
+  "usda": "Apples, raw, granny smith, with skin (Includes foods for USDA's Food Distribution Program)",
+  "portion": {
+   "usda": "medium",
+   "grams": 167.0
+  }
+ },
+ {
+  "key": "naranja",
+  "name": "Naranja",
+  "category": "Frutas",
+  "fdcId": 169097,
+  "usda": "Oranges, raw, all commercial varieties",
+  "portion": {
+   "usda": "fruit (2-5/8\" dia)",
+   "grams": 131.0
+  }
+ },
+ {
+  "key": "mandarina",
+  "name": "Mandarina",
+  "category": "Frutas",
+  "fdcId": 169105,
+  "usda": "Tangerines, (mandarin oranges), raw",
+  "portion": {
+   "usda": "medium (2-1/2\" dia)",
+   "grams": 88.0
+  }
+ },
+ {
+  "key": "pera",
+  "name": "Pera",
+  "category": "Frutas",
+  "fdcId": 169118,
+  "usda": "Pears, raw",
+  "portion": {
+   "usda": "medium",
+   "grams": 178.0
+  }
+ },
+ {
+  "key": "durazno",
+  "name": "Durazno",
+  "category": "Frutas",
+  "fdcId": 169928,
+  "usda": "Peaches, yellow, raw",
+  "portion": {
+   "usda": "medium (2-2/3\" dia)",
+   "grams": 150.0
+  }
+ },
+ {
+  "key": "ciruela",
+  "name": "Ciruela",
+  "category": "Frutas",
+  "fdcId": 169949,
+  "usda": "Plums, raw",
+  "portion": {
+   "usda": "fruit (2-1/8\" dia)",
+   "grams": 66.0
+  }
+ },
+ {
+  "key": "uva",
+  "name": "Uva",
+  "category": "Frutas",
+  "fdcId": 174683,
+  "usda": "Grapes, red or green (European type, such as Thompson seedless), raw"
+ },
+ {
+  "key": "frutilla",
+  "name": "Frutilla",
+  "category": "Frutas",
+  "fdcId": 167762,
+  "usda": "Strawberries, raw",
+  "also": "fresa"
+ },
+ {
+  "key": "kiwi",
+  "name": "Kiwi",
+  "category": "Frutas",
+  "fdcId": 168153,
+  "usda": "Kiwifruit, green, raw",
+  "portion": {
+   "usda": "fruit (2\" dia)",
+   "grams": 69.0
+  }
+ },
+ {
+  "key": "anana",
+  "name": "Ananá",
+  "category": "Frutas",
+  "fdcId": 169124,
+  "usda": "Pineapple, raw, all varieties",
+  "also": "piña"
+ },
+ {
+  "key": "sandia",
+  "name": "Sandía",
+  "category": "Frutas",
+  "fdcId": 167765,
+  "usda": "Watermelon, raw"
+ },
+ {
+  "key": "melon",
+  "name": "Melón",
+  "category": "Frutas",
+  "fdcId": 169911,
+  "usda": "Melons, honeydew, raw"
+ },
+ {
+  "key": "limon",
+  "name": "Limón",
+  "category": "Frutas",
+  "fdcId": 167746,
+  "usda": "Lemons, raw, without peel"
+ },
+ {
+  "key": "pomelo",
+  "name": "Pomelo",
+  "category": "Frutas",
+  "fdcId": 174673,
+  "usda": "Grapefruit, raw, pink and red, all areas",
+  "also": "toronja"
+ },
+ {
+  "key": "cereza",
+  "name": "Cereza",
+  "category": "Frutas",
+  "fdcId": 171719,
+  "usda": "Cherries, sweet, raw"
+ },
+ {
+  "key": "arandanos",
+  "name": "Arándanos",
+  "category": "Frutas",
+  "fdcId": 171711,
+  "usda": "Blueberries, raw"
+ },
+ {
+  "key": "frambuesa",
+  "name": "Frambuesa",
+  "category": "Frutas",
+  "fdcId": 167755,
+  "usda": "Raspberries, raw"
+ },
+ {
+  "key": "mora",
+  "name": "Mora",
+  "category": "Frutas",
+  "fdcId": 173946,
+  "usda": "Blackberries, raw"
+ },
+ {
+  "key": "mango",
+  "name": "Mango",
+  "category": "Frutas",
+  "fdcId": 169910,
+  "usda": "Mangos, raw"
+ },
+ {
+  "key": "palta",
+  "name": "Palta",
+  "category": "Frutas",
+  "fdcId": 171705,
+  "usda": "Avocados, raw, all commercial varieties",
+  "also": "aguacate"
+ },
+ {
+  "key": "higo",
+  "name": "Higo",
+  "category": "Frutas",
+  "fdcId": 173021,
+  "usda": "Figs, raw"
+ },
+ {
+  "key": "damasco",
+  "name": "Damasco",
+  "category": "Frutas",
+  "fdcId": 171697,
+  "usda": "Apricots, raw",
+  "also": "albaricoque"
+ },
+ {
+  "key": "papaya",
+  "name": "Papaya",
+  "category": "Frutas",
+  "fdcId": 169926,
+  "usda": "Papayas, raw",
+  "also": "mamón"
+ },
+ {
+  "key": "granada",
+  "name": "Granada",
+  "category": "Frutas",
+  "fdcId": 169134,
+  "usda": "Pomegranates, raw"
+ },
+ {
+  "key": "maracuya",
+  "name": "Maracuyá",
+  "category": "Frutas",
+  "fdcId": 169108,
+  "usda": "Passion-fruit, (granadilla), purple, raw"
+ },
+ {
+  "key": "pasas-de-uva",
+  "name": "Pasas de uva",
+  "category": "Frutas",
+  "fdcId": 168165,
+  "usda": "Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program)"
+ },
+ {
+  "key": "ciruelas-pasas",
+  "name": "Ciruelas pasas",
+  "category": "Frutas",
+  "fdcId": 168162,
+  "usda": "Plums, dried (prunes), uncooked"
+ },
+ {
+  "key": "datiles",
+  "name": "Dátiles",
+  "category": "Frutas",
+  "fdcId": 171726,
+  "usda": "Dates, deglet noor"
+ },
+ {
+  "key": "orejones-de-durazno",
+  "name": "Orejones de durazno",
+  "category": "Frutas",
+  "fdcId": 169934,
+  "usda": "Peaches, dried, sulfured, uncooked"
+ },
+ {
+  "key": "damascos-secos",
+  "name": "Damascos secos",
+  "category": "Frutas",
+  "fdcId": 173941,
+  "usda": "Apricots, dried, sulfured, uncooked"
+ },
+ {
+  "key": "higos-secos",
+  "name": "Higos secos",
+  "category": "Frutas",
+  "fdcId": 174665,
+  "usda": "Figs, dried, uncooked"
+ },
+ {
+  "key": "papa-cruda",
+  "name": "Papa cruda",
+  "category": "Verduras",
+  "fdcId": 170026,
+  "usda": "Potatoes, flesh and skin, raw"
+ },
+ {
+  "key": "papa-hervida",
+  "name": "Papa hervida",
+  "category": "Verduras",
+  "fdcId": 170440,
+  "usda": "Potatoes, boiled, cooked without skin, flesh, without salt"
+ },
+ {
+  "key": "papa-al-horno",
+  "name": "Papa al horno",
+  "category": "Verduras",
+  "fdcId": 170093,
+  "usda": "Potatoes, baked, flesh and skin, without salt"
+ },
+ {
+  "key": "pure-de-papas",
+  "name": "Puré de papas",
+  "category": "Verduras",
+  "fdcId": 168555,
+  "usda": "Potatoes, mashed, home-prepared, whole milk and butter added"
+ },
+ {
+  "key": "papas-fritas",
+  "name": "Papas fritas",
+  "category": "Verduras",
+  "fdcId": 170698,
+  "usda": "Fast foods, potato, french fried in vegetable oil"
+ },
+ {
+  "key": "batata-cruda",
+  "name": "Batata cruda",
+  "category": "Verduras",
+  "fdcId": 168482,
+  "usda": "Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)",
+  "also": "boniato camote"
+ },
+ {
+  "key": "batata-hervida",
+  "name": "Batata hervida",
+  "category": "Verduras",
+  "fdcId": 168484,
+  "usda": "Sweet potato, cooked, boiled, without skin",
+  "also": "boniato camote"
+ },
+ {
+  "key": "batata-al-horno",
+  "name": "Batata al horno",
+  "category": "Verduras",
+  "fdcId": 168483,
+  "usda": "Sweet potato, cooked, baked in skin, flesh, without salt",
+  "also": "boniato camote"
+ },
+ {
+  "key": "zanahoria",
+  "name": "Zanahoria",
+  "category": "Verduras",
+  "fdcId": 170393,
+  "usda": "Carrots, raw"
+ },
+ {
+  "key": "zanahoria-hervida",
+  "name": "Zanahoria hervida",
+  "category": "Verduras",
+  "fdcId": 170394,
+  "usda": "Carrots, cooked, boiled, drained, without salt"
+ },
+ {
+  "key": "cebolla",
+  "name": "Cebolla",
+  "category": "Verduras",
+  "fdcId": 170000,
+  "usda": "Onions, raw"
+ },
+ {
+  "key": "cebolla-de-verdeo",
+  "name": "Cebolla de verdeo",
+  "category": "Verduras",
+  "fdcId": 170005,
+  "usda": "Onions, spring or scallions (includes tops and bulb), raw"
+ },
+ {
+  "key": "ajo",
+  "name": "Ajo",
+  "category": "Verduras",
+  "fdcId": 169230,
+  "usda": "Garlic, raw"
+ },
+ {
+  "key": "tomate",
+  "name": "Tomate",
+  "category": "Verduras",
+  "fdcId": 170457,
+  "usda": "Tomatoes, red, ripe, raw, year round average",
+  "portion": {
+   "usda": "medium whole (2-3/5\" dia)",
+   "grams": 123.0
+  }
+ },
+ {
+  "key": "tomate-triturado",
+  "name": "Tomate triturado",
+  "category": "Verduras",
+  "fdcId": 170501,
+  "usda": "Tomatoes, crushed, canned"
+ },
+ {
+  "key": "pure-de-tomate",
+  "name": "Puré de tomate",
+  "category": "Verduras",
+  "fdcId": 170460,
+  "usda": "Tomato products, canned, puree, without salt added"
+ },
+ {
+  "key": "salsa-de-tomate",
+  "name": "Salsa de tomate",
+  "category": "Verduras",
+  "fdcId": 170054,
+  "usda": "Tomato products, canned, sauce"
+ },
+ {
+  "key": "extracto-de-tomate",
+  "name": "Extracto de tomate",
+  "category": "Verduras",
+  "fdcId": 170459,
+  "usda": "Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program)"
+ },
+ {
+  "key": "lechuga",
+  "name": "Lechuga",
+  "category": "Verduras",
+  "fdcId": 169249,
+  "usda": "Lettuce, green leaf, raw"
+ },
+ {
+  "key": "espinaca",
+  "name": "Espinaca",
+  "category": "Verduras",
+  "fdcId": 168462,
+  "usda": "Spinach, raw"
+ },
+ {
+  "key": "espinaca-hervida",
+  "name": "Espinaca hervida",
+  "category": "Verduras",
+  "fdcId": 168463,
+  "usda": "Spinach, cooked, boiled, drained, without salt"
+ },
+ {
+  "key": "acelga",
+  "name": "Acelga",
+  "category": "Verduras",
+  "fdcId": 169991,
+  "usda": "Chard, swiss, raw"
+ },
+ {
+  "key": "acelga-hervida",
+  "name": "Acelga hervida",
+  "category": "Verduras",
+  "fdcId": 170401,
+  "usda": "Chard, swiss, cooked, boiled, drained, without salt"
+ },
+ {
+  "key": "rucula",
+  "name": "Rúcula",
+  "category": "Verduras",
+  "fdcId": 169387,
+  "usda": "Arugula, raw"
+ },
+ {
+  "key": "repollo-blanco",
+  "name": "Repollo blanco",
+  "category": "Verduras",
+  "fdcId": 169975,
+  "usda": "Cabbage, raw"
+ },
+ {
+  "key": "repollo-colorado",
+  "name": "Repollo colorado",
+  "category": "Verduras",
+  "fdcId": 169977,
+  "usda": "Cabbage, red, raw"
+ },
+ {
+  "key": "brocoli",
+  "name": "Brócoli",
+  "category": "Verduras",
+  "fdcId": 170379,
+  "usda": "Broccoli, raw"
+ },
+ {
+  "key": "brocoli-hervido",
+  "name": "Brócoli hervido",
+  "category": "Verduras",
+  "fdcId": 169967,
+  "usda": "Broccoli, cooked, boiled, drained, without salt"
+ },
+ {
+  "key": "coliflor",
+  "name": "Coliflor",
+  "category": "Verduras",
+  "fdcId": 169986,
+  "usda": "Cauliflower, raw"
+ },
+ {
+  "key": "coliflor-hervida",
+  "name": "Coliflor hervida",
+  "category": "Verduras",
+  "fdcId": 170397,
+  "usda": "Cauliflower, cooked, boiled, drained, without salt"
+ },
+ {
+  "key": "zapallo-anco-crudo",
+  "name": "Zapallo anco crudo",
+  "category": "Verduras",
+  "fdcId": 169295,
+  "usda": "Squash, winter, butternut, raw",
+  "also": "calabaza cabutia"
+ },
+ {
+  "key": "zapallo-anco-al-horno",
+  "name": "Zapallo anco al horno",
+  "category": "Verduras",
+  "fdcId": 169296,
+  "usda": "Squash, winter, butternut, cooked, baked, without salt",
+  "also": "calabaza cabutia"
+ },
+ {
+  "key": "zapallo-crudo",
+  "name": "Zapallo crudo",
+  "category": "Verduras",
+  "fdcId": 168448,
+  "usda": "Pumpkin, raw",
+  "also": "calabaza"
+ },
+ {
+  "key": "zapallo-hervido",
+  "name": "Zapallo hervido",
+  "category": "Verduras",
+  "fdcId": 168449,
+  "usda": "Pumpkin, cooked, boiled, drained, without salt",
+  "also": "calabaza"
+ },
+ {
+  "key": "zapallito",
+  "name": "Zapallito",
+  "category": "Verduras",
+  "fdcId": 169291,
+  "usda": "Squash, summer, zucchini, includes skin, raw",
+  "also": "zucchini zuchini calabacín"
+ },
+ {
+  "key": "zapallito-hervido",
+  "name": "Zapallito hervido",
+  "category": "Verduras",
+  "fdcId": 169292,
+  "usda": "Squash, summer, zucchini, includes skin, cooked, boiled, drained, without salt",
+  "also": "zucchini zuchini calabacín"
+ },
+ {
+  "key": "berenjena",
+  "name": "Berenjena",
+  "category": "Verduras",
+  "fdcId": 169228,
+  "usda": "Eggplant, raw"
+ },
+ {
+  "key": "morron-rojo",
+  "name": "Morrón rojo",
+  "category": "Verduras",
+  "fdcId": 170108,
+  "usda": "Peppers, sweet, red, raw",
+  "also": "pimiento ají"
+ },
+ {
+  "key": "morron-verde",
+  "name": "Morrón verde",
+  "category": "Verduras",
+  "fdcId": 170427,
+  "usda": "Peppers, sweet, green, raw",
+  "also": "pimiento ají"
+ },
+ {
+  "key": "pepino",
+  "name": "Pepino",
+  "category": "Verduras",
+  "fdcId": 168409,
+  "usda": "Cucumber, with peel, raw"
+ },
+ {
+  "key": "remolacha-cruda",
+  "name": "Remolacha cruda",
+  "category": "Verduras",
+  "fdcId": 169145,
+  "usda": "Beets, raw"
+ },
+ {
+  "key": "remolacha-hervida",
+  "name": "Remolacha hervida",
+  "category": "Verduras",
+  "fdcId": 169146,
+  "usda": "Beets, cooked, boiled, drained"
+ },
+ {
+  "key": "apio",
+  "name": "Apio",
+  "category": "Verduras",
+  "fdcId": 169988,
+  "usda": "Celery, raw"
+ },
+ {
+  "key": "puerro",
+  "name": "Puerro",
+  "category": "Verduras",
+  "fdcId": 169246,
+  "usda": "Leeks, (bulb and lower leaf-portion), raw"
+ },
+ {
+  "key": "choclo-crudo",
+  "name": "Choclo crudo",
+  "category": "Verduras",
+  "fdcId": 169998,
+  "usda": "Corn, sweet, yellow, raw",
+  "also": "maíz"
+ },
+ {
+  "key": "choclo-hervido",
+  "name": "Choclo hervido",
+  "category": "Verduras",
+  "fdcId": 169999,
+  "usda": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
+  "also": "maíz"
+ },
+ {
+  "key": "choclo-en-lata",
+  "name": "Choclo en lata",
+  "category": "Verduras",
+  "fdcId": 169214,
+  "usda": "Corn, sweet, yellow, canned, whole kernel, drained solids",
+  "also": "maíz"
+ },
+ {
+  "key": "chauchas",
+  "name": "Chauchas",
+  "category": "Verduras",
+  "fdcId": 169961,
+  "usda": "Beans, snap, green, raw",
+  "also": "judías verdes"
+ },
+ {
+  "key": "chauchas-hervidas",
+  "name": "Chauchas hervidas",
+  "category": "Verduras",
+  "fdcId": 169141,
+  "usda": "Beans, snap, green, cooked, boiled, drained, without salt",
+  "also": "judías verdes"
+ },
+ {
+  "key": "arvejas-frescas",
+  "name": "Arvejas frescas",
+  "category": "Verduras",
+  "fdcId": 170419,
+  "usda": "Peas, green, raw",
+  "also": "guisantes"
+ },
+ {
+  "key": "arvejas-en-lata",
+  "name": "Arvejas en lata",
+  "category": "Verduras",
+  "fdcId": 170013,
+  "usda": "Peas, green (includes baby and lesuer types), canned, drained solids, unprepared",
+  "also": "guisantes"
+ },
+ {
+  "key": "esparragos",
+  "name": "Espárragos",
+  "category": "Verduras",
+  "fdcId": 168389,
+  "usda": "Asparagus, raw"
+ },
+ {
+  "key": "champinones",
+  "name": "Champiñones",
+  "category": "Verduras",
+  "fdcId": 169251,
+  "usda": "Mushrooms, white, raw",
+  "also": "hongos"
+ },
+ {
+  "key": "alcaucil",
+  "name": "Alcaucil",
+  "category": "Verduras",
+  "fdcId": 169205,
+  "usda": "Artichokes, (globe or french), raw",
+  "also": "alcachofa"
+ },
+ {
+  "key": "hinojo",
+  "name": "Hinojo",
+  "category": "Verduras",
+  "fdcId": 169385,
+  "usda": "Fennel, bulb, raw"
+ },
+ {
+  "key": "rabanito",
+  "name": "Rabanito",
+  "category": "Verduras",
+  "fdcId": 169276,
+  "usda": "Radishes, raw"
+ },
+ {
+  "key": "radicheta",
+  "name": "Radicheta",
+  "category": "Verduras",
+  "fdcId": 169992,
+  "usda": "Chicory greens, raw"
+ },
+ {
+  "key": "endivia",
+  "name": "Endivia",
+  "category": "Verduras",
+  "fdcId": 170404,
+  "usda": "Chicory, witloof, raw"
+ },
+ {
+  "key": "mandioca",
+  "name": "Mandioca",
+  "category": "Verduras",
+  "fdcId": 169985,
+  "usda": "Cassava, raw",
+  "also": "yuca"
+ },
+ {
+  "key": "repollitos-de-bruselas",
+  "name": "Repollitos de Bruselas",
+  "category": "Verduras",
+  "fdcId": 170383,
+  "usda": "Brussels sprouts, raw"
+ },
+ {
+  "key": "kale",
+  "name": "Kale",
+  "category": "Verduras",
+  "fdcId": 168421,
+  "usda": "Kale, raw"
+ },
+ {
+  "key": "nabo",
+  "name": "Nabo",
+  "category": "Verduras",
+  "fdcId": 170465,
+  "usda": "Turnips, raw"
+ },
+ {
+  "key": "perejil",
+  "name": "Perejil",
+  "category": "Verduras",
+  "fdcId": 170416,
+  "usda": "Parsley, fresh"
+ },
+ {
+  "key": "albahaca",
+  "name": "Albahaca",
+  "category": "Verduras",
+  "fdcId": 172232,
+  "usda": "Basil, fresh"
+ },
+ {
+  "key": "jengibre",
+  "name": "Jengibre",
+  "category": "Verduras",
+  "fdcId": 169231,
+  "usda": "Ginger root, raw"
+ },
+ {
+  "key": "aceitunas-verdes",
+  "name": "Aceitunas verdes",
+  "category": "Verduras",
+  "fdcId": 169096,
+  "usda": "Olives, pickled, canned or bottled, green"
+ },
+ {
+  "key": "aceitunas-negras",
+  "name": "Aceitunas negras",
+  "category": "Verduras",
+  "fdcId": 169094,
+  "usda": "Olives, ripe, canned (small-extra large)"
+ },
+ {
+  "key": "lentejas-crudas",
+  "name": "Lentejas crudas",
+  "category": "Legumbres",
+  "fdcId": 172420,
+  "usda": "Lentils, raw"
+ },
+ {
+  "key": "lentejas-cocidas",
+  "name": "Lentejas cocidas",
+  "category": "Legumbres",
+  "fdcId": 172421,
+  "usda": "Lentils, mature seeds, cooked, boiled, without salt"
+ },
+ {
+  "key": "garbanzos-crudos",
+  "name": "Garbanzos crudos",
+  "category": "Legumbres",
+  "fdcId": 173756,
+  "usda": "Chickpeas (garbanzo beans, bengal gram), mature seeds, raw"
+ },
+ {
+  "key": "garbanzos-cocidos",
+  "name": "Garbanzos cocidos",
+  "category": "Legumbres",
+  "fdcId": 173757,
+  "usda": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt"
+ },
+ {
+  "key": "porotos-negros-crudos",
+  "name": "Porotos negros crudos",
+  "category": "Legumbres",
+  "fdcId": 173734,
+  "usda": "Beans, black, mature seeds, raw",
+  "also": "frijoles"
+ },
+ {
+  "key": "porotos-negros-cocidos",
+  "name": "Porotos negros cocidos",
+  "category": "Legumbres",
+  "fdcId": 173735,
+  "usda": "Beans, black, mature seeds, cooked, boiled, without salt",
+  "also": "frijoles"
+ },
+ {
+  "key": "porotos-alubia-crudos",
+  "name": "Porotos alubia crudos",
+  "category": "Legumbres",
+  "fdcId": 175202,
+  "usda": "Beans, white, mature seeds, raw",
+  "also": "blancos frijoles"
+ },
+ {
+  "key": "porotos-alubia-cocidos",
+  "name": "Porotos alubia cocidos",
+  "category": "Legumbres",
+  "fdcId": 175203,
+  "usda": "Beans, white, mature seeds, cooked, boiled, without salt",
+  "also": "blancos frijoles"
+ },
+ {
+  "key": "porotos-colorados-crudos",
+  "name": "Porotos colorados crudos",
+  "category": "Legumbres",
+  "fdcId": 173744,
+  "usda": "Beans, kidney, red, mature seeds, raw",
+  "also": "frijoles"
+ },
+ {
+  "key": "porotos-colorados-cocidos",
+  "name": "Porotos colorados cocidos",
+  "category": "Legumbres",
+  "fdcId": 175194,
+  "usda": "Beans, kidney, red, mature seeds, cooked, boiled, without salt",
+  "also": "frijoles"
+ },
+ {
+  "key": "porotos-de-soja-crudos",
+  "name": "Porotos de soja crudos",
+  "category": "Legumbres",
+  "fdcId": 174270,
+  "usda": "Soybeans, mature seeds, raw"
+ },
+ {
+  "key": "porotos-de-soja-cocidos",
+  "name": "Porotos de soja cocidos",
+  "category": "Legumbres",
+  "fdcId": 174271,
+  "usda": "Soybeans, mature cooked, boiled, without salt"
+ },
+ {
+  "key": "arvejas-secas-partidas-crudas",
+  "name": "Arvejas secas partidas crudas",
+  "category": "Legumbres",
+  "fdcId": 172428,
+  "usda": "Peas, green, split, mature seeds, raw"
+ },
+ {
+  "key": "arvejas-secas-partidas-cocidas",
+  "name": "Arvejas secas partidas cocidas",
+  "category": "Legumbres",
+  "fdcId": 172429,
+  "usda": "Peas, split, mature seeds, cooked, boiled, without salt"
+ },
+ {
+  "key": "tofu",
+  "name": "Tofu",
+  "category": "Legumbres",
+  "fdcId": 172475,
+  "usda": "Tofu, raw, firm, prepared with calcium sulfate"
+ },
+ {
+  "key": "hummus",
+  "name": "Hummus",
+  "category": "Legumbres",
+  "fdcId": 174289,
+  "usda": "Hummus, commercial"
+ },
+ {
+  "key": "bife-de-chorizo-crudo",
+  "name": "Bife de chorizo crudo",
+  "category": "Carne vacuna",
+  "fdcId": 171775,
+  "usda": "Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+ },
+ {
+  "key": "bife-de-chorizo-a-la-parrilla",
+  "name": "Bife de chorizo a la parrilla",
+  "category": "Carne vacuna",
+  "fdcId": 174714,
+  "usda": "Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, grilled"
+ },
+ {
+  "key": "ojo-de-bife-crudo",
+  "name": "Ojo de bife crudo",
+  "category": "Carne vacuna",
+  "fdcId": 172156,
+  "usda": "Beef, rib eye steak/roast, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+ },
+ {
+  "key": "ojo-de-bife-a-la-parrilla",
+  "name": "Ojo de bife a la parrilla",
+  "category": "Carne vacuna",
+  "fdcId": 173392,
+  "usda": "Beef, rib eye steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, grilled"
+ },
+ {
+  "key": "lomo-crudo",
+  "name": "Lomo crudo",
+  "category": "Carne vacuna",
+  "fdcId": 169542,
+  "usda": "Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+ },
+ {
+  "key": "lomo-cocido",
+  "name": "Lomo cocido",
+  "category": "Carne vacuna",
+  "fdcId": 169543,
+  "usda": "Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, broiled"
+ },
+ {
+  "key": "vacio-crudo",
+  "name": "Vacío crudo",
+  "category": "Carne vacuna",
+  "fdcId": 169563,
+  "usda": "Beef, flank, steak, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+ },
+ {
+  "key": "vacio-cocido",
+  "name": "Vacío cocido",
+  "category": "Carne vacuna",
+  "fdcId": 168733,
+  "usda": "Beef, flank, steak, separable lean and fat, trimmed to 0\" fat, all grades, cooked, broiled"
+ },
+ {
+  "key": "asado-de-tira-crudo",
+  "name": "Asado de tira crudo",
+  "category": "Carne vacuna",
+  "fdcId": 170826,
+  "usda": "Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0\" fat, all grades, raw",
+  "also": "costilla"
+ },
+ {
+  "key": "asado-de-tira-cocido",
+  "name": "Asado de tira cocido",
+  "category": "Carne vacuna",
+  "fdcId": 171222,
+  "usda": "Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0\" fat, all grades, cooked, braised",
+  "also": "costilla"
+ },
+ {
+  "key": "entrana-cruda",
+  "name": "Entraña cruda",
+  "category": "Carne vacuna",
+  "fdcId": 173400,
+  "usda": "Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+ },
+ {
+  "key": "entrana-a-la-parrilla",
+  "name": "Entraña a la parrilla",
+  "category": "Carne vacuna",
+  "fdcId": 173397,
+  "usda": "Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0\" fat, all grades, cooked, grilled"
+ },
+ {
+  "key": "cuadril-crudo",
+  "name": "Cuadril crudo",
+  "category": "Carne vacuna",
+  "fdcId": 168726,
+  "usda": "Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+ },
+ {
+  "key": "cuadril-cocido",
+  "name": "Cuadril cocido",
+  "category": "Carne vacuna",
+  "fdcId": 168727,
+  "usda": "Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, broiled"
+ },
+ {
+  "key": "colita-de-cuadril-cruda",
+  "name": "Colita de cuadril cruda",
+  "category": "Carne vacuna",
+  "fdcId": 168734,
+  "usda": "Beef, bottom sirloin, tri-tip roast, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+ },
+ {
+  "key": "colita-de-cuadril-al-horno",
+  "name": "Colita de cuadril al horno",
+  "category": "Carne vacuna",
+  "fdcId": 169558,
+  "usda": "Beef, bottom sirloin, tri-tip roast, separable lean and fat, trimmed to 0\" fat, all grades, cooked, roasted"
+ },
+ {
+  "key": "nalga-cruda",
+  "name": "Nalga cruda",
+  "category": "Carne vacuna",
+  "fdcId": 169529,
+  "usda": "Beef, round, top round, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw",
+  "also": "milanesa"
+ },
+ {
+  "key": "nalga-cocida",
+  "name": "Nalga cocida",
+  "category": "Carne vacuna",
+  "fdcId": 169531,
+  "usda": "Beef, round, top round steak, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, broiled",
+  "also": "milanesa"
+ },
+ {
+  "key": "bola-de-lomo-cruda",
+  "name": "Bola de lomo cruda",
+  "category": "Carne vacuna",
+  "fdcId": 169470,
+  "usda": "Beef, round, tip round, roast, separable lean and fat, trimmed to 0\" fat, all grades, raw",
+  "also": "milanesa"
+ },
+ {
+  "key": "bola-de-lomo-al-horno",
+  "name": "Bola de lomo al horno",
+  "category": "Carne vacuna",
+  "fdcId": 170230,
+  "usda": "Beef, round, tip round, roast, separable lean and fat, trimmed to 0\" fat, all grades, cooked, roasted",
+  "also": "milanesa"
+ },
+ {
+  "key": "peceto-crudo",
+  "name": "Peceto crudo",
+  "category": "Carne vacuna",
+  "fdcId": 169523,
+  "usda": "Beef, round, eye of round, roast, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+ },
+ {
+  "key": "peceto-al-horno",
+  "name": "Peceto al horno",
+  "category": "Carne vacuna",
+  "fdcId": 169524,
+  "usda": "Beef, round, eye of round, roast, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, roasted"
+ },
+ {
+  "key": "cuadrada-cruda",
+  "name": "Cuadrada cruda",
+  "category": "Carne vacuna",
+  "fdcId": 169519,
+  "usda": "Beef, round, bottom round, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+ },
+ {
+  "key": "paleta-cruda",
+  "name": "Paleta cruda",
+  "category": "Carne vacuna",
+  "fdcId": 169491,
+  "usda": "Beef, chuck, arm pot roast, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+ },
+ {
+  "key": "roast-beef-crudo",
+  "name": "Roast beef crudo",
+  "category": "Carne vacuna",
+  "fdcId": 171231,
+  "usda": "Beef, chuck eye steak, boneless, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+ },
+ {
+  "key": "osobuco-crudo",
+  "name": "Osobuco crudo",
+  "category": "Carne vacuna",
+  "fdcId": 169441,
+  "usda": "Beef, shank crosscuts, separable lean only, trimmed to 1/4\" fat, choice, raw"
+ },
+ {
+  "key": "osobuco-cocido",
+  "name": "Osobuco cocido",
+  "category": "Carne vacuna",
+  "fdcId": 169442,
+  "usda": "Beef, shank crosscuts, separable lean only, trimmed to 1/4\" fat, choice, cooked, simmered"
+ },
+ {
+  "key": "carne-picada-comun-cruda",
+  "name": "Carne picada común cruda",
+  "category": "Carne vacuna",
+  "fdcId": 174036,
+  "usda": "Beef, ground, 80% lean meat / 20% fat, raw",
+  "also": "molida"
+ },
+ {
+  "key": "carne-picada-especial-cruda",
+  "name": "Carne picada especial cruda",
+  "category": "Carne vacuna",
+  "fdcId": 174030,
+  "usda": "Beef, ground, 90% lean meat / 10% fat, raw",
+  "also": "molida"
+ },
+ {
+  "key": "carne-picada-magra-cruda",
+  "name": "Carne picada magra cruda",
+  "category": "Carne vacuna",
+  "fdcId": 171790,
+  "usda": "Beef, ground, 95% lean meat / 5% fat, raw",
+  "also": "molida"
+ },
+ {
+  "key": "carne-picada-comun-cocida",
+  "name": "Carne picada común cocida",
+  "category": "Carne vacuna",
+  "fdcId": 171798,
+  "usda": "Beef, ground, 80% lean meat / 20% fat, patty, cooked, pan-broiled",
+  "also": "molida"
+ },
+ {
+  "key": "carne-picada-especial-cocida",
+  "name": "Carne picada especial cocida",
+  "category": "Carne vacuna",
+  "fdcId": 171793,
+  "usda": "Beef, ground, 90% lean meat / 10% fat, patty, cooked, pan-broiled",
+  "also": "molida"
+ },
+ {
+  "key": "hamburguesa-casera-cocida",
+  "name": "Hamburguesa casera cocida",
+  "category": "Carne vacuna",
+  "fdcId": 171797,
+  "usda": "Beef, ground, 80% lean meat / 20% fat, patty, cooked, broiled"
+ },
+ {
+  "key": "higado-vacuno-crudo",
+  "name": "Hígado vacuno crudo",
+  "category": "Carne vacuna",
+  "fdcId": 169451,
+  "usda": "Beef, variety meats and by-products, liver, raw"
+ },
+ {
+  "key": "lengua-vacuna-cruda",
+  "name": "Lengua vacuna cruda",
+  "category": "Carne vacuna",
+  "fdcId": 170196,
+  "usda": "Beef, variety meats and by-products, tongue, raw"
+ },
+ {
+  "key": "mondongo-crudo",
+  "name": "Mondongo crudo",
+  "category": "Carne vacuna",
+  "fdcId": 170599,
+  "usda": "Beef, variety meats and by-products, tripe, raw"
+ },
+ {
+  "key": "rinon-vacuno-crudo",
+  "name": "Riñón vacuno crudo",
+  "category": "Carne vacuna",
+  "fdcId": 169449,
+  "usda": "Beef, variety meats and by-products, kidneys, raw"
+ },
+ {
+  "key": "molleja-cruda",
+  "name": "Molleja cruda",
+  "category": "Carne vacuna",
+  "fdcId": 170194,
+  "usda": "Beef, variety meats and by-products, thymus, raw"
+ },
+ {
+  "key": "corazon-vacuno-crudo",
+  "name": "Corazón vacuno crudo",
+  "category": "Carne vacuna",
+  "fdcId": 168625,
+  "usda": "Beef, variety meats and by-products, heart, raw"
+ },
+ {
+  "key": "carre-de-cerdo-crudo",
+  "name": "Carré de cerdo crudo",
+  "category": "Cerdo",
+  "fdcId": 167818,
+  "usda": "Pork, fresh, loin, whole, separable lean and fat, raw"
+ },
+ {
+  "key": "costeleta-de-cerdo-cocida",
+  "name": "Costeleta de cerdo cocida",
+  "category": "Cerdo",
+  "fdcId": 167827,
+  "usda": "Pork, fresh, loin, center loin (chops), bone-in, separable lean and fat, cooked, broiled",
+  "also": "chuleta"
+ },
+ {
+  "key": "bondiola-cruda",
+  "name": "Bondiola cruda",
+  "category": "Cerdo",
+  "fdcId": 167849,
+  "usda": "Pork, fresh, shoulder, (Boston butt), blade (steaks), separable lean and fat, raw"
+ },
+ {
+  "key": "pechito-de-cerdo-crudo",
+  "name": "Pechito de cerdo crudo",
+  "category": "Cerdo",
+  "fdcId": 167853,
+  "usda": "Pork, fresh, spareribs, separable lean and fat, raw",
+  "also": "costillas ribs"
+ },
+ {
+  "key": "solomillo-de-cerdo-crudo",
+  "name": "Solomillo de cerdo crudo",
+  "category": "Cerdo",
+  "fdcId": 168312,
+  "usda": "Pork, fresh, loin, tenderloin, separable lean and fat, raw"
+ },
+ {
+  "key": "pernil-de-cerdo-crudo",
+  "name": "Pernil de cerdo crudo",
+  "category": "Cerdo",
+  "fdcId": 168222,
+  "usda": "Pork, fresh, leg (ham), whole, separable lean and fat, raw"
+ },
+ {
+  "key": "carne-picada-de-cerdo-cruda",
+  "name": "Carne picada de cerdo cruda",
+  "category": "Cerdo",
+  "fdcId": 167902,
+  "usda": "Pork, fresh, ground, raw"
+ },
+ {
+  "key": "panceta-fresca-cruda",
+  "name": "Panceta fresca cruda",
+  "category": "Cerdo",
+  "fdcId": 167812,
+  "usda": "Pork, fresh, belly, raw"
+ },
+ {
+  "key": "panceta-ahumada-cruda",
+  "name": "Panceta ahumada cruda",
+  "category": "Cerdo",
+  "fdcId": 168277,
+  "usda": "Pork, cured, bacon, unprepared",
+  "also": "bacon tocino"
+ },
+ {
+  "key": "panceta-ahumada-cocida",
+  "name": "Panceta ahumada cocida",
+  "category": "Cerdo",
+  "fdcId": 168322,
+  "usda": "Pork, cured, bacon, pre-sliced, cooked, pan-fried",
+  "also": "bacon tocino"
+ },
+ {
+  "key": "jamon-cocido",
+  "name": "Jamón cocido",
+  "category": "Fiambres y embutidos",
+  "fdcId": 173864,
+  "usda": "Ham, sliced, regular (approximately 11% fat)"
+ },
+ {
+  "key": "jamon-cocido-magro",
+  "name": "Jamón cocido magro",
+  "category": "Fiambres y embutidos",
+  "fdcId": 173863,
+  "usda": "Ham, sliced, pre-packaged, deli meat (96%fat free, water added)"
+ },
+ {
+  "key": "salame",
+  "name": "Salame",
+  "category": "Fiambres y embutidos",
+  "fdcId": 174603,
+  "usda": "Salami, Italian, pork",
+  "also": "salamín"
+ },
+ {
+  "key": "mortadela",
+  "name": "Mortadela",
+  "category": "Fiambres y embutidos",
+  "fdcId": 174573,
+  "usda": "Mortadella, beef, pork"
+ },
+ {
+  "key": "morcilla",
+  "name": "Morcilla",
+  "category": "Fiambres y embutidos",
+  "fdcId": 171618,
+  "usda": "Blood sausage"
+ },
+ {
+  "key": "salchicha",
+  "name": "Salchicha",
+  "category": "Fiambres y embutidos",
+  "fdcId": 172968,
+  "usda": "Frankfurter, meat",
+  "also": "pancho viena"
+ },
+ {
+  "key": "chorizo-crudo",
+  "name": "Chorizo crudo",
+  "category": "Fiambres y embutidos",
+  "fdcId": 173859,
+  "usda": "Sausage, pork, chorizo, link or ground, raw"
+ },
+ {
+  "key": "chorizo-cocido",
+  "name": "Chorizo cocido",
+  "category": "Fiambres y embutidos",
+  "fdcId": 174586,
+  "usda": "Sausage, Italian, pork, mild, cooked, pan-fried"
+ },
+ {
+  "key": "pechuga-de-pavo-fiambre",
+  "name": "Pechuga de pavo (fiambre)",
+  "category": "Fiambres y embutidos",
+  "fdcId": 172941,
+  "usda": "Turkey breast, sliced, prepackaged"
+ },
+ {
+  "key": "pechuga-de-pollo-sin-piel-cruda",
+  "name": "Pechuga de pollo sin piel cruda",
+  "category": "Pollo",
+  "fdcId": 171077,
+  "usda": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw"
+ },
+ {
+  "key": "pechuga-de-pollo-sin-piel-cocida",
+  "name": "Pechuga de pollo sin piel cocida",
+  "category": "Pollo",
+  "fdcId": 171534,
+  "usda": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, cooked, grilled"
+ },
+ {
+  "key": "pechuga-de-pollo-con-piel-cruda",
+  "name": "Pechuga de pollo con piel cruda",
+  "category": "Pollo",
+  "fdcId": 171474,
+  "usda": "Chicken, broilers or fryers, breast, meat and skin, raw"
+ },
+ {
+  "key": "muslo-de-pollo-sin-piel-crudo",
+  "name": "Muslo de pollo sin piel crudo",
+  "category": "Pollo",
+  "fdcId": 173627,
+  "usda": "Chicken, broilers or fryers, dark meat, thigh, meat only, raw"
+ },
+ {
+  "key": "muslo-de-pollo-sin-piel-cocido",
+  "name": "Muslo de pollo sin piel cocido",
+  "category": "Pollo",
+  "fdcId": 172388,
+  "usda": "Chicken, broilers or fryers, thigh, meat only, cooked, roasted"
+ },
+ {
+  "key": "pata-de-pollo-con-piel-cruda",
+  "name": "Pata de pollo con piel cruda",
+  "category": "Pollo",
+  "fdcId": 172373,
+  "usda": "Chicken, broilers or fryers, drumstick, meat and skin, raw"
+ },
+ {
+  "key": "pata-de-pollo-con-piel-cocida",
+  "name": "Pata de pollo con piel cocida",
+  "category": "Pollo",
+  "fdcId": 173612,
+  "usda": "Chicken, broilers or fryers, drumstick, meat and skin, cooked, roasted"
+ },
+ {
+  "key": "pata-muslo-de-pollo-con-piel-crudo",
+  "name": "Pata muslo de pollo con piel crudo",
+  "category": "Pollo",
+  "fdcId": 172378,
+  "usda": "Chicken, broilers or fryers, leg, meat and skin, raw"
+ },
+ {
+  "key": "pata-muslo-de-pollo-con-piel-cocido",
+  "name": "Pata muslo de pollo con piel cocido",
+  "category": "Pollo",
+  "fdcId": 173617,
+  "usda": "Chicken, broilers or fryers, leg, meat and skin, cooked, roasted"
+ },
+ {
+  "key": "alitas-de-pollo-crudas",
+  "name": "Alitas de pollo crudas",
+  "category": "Pollo",
+  "fdcId": 172390,
+  "usda": "Chicken, broilers or fryers, wing, meat and skin, raw"
+ },
+ {
+  "key": "alitas-de-pollo-cocidas",
+  "name": "Alitas de pollo cocidas",
+  "category": "Pollo",
+  "fdcId": 173630,
+  "usda": "Chicken, broilers or fryers, wing, meat and skin, cooked, roasted"
+ },
+ {
+  "key": "pollo-entero-con-piel-crudo",
+  "name": "Pollo entero con piel crudo",
+  "category": "Pollo",
+  "fdcId": 171447,
+  "usda": "Chicken, broilers or fryers, meat and skin, raw"
+ },
+ {
+  "key": "pollo-entero-con-piel-al-horno",
+  "name": "Pollo entero con piel al horno",
+  "category": "Pollo",
+  "fdcId": 171450,
+  "usda": "Chicken, broilers or fryers, meat and skin, cooked, roasted"
+ },
+ {
+  "key": "carne-picada-de-pollo-cruda",
+  "name": "Carne picada de pollo cruda",
+  "category": "Pollo",
+  "fdcId": 171116,
+  "usda": "Chicken, ground, raw"
+ },
+ {
+  "key": "higado-de-pollo-crudo",
+  "name": "Hígado de pollo crudo",
+  "category": "Pollo",
+  "fdcId": 171060,
+  "usda": "Chicken, liver, all classes, raw"
+ },
+ {
+  "key": "merluza-cruda",
+  "name": "Merluza cruda",
+  "category": "Pescados y mariscos",
+  "fdcId": 173713,
+  "usda": "Fish, whiting, mixed species, raw"
+ },
+ {
+  "key": "merluza-cocida",
+  "name": "Merluza cocida",
+  "category": "Pescados y mariscos",
+  "fdcId": 175161,
+  "usda": "Fish, whiting, mixed species, cooked, dry heat"
+ },
+ {
+  "key": "salmon-rosado-crudo",
+  "name": "Salmón rosado crudo",
+  "category": "Pescados y mariscos",
+  "fdcId": 175167,
+  "usda": "Fish, salmon, Atlantic, farmed, raw"
+ },
+ {
+  "key": "salmon-rosado-cocido",
+  "name": "Salmón rosado cocido",
+  "category": "Pescados y mariscos",
+  "fdcId": 175168,
+  "usda": "Fish, salmon, Atlantic, farmed, cooked, dry heat"
+ },
+ {
+  "key": "salmon-ahumado",
+  "name": "Salmón ahumado",
+  "category": "Pescados y mariscos",
+  "fdcId": 173687,
+  "usda": "Fish, salmon, chinook, smoked"
+ },
+ {
+  "key": "atun-fresco-crudo",
+  "name": "Atún fresco crudo",
+  "category": "Pescados y mariscos",
+  "fdcId": 175159,
+  "usda": "Fish, tuna, fresh, yellowfin, raw"
+ },
+ {
+  "key": "atun-en-lata-al-natural",
+  "name": "Atún en lata al natural",
+  "category": "Pescados y mariscos",
+  "fdcId": 173709,
+  "usda": "Fish, tuna, light, canned in water, drained solids (Includes foods for USDA's Food Distribution Program)"
+ },
+ {
+  "key": "atun-en-lata-en-aceite",
+  "name": "Atún en lata en aceite",
+  "category": "Pescados y mariscos",
+  "fdcId": 173708,
+  "usda": "Fish, tuna, light, canned in oil, drained solids"
+ },
+ {
+  "key": "caballa-cruda",
+  "name": "Caballa cruda",
+  "category": "Pescados y mariscos",
+  "fdcId": 175119,
+  "usda": "Fish, mackerel, Atlantic, raw"
+ },
+ {
+  "key": "caballa-en-lata",
+  "name": "Caballa en lata",
+  "category": "Pescados y mariscos",
+  "fdcId": 175121,
+  "usda": "Fish, mackerel, jack, canned, drained solids"
+ },
+ {
+  "key": "lenguado-crudo",
+  "name": "Lenguado crudo",
+  "category": "Pescados y mariscos",
+  "fdcId": 174196,
+  "usda": "Fish, flatfish (flounder and sole species), raw"
+ },
+ {
+  "key": "trucha-cruda",
+  "name": "Trucha cruda",
+  "category": "Pescados y mariscos",
+  "fdcId": 173717,
+  "usda": "Fish, trout, rainbow, farmed, raw"
+ },
+ {
+  "key": "bacalao-crudo",
+  "name": "Bacalao crudo",
+  "category": "Pescados y mariscos",
+  "fdcId": 171955,
+  "usda": "Fish, cod, Atlantic, raw"
+ },
+ {
+  "key": "sardinas-en-aceite",
+  "name": "Sardinas en aceite",
+  "category": "Pescados y mariscos",
+  "fdcId": 175139,
+  "usda": "Fish, sardine, Atlantic, canned in oil, drained solids with bone"
+ },
+ {
+  "key": "anchoas-en-aceite",
+  "name": "Anchoas en aceite",
+  "category": "Pescados y mariscos",
+  "fdcId": 174183,
+  "usda": "Fish, anchovy, european, canned in oil, drained solids"
+ },
+ {
+  "key": "langostinos-crudos",
+  "name": "Langostinos crudos",
+  "category": "Pescados y mariscos",
+  "fdcId": 175179,
+  "usda": "Crustaceans, shrimp, raw",
+  "also": "camarones gambas"
+ },
+ {
+  "key": "langostinos-cocidos",
+  "name": "Langostinos cocidos",
+  "category": "Pescados y mariscos",
+  "fdcId": 175180,
+  "usda": "Crustaceans, shrimp, cooked",
+  "also": "camarones gambas"
+ },
+ {
+  "key": "calamar-crudo",
+  "name": "Calamar crudo",
+  "category": "Pescados y mariscos",
+  "fdcId": 174223,
+  "usda": "Mollusks, squid, mixed species, raw",
+  "also": "rabas"
+ },
+ {
+  "key": "mejillones-crudos",
+  "name": "Mejillones crudos",
+  "category": "Pescados y mariscos",
+  "fdcId": 174216,
+  "usda": "Mollusks, mussel, blue, raw"
+ },
+ {
+  "key": "pulpo-crudo",
+  "name": "Pulpo crudo",
+  "category": "Pescados y mariscos",
+  "fdcId": 174218,
+  "usda": "Mollusks, octopus, common, raw"
+ },
+ {
+  "key": "kani-kama",
+  "name": "Kani kama",
+  "category": "Pescados y mariscos",
+  "fdcId": 174203,
+  "usda": "Crustaceans, crab, alaska king, imitation, made from surimi",
+  "also": "surimi"
+ },
+ {
+  "key": "leche-entera",
+  "name": "Leche entera",
+  "category": "Lácteos y huevos",
+  "fdcId": 171265,
+  "usda": "Milk, whole, 3.25% milkfat, with added vitamin D",
+  "volume": {
+   "usda": "cup",
+   "grams": 244.0,
+   "ml": 236.588
+  }
+ },
+ {
+  "key": "leche-parcialmente-descremada",
+  "name": "Leche parcialmente descremada",
+  "category": "Lácteos y huevos",
+  "fdcId": 171267,
+  "usda": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+  "volume": {
+   "usda": "cup",
+   "grams": 244.0,
+   "ml": 236.588
+  }
+ },
+ {
+  "key": "leche-descremada",
+  "name": "Leche descremada",
+  "category": "Lácteos y huevos",
+  "fdcId": 171269,
+  "usda": "Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)",
+  "volume": {
+   "usda": "cup",
+   "grams": 245.0,
+   "ml": 236.588
+  }
+ },
+ {
+  "key": "leche-en-polvo-entera",
+  "name": "Leche en polvo entera",
+  "category": "Lácteos y huevos",
+  "fdcId": 170876,
+  "usda": "Milk, dry, whole, with added vitamin D"
+ },
+ {
+  "key": "leche-condensada",
+  "name": "Leche condensada",
+  "category": "Lácteos y huevos",
+  "fdcId": 171275,
+  "usda": "Milk, canned, condensed, sweetened"
+ },
+ {
+  "key": "yogur-natural-entero",
+  "name": "Yogur natural entero",
+  "category": "Lácteos y huevos",
+  "fdcId": 171284,
+  "usda": "Yogurt, plain, whole milk"
+ },
+ {
+  "key": "yogur-natural-descremado",
+  "name": "Yogur natural descremado",
+  "category": "Lácteos y huevos",
+  "fdcId": 170887,
+  "usda": "Yogurt, plain, skim milk"
+ },
+ {
+  "key": "yogur-de-vainilla-descremado",
+  "name": "Yogur de vainilla descremado",
+  "category": "Lácteos y huevos",
+  "fdcId": 170888,
+  "usda": "Yogurt, vanilla, low fat."
+ },
+ {
+  "key": "yogur-griego-natural-entero",
+  "name": "Yogur griego natural entero",
+  "category": "Lácteos y huevos",
+  "fdcId": 171304,
+  "usda": "Yogurt, Greek, plain, whole milk"
+ },
+ {
+  "key": "yogur-griego-natural-descremado",
+  "name": "Yogur griego natural descremado",
+  "category": "Lácteos y huevos",
+  "fdcId": 170903,
+  "usda": "Yogurt, Greek, plain, lowfat"
+ },
+ {
+  "key": "queso-muzzarella",
+  "name": "Queso muzzarella",
+  "category": "Lácteos y huevos",
+  "fdcId": 170845,
+  "usda": "Cheese, mozzarella, whole milk",
+  "also": "mozzarella"
+ },
+ {
+  "key": "queso-parmesano-rallado",
+  "name": "Queso parmesano rallado",
+  "category": "Lácteos y huevos",
+  "fdcId": 171247,
+  "usda": "Cheese, parmesan, grated",
+  "also": "reggianito sardo"
+ },
+ {
+  "key": "queso-azul",
+  "name": "Queso azul",
+  "category": "Lácteos y huevos",
+  "fdcId": 172175,
+  "usda": "Cheese, blue",
+  "also": "roquefort"
+ },
+ {
+  "key": "queso-port-salut",
+  "name": "Queso Port Salut",
+  "category": "Lácteos y huevos",
+  "fdcId": 170849,
+  "usda": "Cheese, port de salut"
+ },
+ {
+  "key": "queso-fresco",
+  "name": "Queso fresco",
+  "category": "Lácteos y huevos",
+  "fdcId": 172223,
+  "usda": "Cheese, fresh, queso fresco"
+ },
+ {
+  "key": "queso-cheddar",
+  "name": "Queso cheddar",
+  "category": "Lácteos y huevos",
+  "fdcId": 173414,
+  "usda": "Cheese, cheddar (Includes foods for USDA's Food Distribution Program)"
+ },
+ {
+  "key": "queso-provolone",
+  "name": "Queso provolone",
+  "category": "Lácteos y huevos",
+  "fdcId": 170850,
+  "usda": "Cheese, provolone",
+  "also": "provoleta"
+ },
+ {
+  "key": "queso-gouda",
+  "name": "Queso gouda",
+  "category": "Lácteos y huevos",
+  "fdcId": 171241,
+  "usda": "Cheese, gouda"
+ },
+ {
+  "key": "queso-fontina",
+  "name": "Queso fontina",
+  "category": "Lácteos y huevos",
+  "fdcId": 170843,
+  "usda": "Cheese, fontina"
+ },
+ {
+  "key": "queso-brie",
+  "name": "Queso brie",
+  "category": "Lácteos y huevos",
+  "fdcId": 172177,
+  "usda": "Cheese, brie"
+ },
+ {
+  "key": "queso-feta",
+  "name": "Queso feta",
+  "category": "Lácteos y huevos",
+  "fdcId": 173420,
+  "usda": "Cheese, feta"
+ },
+ {
+  "key": "queso-crema",
+  "name": "Queso crema",
+  "category": "Lácteos y huevos",
+  "fdcId": 173418,
+  "usda": "Cheese, cream",
+  "also": "untable"
+ },
+ {
+  "key": "queso-crema-light",
+  "name": "Queso crema light",
+  "category": "Lácteos y huevos",
+  "fdcId": 169079,
+  "usda": "Cheese, cream, low fat",
+  "also": "untable"
+ },
+ {
+  "key": "ricota-entera",
+  "name": "Ricota entera",
+  "category": "Lácteos y huevos",
+  "fdcId": 170851,
+  "usda": "Cheese, ricotta, whole milk",
+  "also": "ricotta"
+ },
+ {
+  "key": "ricota-descremada",
+  "name": "Ricota descremada",
+  "category": "Lácteos y huevos",
+  "fdcId": 171248,
+  "usda": "Cheese, ricotta, part skim milk",
+  "also": "ricotta"
+ },
+ {
+  "key": "queso-cottage",
+  "name": "Queso cottage",
+  "category": "Lácteos y huevos",
+  "fdcId": 172179,
+  "usda": "Cheese, cottage, creamed, large or small curd"
+ },
+ {
+  "key": "manteca",
+  "name": "Manteca",
+  "category": "Lácteos y huevos",
+  "fdcId": 173410,
+  "usda": "Butter, salted",
+  "also": "mantequilla"
+ },
+ {
+  "key": "crema-de-leche",
+  "name": "Crema de leche",
+  "category": "Lácteos y huevos",
+  "fdcId": 170859,
+  "usda": "Cream, fluid, heavy whipping",
+  "also": "nata"
+ },
+ {
+  "key": "huevo-crudo",
+  "name": "Huevo crudo",
+  "category": "Lácteos y huevos",
+  "fdcId": 171287,
+  "usda": "Egg, whole, raw, fresh",
+  "portion": {
+   "usda": "large",
+   "grams": 50.0
+  }
+ },
+ {
+  "key": "huevo-duro",
+  "name": "Huevo duro",
+  "category": "Lácteos y huevos",
+  "fdcId": 173424,
+  "usda": "Egg, whole, cooked, hard-boiled",
+  "portion": {
+   "usda": "large",
+   "grams": 50.0
+  }
+ },
+ {
+  "key": "huevo-frito",
+  "name": "Huevo frito",
+  "category": "Lácteos y huevos",
+  "fdcId": 173423,
+  "usda": "Egg, whole, cooked, fried",
+  "portion": {
+   "usda": "large",
+   "grams": 46.0
+  }
+ },
+ {
+  "key": "huevo-revuelto",
+  "name": "Huevo revuelto",
+  "category": "Lácteos y huevos",
+  "fdcId": 172187,
+  "usda": "Egg, whole, cooked, scrambled",
+  "portion": {
+   "usda": "large",
+   "grams": 61.0
+  }
+ },
+ {
+  "key": "clara-de-huevo",
+  "name": "Clara de huevo",
+  "category": "Lácteos y huevos",
+  "fdcId": 172183,
+  "usda": "Egg, white, raw, fresh",
+  "portion": {
+   "usda": "large",
+   "grams": 33.0
+  }
+ },
+ {
+  "key": "yema-de-huevo",
+  "name": "Yema de huevo",
+  "category": "Lácteos y huevos",
+  "fdcId": 172184,
+  "usda": "Egg, yolk, raw, fresh",
+  "portion": {
+   "usda": "large",
+   "grams": 17.0
+  }
+ },
+ {
+  "key": "arroz-blanco-crudo",
+  "name": "Arroz blanco crudo",
+  "category": "Cereales y pastas",
+  "fdcId": 169756,
+  "usda": "Rice, white, long-grain, regular, raw, unenriched"
+ },
+ {
+  "key": "arroz-blanco-cocido",
+  "name": "Arroz blanco cocido",
+  "category": "Cereales y pastas",
+  "fdcId": 169757,
+  "usda": "Rice, white, long-grain, regular, unenriched, cooked without salt"
+ },
+ {
+  "key": "arroz-integral-crudo",
+  "name": "Arroz integral crudo",
+  "category": "Cereales y pastas",
+  "fdcId": 169703,
+  "usda": "Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)"
+ },
+ {
+  "key": "arroz-integral-cocido",
+  "name": "Arroz integral cocido",
+  "category": "Cereales y pastas",
+  "fdcId": 169704,
+  "usda": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)"
+ },
+ {
+  "key": "fideos-secos-crudos",
+  "name": "Fideos secos crudos",
+  "category": "Cereales y pastas",
+  "fdcId": 168927,
+  "usda": "Pasta, dry, unenriched",
+  "also": "pasta tallarines espagueti"
+ },
+ {
+  "key": "fideos-secos-cocidos",
+  "name": "Fideos secos cocidos",
+  "category": "Cereales y pastas",
+  "fdcId": 168928,
+  "usda": "Pasta, cooked, unenriched, without added salt",
+  "also": "pasta tallarines espagueti"
+ },
+ {
+  "key": "fideos-integrales-crudos",
+  "name": "Fideos integrales crudos",
+  "category": "Cereales y pastas",
+  "fdcId": 169738,
+  "usda": "Pasta, whole-wheat, dry (Includes foods for USDA's Food Distribution Program)"
+ },
+ {
+  "key": "fideos-integrales-cocidos",
+  "name": "Fideos integrales cocidos",
+  "category": "Cereales y pastas",
+  "fdcId": 168910,
+  "usda": "Pasta, whole-wheat, cooked (Includes foods for USDA's Food Distribution Program)"
+ },
+ {
+  "key": "fideos-al-huevo-crudos",
+  "name": "Fideos al huevo crudos",
+  "category": "Cereales y pastas",
+  "fdcId": 169755,
+  "usda": "Noodles, egg, dry, unenriched"
+ },
+ {
+  "key": "fideos-al-huevo-cocidos",
+  "name": "Fideos al huevo cocidos",
+  "category": "Cereales y pastas",
+  "fdcId": 169732,
+  "usda": "Noodles, egg, enriched, cooked"
+ },
+ {
+  "key": "pasta-fresca-cruda",
+  "name": "Pasta fresca cruda",
+  "category": "Cereales y pastas",
+  "fdcId": 169727,
+  "usda": "Pasta, fresh-refrigerated, plain, as purchased",
+  "also": "tallarines"
+ },
+ {
+  "key": "pasta-fresca-cocida",
+  "name": "Pasta fresca cocida",
+  "category": "Cereales y pastas",
+  "fdcId": 169728,
+  "usda": "Pasta, fresh-refrigerated, plain, cooked",
+  "also": "tallarines"
+ },
+ {
+  "key": "polenta-cruda",
+  "name": "Polenta cruda",
+  "category": "Cereales y pastas",
+  "fdcId": 168929,
+  "usda": "Cornmeal, degermed, unenriched, yellow",
+  "also": "harina de maíz"
+ },
+ {
+  "key": "polenta-cocida",
+  "name": "Polenta cocida",
+  "category": "Cereales y pastas",
+  "fdcId": 171672,
+  "usda": "Cereals, corn grits, yellow, regular and quick, enriched, cooked with water, without salt"
+ },
+ {
+  "key": "avena",
+  "name": "Avena",
+  "category": "Cereales y pastas",
+  "fdcId": 173904,
+  "usda": "Cereals, oats, regular and quick, not fortified, dry"
+ },
+ {
+  "key": "avena-cocida",
+  "name": "Avena cocida",
+  "category": "Cereales y pastas",
+  "fdcId": 173905,
+  "usda": "Cereals, oats, regular and quick, unenriched, cooked with water (includes boiling and microwaving), without salt"
+ },
+ {
+  "key": "salvado-de-avena",
+  "name": "Salvado de avena",
+  "category": "Cereales y pastas",
+  "fdcId": 168872,
+  "usda": "Oat bran, raw"
+ },
+ {
+  "key": "quinoa-cruda",
+  "name": "Quinoa cruda",
+  "category": "Cereales y pastas",
+  "fdcId": 168874,
+  "usda": "Quinoa, uncooked",
+  "also": "quinua"
+ },
+ {
+  "key": "quinoa-cocida",
+  "name": "Quinoa cocida",
+  "category": "Cereales y pastas",
+  "fdcId": 168917,
+  "usda": "Quinoa, cooked",
+  "also": "quinua"
+ },
+ {
+  "key": "cous-cous-crudo",
+  "name": "Cous cous crudo",
+  "category": "Cereales y pastas",
+  "fdcId": 169699,
+  "usda": "Couscous, dry",
+  "also": "cuscús"
+ },
+ {
+  "key": "cous-cous-cocido",
+  "name": "Cous cous cocido",
+  "category": "Cereales y pastas",
+  "fdcId": 169700,
+  "usda": "Couscous, cooked",
+  "also": "cuscús"
+ },
+ {
+  "key": "trigo-burgol-crudo",
+  "name": "Trigo burgol crudo",
+  "category": "Cereales y pastas",
+  "fdcId": 170688,
+  "usda": "Bulgur, dry"
+ },
+ {
+  "key": "trigo-burgol-cocido",
+  "name": "Trigo burgol cocido",
+  "category": "Cereales y pastas",
+  "fdcId": 170287,
+  "usda": "Bulgur, cooked"
+ },
+ {
+  "key": "cebada-perlada-cruda",
+  "name": "Cebada perlada cruda",
+  "category": "Cereales y pastas",
+  "fdcId": 170284,
+  "usda": "Barley, pearled, raw"
+ },
+ {
+  "key": "cebada-perlada-cocida",
+  "name": "Cebada perlada cocida",
+  "category": "Cereales y pastas",
+  "fdcId": 170285,
+  "usda": "Barley, pearled, cooked"
+ },
+ {
+  "key": "harina-de-trigo-000",
+  "name": "Harina de trigo 000",
+  "category": "Cereales y pastas",
+  "fdcId": 169761,
+  "usda": "Wheat flour, white, all-purpose, unenriched",
+  "also": "0000"
+ },
+ {
+  "key": "harina-integral",
+  "name": "Harina integral",
+  "category": "Cereales y pastas",
+  "fdcId": 168893,
+  "usda": "Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)"
+ },
+ {
+  "key": "fecula-de-maiz",
+  "name": "Fécula de maíz",
+  "category": "Cereales y pastas",
+  "fdcId": 169698,
+  "usda": "Cornstarch",
+  "also": "maicena"
+ },
+ {
+  "key": "granola",
+  "name": "Granola",
+  "category": "Cereales y pastas",
+  "fdcId": 171646,
+  "usda": "Cereals ready-to-eat, granola, homemade"
+ },
+ {
+  "key": "pochoclo",
+  "name": "Pochoclo",
+  "category": "Cereales y pastas",
+  "fdcId": 167959,
+  "usda": "Snacks, popcorn, air-popped",
+  "also": "pororó pop"
+ },
+ {
+  "key": "pan-frances",
+  "name": "Pan francés",
+  "category": "Panificados",
+  "fdcId": 172675,
+  "usda": "Bread, french or vienna (includes sourdough)",
+  "also": "flauta mignon baguette"
+ },
+ {
+  "key": "pan-lactal-blanco",
+  "name": "Pan lactal blanco",
+  "category": "Panificados",
+  "fdcId": 174924,
+  "usda": "Bread, white, commercially prepared (includes soft bread crumbs)",
+  "also": "pan de molde",
+  "portion": {
+   "usda": "slice",
+   "grams": 25.0
+  }
+ },
+ {
+  "key": "pan-lactal-integral",
+  "name": "Pan lactal integral",
+  "category": "Panificados",
+  "fdcId": 172688,
+  "usda": "Bread, whole-wheat, commercially prepared",
+  "also": "pan de molde",
+  "portion": {
+   "usda": "slice",
+   "grams": 32.0
+  }
+ },
+ {
+  "key": "pan-tostado",
+  "name": "Pan tostado",
+  "category": "Panificados",
+  "fdcId": 174925,
+  "usda": "Bread, white, commercially prepared, toasted",
+  "also": "tostadas",
+  "portion": {
+   "usda": "slice",
+   "grams": 22.0
+  }
+ },
+ {
+  "key": "pan-arabe",
+  "name": "Pan árabe",
+  "category": "Panificados",
+  "fdcId": 174915,
+  "usda": "Bread, pita, white, enriched",
+  "also": "pita"
+ },
+ {
+  "key": "pan-de-centeno",
+  "name": "Pan de centeno",
+  "category": "Panificados",
+  "fdcId": 172684,
+  "usda": "Bread, rye"
+ },
+ {
+  "key": "pan-rallado",
+  "name": "Pan rallado",
+  "category": "Panificados",
+  "fdcId": 174928,
+  "usda": "Bread, crumbs, dry, grated, plain",
+  "also": "rebozador"
+ },
+ {
+  "key": "galletitas-de-agua",
+  "name": "Galletitas de agua",
+  "category": "Panificados",
+  "fdcId": 172746,
+  "usda": "Crackers, saltines (includes oyster, soda, soup)",
+  "also": "crackers"
+ },
+ {
+  "key": "grisines",
+  "name": "Grisines",
+  "category": "Panificados",
+  "fdcId": 174929,
+  "usda": "Bread, sticks, plain"
+ },
+ {
+  "key": "medialuna",
+  "name": "Medialuna",
+  "category": "Panificados",
+  "fdcId": 174987,
+  "usda": "Croissants, butter",
+  "also": "croissant factura",
+  "portion": {
+   "usda": "croissant, medium",
+   "grams": 57.0
+  }
+ },
+ {
+  "key": "tortilla-de-trigo",
+  "name": "Tortilla de trigo",
+  "category": "Panificados",
+  "fdcId": 175037,
+  "usda": "Tortillas, ready-to-bake or -fry, flour, refrigerated",
+  "also": "rapiditas"
+ },
+ {
+  "key": "pizza-de-muzzarella",
+  "name": "Pizza de muzzarella",
+  "category": "Panificados",
+  "fdcId": 170317,
+  "usda": "Pizza, cheese topping, regular crust, frozen, cooked"
+ },
+ {
+  "key": "empanada-de-carne",
+  "name": "Empanada de carne",
+  "category": "Panificados",
+  "fdcId": 167660,
+  "usda": "Restaurant, Latino, empanadas, beef, prepared"
+ },
+ {
+  "key": "bizcochuelo",
+  "name": "Bizcochuelo",
+  "category": "Panificados",
+  "fdcId": 172707,
+  "usda": "Cake, sponge, prepared from recipe"
+ },
+ {
+  "key": "nueces",
+  "name": "Nueces",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170187,
+  "usda": "Nuts, walnuts, english"
+ },
+ {
+  "key": "almendras",
+  "name": "Almendras",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170567,
+  "usda": "Nuts, almonds"
+ },
+ {
+  "key": "mani-crudo",
+  "name": "Maní crudo",
+  "category": "Frutos secos y semillas",
+  "fdcId": 172430,
+  "usda": "Peanuts, all types, raw",
+  "also": "cacahuate"
+ },
+ {
+  "key": "mani-tostado",
+  "name": "Maní tostado",
+  "category": "Frutos secos y semillas",
+  "fdcId": 173806,
+  "usda": "Peanuts, all types, dry-roasted, without salt",
+  "also": "cacahuate"
+ },
+ {
+  "key": "castanas-de-caju",
+  "name": "Castañas de cajú",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170162,
+  "usda": "Nuts, cashew nuts, raw",
+  "also": "anacardo"
+ },
+ {
+  "key": "avellanas",
+  "name": "Avellanas",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170581,
+  "usda": "Nuts, hazelnuts or filberts"
+ },
+ {
+  "key": "pistachos",
+  "name": "Pistachos",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170184,
+  "usda": "Nuts, pistachio nuts, raw"
+ },
+ {
+  "key": "nuez-pecan",
+  "name": "Nuez pecán",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170182,
+  "usda": "Nuts, pecans"
+ },
+ {
+  "key": "castanas-de-para",
+  "name": "Castañas de Pará",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170569,
+  "usda": "Nuts, brazilnuts, dried, unblanched"
+ },
+ {
+  "key": "coco-rallado",
+  "name": "Coco rallado",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170170,
+  "usda": "Nuts, coconut meat, dried (desiccated), not sweetened"
+ },
+ {
+  "key": "semillas-de-girasol",
+  "name": "Semillas de girasol",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170562,
+  "usda": "Seeds, sunflower seed kernels, dried"
+ },
+ {
+  "key": "semillas-de-chia",
+  "name": "Semillas de chía",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170554,
+  "usda": "Seeds, chia seeds, dried"
+ },
+ {
+  "key": "semillas-de-lino",
+  "name": "Semillas de lino",
+  "category": "Frutos secos y semillas",
+  "fdcId": 169414,
+  "usda": "Seeds, flaxseed",
+  "also": "linaza"
+ },
+ {
+  "key": "semillas-de-sesamo",
+  "name": "Semillas de sésamo",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170150,
+  "usda": "Seeds, sesame seeds, whole, dried"
+ },
+ {
+  "key": "semillas-de-zapallo",
+  "name": "Semillas de zapallo",
+  "category": "Frutos secos y semillas",
+  "fdcId": 170556,
+  "usda": "Seeds, pumpkin and squash seed kernels, dried"
+ },
+ {
+  "key": "pasta-de-mani",
+  "name": "Pasta de maní",
+  "category": "Frutos secos y semillas",
+  "fdcId": 172470,
+  "usda": "Peanut butter, smooth style, without salt",
+  "also": "mantequilla de maní"
+ },
+ {
+  "key": "aceite-de-oliva",
+  "name": "Aceite de oliva",
+  "category": "Aceites y aderezos",
+  "fdcId": 171413,
+  "usda": "Oil, olive, salad or cooking",
+  "volume": {
+   "usda": "cup",
+   "grams": 216.0,
+   "ml": 236.588
+  }
+ },
+ {
+  "key": "aceite-de-girasol",
+  "name": "Aceite de girasol",
+  "category": "Aceites y aderezos",
+  "fdcId": 171025,
+  "usda": "Oil, sunflower, linoleic, (approx. 65%)",
+  "volume": {
+   "usda": "cup",
+   "grams": 218.0,
+   "ml": 236.588
+  }
+ },
+ {
+  "key": "aceite-de-maiz",
+  "name": "Aceite de maíz",
+  "category": "Aceites y aderezos",
+  "fdcId": 171029,
+  "usda": "Oil, corn, industrial and retail, all purpose salad or cooking",
+  "volume": {
+   "usda": "cup",
+   "grams": 218.0,
+   "ml": 236.588
+  }
+ },
+ {
+  "key": "mayonesa",
+  "name": "Mayonesa",
+  "category": "Aceites y aderezos",
+  "fdcId": 171009,
+  "usda": "Salad dressing, mayonnaise, regular"
+ },
+ {
+  "key": "ketchup",
+  "name": "Ketchup",
+  "category": "Aceites y aderezos",
+  "fdcId": 168556,
+  "usda": "Catsup"
+ },
+ {
+  "key": "mostaza",
+  "name": "Mostaza",
+  "category": "Aceites y aderezos",
+  "fdcId": 172234,
+  "usda": "Mustard, prepared, yellow"
+ },
+ {
+  "key": "salsa-de-soja",
+  "name": "Salsa de soja",
+  "category": "Aceites y aderezos",
+  "fdcId": 174277,
+  "usda": "Soy sauce made from soy and wheat (shoyu)",
+  "volume": {
+   "usda": "cup",
+   "grams": 255.0,
+   "ml": 236.588
+  }
+ },
+ {
+  "key": "vinagre",
+  "name": "Vinagre",
+  "category": "Aceites y aderezos",
+  "fdcId": 172237,
+  "usda": "Vinegar, distilled",
+  "volume": {
+   "usda": "cup",
+   "grams": 238.0,
+   "ml": 236.588
+  }
+ },
+ {
+  "key": "aceto-balsamico",
+  "name": "Aceto balsámico",
+  "category": "Aceites y aderezos",
+  "fdcId": 172241,
+  "usda": "Vinegar, balsamic",
+  "volume": {
+   "usda": "cup",
+   "grams": 255.0,
+   "ml": 236.588
+  }
+ },
+ {
+  "key": "azucar",
+  "name": "Azúcar",
+  "category": "Dulces",
+  "fdcId": 169655,
+  "usda": "Sugars, granulated"
+ },
+ {
+  "key": "miel",
+  "name": "Miel",
+  "category": "Dulces",
+  "fdcId": 169640,
+  "usda": "Honey"
+ },
+ {
+  "key": "mermelada",
+  "name": "Mermelada",
+  "category": "Dulces",
+  "fdcId": 169641,
+  "usda": "Jams and preserves"
+ },
+ {
+  "key": "dulce-de-leche",
+  "name": "Dulce de leche",
+  "category": "Dulces",
+  "fdcId": 173461,
+  "usda": "Dulce de Leche"
+ },
+ {
+  "key": "chocolate-amargo",
+  "name": "Chocolate amargo",
+  "category": "Dulces",
+  "fdcId": 170273,
+  "usda": "Chocolate, dark, 70-85% cacao solids"
+ },
+ {
+  "key": "chocolate-con-leche",
+  "name": "Chocolate con leche",
+  "category": "Dulces",
+  "fdcId": 167587,
+  "usda": "Candies, milk chocolate"
+ },
+ {
+  "key": "cacao-amargo-en-polvo",
+  "name": "Cacao amargo en polvo",
+  "category": "Dulces",
+  "fdcId": 169593,
+  "usda": "Cocoa, dry powder, unsweetened"
+ },
+ {
+  "key": "helado-de-vainilla",
+  "name": "Helado de vainilla",
+  "category": "Dulces",
+  "fdcId": 167575,
+  "usda": "Ice creams, vanilla",
+  "also": "crema americana"
+ },
+ {
+  "key": "helado-de-chocolate",
+  "name": "Helado de chocolate",
+  "category": "Dulces",
+  "fdcId": 168809,
+  "usda": "Ice creams, chocolate"
+ },
+ {
+  "key": "flan",
+  "name": "Flan",
+  "category": "Dulces",
+  "fdcId": 167574,
+  "usda": "Desserts, flan, caramel custard, prepared-from-recipe"
+ },
+ {
+  "key": "jugo-de-naranja-exprimido",
+  "name": "Jugo de naranja exprimido",
+  "category": "Bebidas",
+  "fdcId": 169098,
+  "usda": "Orange juice, raw (Includes foods for USDA's Food Distribution Program)",
+  "volume": {
+   "usda": "cup",
+   "grams": 248.0,
+   "ml": 236.588
+  }
+ },
+ {
+  "key": "gaseosa-cola",
+  "name": "Gaseosa cola",
+  "category": "Bebidas",
+  "fdcId": 174852,
+  "usda": "Beverages, carbonated, cola, regular",
+  "also": "coca",
+  "volume": {
+   "usda": "fl oz",
+   "grams": 30.7,
+   "ml": 29.5735
+  }
+ },
+ {
+  "key": "cerveza",
+  "name": "Cerveza",
+  "category": "Bebidas",
+  "fdcId": 168746,
+  "usda": "Alcoholic beverage, beer, regular, all",
+  "volume": {
+   "usda": "fl oz",
+   "grams": 29.7,
+   "ml": 29.5735
+  }
+ },
+ {
+  "key": "vino-tinto",
+  "name": "Vino tinto",
+  "category": "Bebidas",
+  "fdcId": 173190,
+  "usda": "Alcoholic beverage, wine, table, red",
+  "volume": {
+   "usda": "fl oz",
+   "grams": 29.4,
+   "ml": 29.5735
+  }
+ },
+ {
+  "key": "vino-blanco",
+  "name": "Vino blanco",
+  "category": "Bebidas",
+  "fdcId": 174837,
+  "usda": "Alcoholic beverage, wine, table, white",
+  "volume": {
+   "usda": "fl oz",
+   "grams": 29.4,
+   "ml": 29.5735
+  }
+ },
+ {
+  "key": "cafe-infusion",
+  "name": "Café (infusión)",
+  "category": "Bebidas",
+  "fdcId": 171890,
+  "usda": "Beverages, coffee, brewed, prepared with tap water",
+  "volume": {
+   "usda": "fl oz",
+   "grams": 29.6,
+   "ml": 29.5735
+  }
+ }
+]

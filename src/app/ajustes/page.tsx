@@ -15,7 +15,18 @@ export default function SettingsPage() {
         >
           Open Food Facts
         </a>
-        , una base abierta y colaborativa (licencia ODbL).
+        , una base abierta y colaborativa (licencia ODbL). Los alimentos genéricos de la base
+        (frutas, verduras, carnes, etc.) usan valores de{" "}
+        <a
+          href="https://fdc.nal.usda.gov"
+          target="_blank"
+          rel="noreferrer"
+          className="text-accent underline underline-offset-4"
+        >
+          USDA FoodData Central
+        </a>
+        , de dominio público: son promedios, y los cortes de carne son el equivalente más cercano
+        al corte argentino.
       </section>
 
       <form action={logout}>

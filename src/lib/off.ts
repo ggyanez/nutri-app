@@ -1,19 +1,25 @@
 import "server-only";
-import type { Unit } from "./foods";
+import type { Macros, Unit } from "./foods";
 
 // Open Food Facts: free, crowd-sourced product database (ODbL). Read-only
 // here. They ask every app to identify itself in the User-Agent.
-const API = "https://world.openfoodfacts.org/api/v2/product";
+const PRODUCT_API = "https://world.openfoodfacts.org/api/v2/product";
+const SEARCH_API = "https://search.openfoodfacts.org/search";
 const USER_AGENT = "NutriApp/0.1 (https://github.com/ggyanez/nutri-app)";
 const FIELDS = [
+  "code",
   "product_name",
   "product_name_es",
   "brands",
+  "quantity",
   "nutrition_data_per",
   "serving_quantity",
   "nutriments",
 ].join(",");
 const KJ_PER_KCAL = 4.184;
+const TIMEOUT_MS = 8000;
+const SEARCH_PAGE_SIZE = 40;
+const MAX_HITS = 20;
 
 /** What Open Food Facts knows about a product. Any nutrition value can be missing. */
 export type OffProduct = {
@@ -27,27 +33,81 @@ export type OffProduct = {
   servingQuantity: number | null;
 };
 
+/** A product found by name: one with a name and its four values, or it isn't listed. */
+export type OffHit = Macros & { barcode: string; name: string; brand: string | null; unit: Unit };
+
 /** Returns null when the barcode isn't in Open Food Facts. Throws if it can't be reached. */
 export async function fetchOffProduct(barcode: string): Promise<OffProduct | null> {
-  const res = await fetch(`${API}/${barcode}.json?fields=${FIELDS}`, {
-    headers: { "User-Agent": USER_AGENT },
-    cache: "no-store",
-    signal: AbortSignal.timeout(8000),
-  });
+  const res = await get(`${PRODUCT_API}/${barcode}.json?fields=${FIELDS}`);
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`Open Food Facts responded ${res.status}`);
 
   const body = (await res.json()) as { status?: number; product?: Record<string, unknown> };
   if (body.status !== 1 || !body.product) return null;
+  return toProduct(body.product);
+}
 
-  const p = body.product;
+/**
+ * Packaged products whose name matches, the ones sold in Argentina first.
+ * Throws if Open Food Facts can't be reached.
+ */
+export async function searchOffProducts(query: string): Promise<OffHit[]> {
+  // The search box speaks Lucene: keep the typed words, drop its operators.
+  const words = query.replace(/[^\p{L}\p{N}\s%.,-]/gu, " ").replace(/\s+/g, " ").trim();
+  if (!words) return [];
+
+  const hits = await searchOnce(`${words} countries_tags:"en:argentina"`);
+  if (hits.length < 5) {
+    const known = new Set(hits.map((hit) => hit.barcode));
+    hits.push(...(await searchOnce(words)).filter((hit) => !known.has(hit.barcode)));
+  }
+  return hits.slice(0, MAX_HITS);
+}
+
+async function searchOnce(q: string): Promise<OffHit[]> {
+  const params = new URLSearchParams({
+    q,
+    langs: "es",
+    page_size: String(SEARCH_PAGE_SIZE),
+    fields: FIELDS,
+  });
+  const res = await get(`${SEARCH_API}?${params}`);
+  if (!res.ok) throw new Error(`Open Food Facts search responded ${res.status}`);
+
+  const body = (await res.json()) as { hits?: Record<string, unknown>[] };
+  const hits: OffHit[] = [];
+  for (const raw of body.hits ?? []) {
+    const barcode = text(raw.code);
+    const { name, brand, unit, kcal, protein, carbs, fat } = toProduct(raw);
+    if (!barcode || !name || kcal === null || protein === null || carbs === null || fat === null) {
+      continue;
+    }
+    hits.push({ barcode, name, brand, unit, kcal, protein, carbs, fat });
+  }
+  return hits;
+}
+
+function get(url: string): Promise<Response> {
+  return fetch(url, {
+    headers: { "User-Agent": USER_AGENT },
+    cache: "no-store",
+    signal: AbortSignal.timeout(TIMEOUT_MS),
+  });
+}
+
+function toProduct(p: Record<string, unknown>): OffProduct {
   const n = (p.nutriments ?? {}) as Record<string, unknown>;
   const kj = amount(n["energy-kj_100g"]) ?? amount(n["energy_100g"]);
+  // A string from the product API ("Brand, Parent company"), a list from the
+  // search. Either way the first one is the one on the package.
+  const brands = Array.isArray(p.brands) ? p.brands[0] : text(p.brands)?.split(",")[0];
+  // The search doesn't say what the values are per; there, go by the package size.
+  const per = text(p.nutrition_data_per);
+  const liquid = per ? per === "100ml" : /\d\s*(ml|cl|l|cc)\b/i.test(text(p.quantity) ?? "");
   return {
     name: text(p.product_name_es) ?? text(p.product_name),
-    // "Brand, Parent company" — the first one is the one on the package.
-    brand: text(p.brands)?.split(",")[0].trim() || null,
-    unit: p.nutrition_data_per === "100ml" ? "ml" : "g",
+    brand: text(brands),
+    unit: liquid ? "ml" : "g",
     kcal: amount(n["energy-kcal_100g"]) ?? (kj === null ? null : round1(kj / KJ_PER_KCAL)),
     protein: amount(n["proteins_100g"]),
     carbs: amount(n["carbohydrates_100g"]),

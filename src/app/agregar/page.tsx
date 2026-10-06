@@ -1,13 +1,13 @@
 import Link from "next/link";
 import AddEntry from "@/components/AddEntry";
-import { getFoods } from "@/lib/data";
+import { getFoods, getMeals } from "@/lib/data";
 import { dayKey, formatDayLabel, parseDayKey } from "@/lib/time";
 
 export default async function AddPage({ searchParams }: PageProps<"/agregar">) {
   const params = await searchParams;
   const today = dayKey(new Date());
   const day = parseDayKey(params.d) ?? today;
-  const foods = await getFoods();
+  const [foods, meals] = await Promise.all([getFoods(), getMeals()]);
   // Set when coming back from creating a food: skip straight to the quantity.
   const initialFood = foods.find((f) => String(f.id) === params.food) ?? null;
 
@@ -25,6 +25,7 @@ export default async function AddPage({ searchParams }: PageProps<"/agregar">) {
       <AddEntry
         key={initialFood?.id ?? "pick"}
         foods={foods}
+        meals={meals}
         day={day}
         isToday={day === today}
         initialFood={initialFood}
