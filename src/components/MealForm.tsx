@@ -8,6 +8,7 @@ import {
   formatKcal,
   parseDecimal,
   totalOf,
+  usualQuantity,
   type Food,
   type Meal,
 } from "@/lib/foods";
@@ -38,7 +39,7 @@ export default function MealForm({ meal, foods }: { meal?: Meal; foods: Food[] }
     setPicking(false);
     // Picking a food that's already there changes nothing: its quantity is right below.
     if (items.some((item) => item.food.id === food.id)) return;
-    setItems([...items, { food, quantity: formatAmount(food.servingQuantity ?? 100) }]);
+    setItems([...items, { food, quantity: formatAmount(usualQuantity(food)) }]);
   }
 
   function setQuantity(foodId: number, quantity: string) {

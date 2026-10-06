@@ -5,15 +5,19 @@ import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { logEntry, logMeal } from "@/app/actions";
 import {
+  UNIT_KINDS,
+  asUnits,
   countFoods,
   formatAmount,
   formatKcal,
   macrosFor,
   parseDecimal,
   totalOf,
+  usualQuantity,
   type Food,
   type Macros,
   type Meal,
+  type UnitKind,
 } from "@/lib/foods";
 import { searchBy } from "@/lib/search";
 import { dayKey } from "@/lib/time";
@@ -152,6 +156,17 @@ function MealPicker({ meals, onPick }: { meals: Meal[]; onPick: (meal: Meal) => 
   );
 }
 
+const COUNT_SHORTCUTS = [
+  { label: "½", value: "0,5" },
+  { label: "1", value: "1" },
+  { label: "2", value: "2" },
+  { label: "3", value: "3" },
+];
+
+/**
+ * How much of a food: typed in g/ml, or counted in one of the food's units
+ * (2 fetas, 1 envase). Either way what's logged is the amount in g/ml.
+ */
 function QuantityForm({
   food,
   initialEatenAt,
@@ -163,21 +178,30 @@ function QuantityForm({
   onBack: () => void;
 }) {
   const router = useRouter();
-  const [quantity, setQuantity] = useState(
-    formatAmount(food.lastQuantity ?? food.servingQuantity ?? 100),
-  );
+  // Start where the last entry of this food left off: counted in a unit if
+  // it was a round number of one, weighed otherwise. A food never logged
+  // starts at one piece or serving — never at a whole package.
+  const last =
+    food.lastQuantity === null
+      ? { unit: food.units.find((u) => u.kind === "unit" || u.kind === "serving"), count: 1 }
+      : asUnits(food.units, food.lastQuantity);
+  const [kind, setKind] = useState<UnitKind | null>(last?.unit?.kind ?? null);
+  const [amount, setAmount] = useState(formatAmount(food.lastQuantity ?? usualQuantity(food)));
+  const [count, setCount] = useState(formatAmount(last?.unit ? last.count : 1));
   const [eatenAt, setEatenAt] = useState(initialEatenAt);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
-  const value = parseDecimal(quantity);
-  const preview = macrosFor(food, value !== null && value > 0 ? value : 0);
-  const shortcuts = [
-    ...new Set([food.servingQuantity, 100, food.lastQuantity].filter((n) => n !== null)),
-  ];
+  const unit = food.units.find((u) => u.kind === kind) ?? null;
+  const typed = parseDecimal(unit ? count : amount);
+  // What gets logged, in the food's g or ml.
+  const value =
+    typed === null || typed <= 0 ? null : Math.round(typed * (unit?.quantity ?? 1) * 10) / 10;
+  const preview = macrosFor(food, value ?? 0);
+  const amounts = [...new Set([100, food.lastQuantity].filter((n) => n !== null))];
 
   function submit() {
-    if (value === null || value <= 0) {
+    if (value === null) {
       setError("Cantidad inválida");
       return;
     }
@@ -212,43 +236,75 @@ function QuantityForm({
       </section>
 
       <section className="space-y-4 rounded-3xl border border-line bg-surface px-5 py-5">
+        {food.units.length > 0 && (
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Unidad">
+            {[null, ...food.units].map((u) => (
+              <button
+                key={u?.kind ?? "amount"}
+                type="button"
+                onClick={() => setKind(u?.kind ?? null)}
+                aria-pressed={kind === (u?.kind ?? null)}
+                className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                  kind === (u?.kind ?? null) ? "bg-ink text-surface" : "border border-line text-muted"
+                }`}
+              >
+                {u ? `${UNIT_KINDS[u.kind].one} · ${formatAmount(u.quantity)} ${food.unit}` : food.unit}
+              </button>
+            ))}
+          </div>
+        )}
         <label className="block">
-          <span className="text-sm font-medium text-muted">Cantidad ({food.unit})</span>
+          <span className="text-sm font-medium text-muted">
+            {unit ? `Cantidad de ${UNIT_KINDS[unit.kind].many}` : `Cantidad (${food.unit})`}
+          </span>
           <input
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
+            // One field per way of counting, so switching keeps what was typed in each.
+            key={kind ?? "amount"}
+            value={unit ? count : amount}
+            onChange={(e) => (unit ? setCount : setAmount)(e.target.value)}
             inputMode="decimal"
             autoFocus
             className="tabular mt-1 w-full rounded-2xl border border-line bg-bg px-4 py-3 text-2xl font-semibold outline-none focus:border-accent"
           />
         </label>
         <div className="flex flex-wrap gap-2">
-          {shortcuts.map((n) => (
-            <button
-              key={n}
-              type="button"
-              onClick={() => setQuantity(formatAmount(n))}
-              className="rounded-full border border-line px-3 py-1.5 text-sm text-muted"
-            >
-              {n === food.servingQuantity ? "1 porción · " : ""}
-              {formatAmount(n)} {food.unit}
-            </button>
-          ))}
+          {unit
+            ? COUNT_SHORTCUTS.map((s) => (
+                <button
+                  key={s.value}
+                  type="button"
+                  onClick={() => setCount(s.value)}
+                  className="min-w-12 rounded-full border border-line px-3 py-1.5 text-sm text-muted"
+                >
+                  {s.label}
+                </button>
+              ))
+            : amounts.map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  onClick={() => setAmount(formatAmount(n))}
+                  className="rounded-full border border-line px-3 py-1.5 text-sm text-muted"
+                >
+                  {formatAmount(n)} {food.unit}
+                </button>
+              ))}
         </div>
         <EatenAtField value={eatenAt} onChange={setEatenAt} />
-        <Preview total={preview} />
+        <div>
+          {unit && value !== null && (
+            <p className="tabular mb-3 text-sm text-muted">
+              = {formatAmount(value)} {food.unit}
+            </p>
+          )}
+          <Preview total={preview} />
+        </div>
       </section>
 
       <SubmitButton pending={pending} error={error} onClick={submit} />
     </div>
   );
 }
-
-const PORTION_SHORTCUTS = [
-  { label: "½", value: "0,5" },
-  { label: "1", value: "1" },
-  { label: "2", value: "2" },
-];
 
 /** Logs a whole meal, or a part of it: every food is scaled by the portions. */
 function MealLogForm({
@@ -319,7 +375,7 @@ function MealLogForm({
           />
         </label>
         <div className="flex flex-wrap gap-2">
-          {PORTION_SHORTCUTS.map((s) => (
+          {COUNT_SHORTCUTS.slice(0, 3).map((s) => (
             <button
               key={s.value}
               type="button"

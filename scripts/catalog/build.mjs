@@ -28,12 +28,15 @@ const fail = (entry, message) => {
   throw new Error(`${entry.name} (fdcId ${entry.fdcId}): ${message}`);
 };
 
+// Checks that the dataset has that portion, and returns the weight of one of
+// them (a portion can be several: "4 slices").
 function portionGrams(entry, food, portion) {
+  const count = portion.count ?? 1;
   const found = food.foodPortions.some(
-    (p) => p.modifier === portion.usda && p.gramWeight === portion.grams,
+    (p) => p.modifier === portion.usda && p.gramWeight === portion.grams && p.amount === count,
   );
   if (!found) fail(entry, `no "${portion.usda}" portion of ${portion.grams} g`);
-  return portion.grams;
+  return round1(portion.grams / count);
 }
 
 const keys = new Set();
@@ -67,7 +70,11 @@ const catalog = source.map((entry) => {
     protein: round1(per100g.protein * density),
     carbs: round1(per100g.carbs * density),
     fat: round1(per100g.fat * density),
-    serving: entry.portion ? portionGrams(entry, food, entry.portion) : null,
+    // Ways to count it instead of weighing it: a unit, a slice…
+    units: Object.entries(entry.units ?? {}).map(([kind, portion]) => ({
+      kind,
+      quantity: portionGrams(entry, food, portion),
+    })),
     fdcId: entry.fdcId,
   };
 });

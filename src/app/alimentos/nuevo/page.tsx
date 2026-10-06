@@ -1,5 +1,6 @@
 import Link from "next/link";
 import FoodForm, { type FoodFormValues } from "@/components/FoodForm";
+import { unitFields } from "@/lib/foods";
 import { fetchOffProduct, type OffProduct } from "@/lib/off";
 import { requireSession } from "@/lib/session";
 import { parseDayKey } from "@/lib/time";
@@ -37,7 +38,7 @@ export default async function NewFoodPage({ searchParams }: PageProps<"/alimento
     protein: text(known?.protein),
     carbs: text(known?.carbs),
     fat: text(known?.fat),
-    servingQuantity: text(known?.servingQuantity),
+    units: unitFields(known?.units ?? []),
   };
 
   return (

@@ -1,5 +1,5 @@
 import "server-only";
-import type { Macros, Unit } from "./foods";
+import { cleanUnits, type FoodUnit, type Macros, type Unit } from "./foods";
 
 // Open Food Facts: free, crowd-sourced product database (ODbL). Read-only
 // here. They ask every app to identify itself in the User-Agent.
@@ -12,6 +12,8 @@ const FIELDS = [
   "product_name_es",
   "brands",
   "quantity",
+  "product_quantity",
+  "product_quantity_unit",
   "nutrition_data_per",
   "serving_quantity",
   "nutriments",
@@ -30,7 +32,8 @@ export type OffProduct = {
   protein: number | null;
   carbs: number | null;
   fat: number | null;
-  servingQuantity: number | null;
+  /** The serving and the whole package, when the product states them. */
+  units: FoodUnit[];
 };
 
 /** A product found by name: one with a name and its four values, or it isn't listed. */
@@ -104,15 +107,22 @@ function toProduct(p: Record<string, unknown>): OffProduct {
   // The search doesn't say what the values are per; there, go by the package size.
   const per = text(p.nutrition_data_per);
   const liquid = per ? per === "100ml" : /\d\s*(ml|cl|l|cc)\b/i.test(text(p.quantity) ?? "");
+  const unit: Unit = liquid ? "ml" : "g";
+  // Already converted to g or ml by Open Food Facts; a weight for something
+  // measured in ml (or the other way around) is of no use.
+  const sameUnit = (text(p.product_quantity_unit) ?? unit) === unit;
   return {
     name: text(p.product_name_es) ?? text(p.product_name),
     brand: text(brands),
-    unit: liquid ? "ml" : "g",
+    unit,
     kcal: amount(n["energy-kcal_100g"]) ?? (kj === null ? null : round1(kj / KJ_PER_KCAL)),
     protein: amount(n["proteins_100g"]),
     carbs: amount(n["carbohydrates_100g"]),
     fat: amount(n["fat_100g"]),
-    servingQuantity: amount(p.serving_quantity) || null,
+    units: cleanUnits([
+      { kind: "serving", quantity: amount(p.serving_quantity) },
+      { kind: "package", quantity: sameUnit ? amount(p.product_quantity) : null },
+    ]),
   };
 }
 

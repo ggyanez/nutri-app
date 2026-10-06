@@ -1,14 +1,14 @@
 import "server-only";
 import { getDb } from "./db";
 import { requireSession } from "./session";
-import type { Entry, Food, Meal, Unit } from "./foods";
+import { cleanUnits, type Entry, type Food, type Meal, type Unit } from "./foods";
 import { addDays, dayKey } from "./time";
 
 type Row = Record<string, unknown>;
 
 export const FOOD_COLUMNS = `
   f.id, f.barcode, f.name, f.brand, f.source, f.catalog_key, f.unit,
-  f.kcal, f.protein, f.carbs, f.fat, f.serving_quantity,
+  f.kcal, f.protein, f.carbs, f.fat, f.units,
   (SELECT e.quantity FROM entries e WHERE e.food_id = f.id
    ORDER BY e.created_at DESC LIMIT 1) AS last_quantity`;
 
@@ -25,7 +25,7 @@ export function toFood(r: Row): Food {
     protein: Number(r.protein),
     carbs: Number(r.carbs),
     fat: Number(r.fat),
-    servingQuantity: nullableNumber(r.serving_quantity),
+    units: cleanUnits(r.units),
     lastQuantity: nullableNumber(r.last_quantity),
   };
 }

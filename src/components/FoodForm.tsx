@@ -3,7 +3,14 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { deleteFood, saveFood } from "@/app/actions";
-import { parseDecimal, type Unit } from "@/lib/foods";
+import {
+  UNIT_KINDS,
+  UNIT_KIND_LIST,
+  parseDecimal,
+  type FoodUnit,
+  type Unit,
+  type UnitKind,
+} from "@/lib/foods";
 
 export type FoodFormValues = {
   barcode: string;
@@ -14,7 +21,8 @@ export type FoodFormValues = {
   protein: string;
   carbs: string;
   fat: string;
-  servingQuantity: string;
+  /** How much one of each is, as typed; empty for the ones the food doesn't have. */
+  units: Record<UnitKind, string>;
 };
 
 const NUTRIENTS = [
@@ -47,12 +55,23 @@ export default function FoodForm({
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
-  const set = (field: keyof FoodFormValues) => (e: React.ChangeEvent<HTMLInputElement>) =>
-    setValues({ ...values, [field]: e.target.value });
+  const set =
+    (field: Exclude<keyof FoodFormValues, "units">) => (e: React.ChangeEvent<HTMLInputElement>) =>
+      setValues({ ...values, [field]: e.target.value });
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+    const units: FoodUnit[] = [];
+    for (const kind of UNIT_KIND_LIST) {
+      if (values.units[kind].trim() === "") continue;
+      const quantity = parseDecimal(values.units[kind]);
+      if (quantity === null || quantity <= 0) {
+        setError(`Equivalencia de ${UNIT_KINDS[kind].one}: ingresá un número`);
+        return;
+      }
+      units.push({ kind, quantity });
+    }
     startTransition(async () => {
       const res = await saveFood(
         {
@@ -64,7 +83,7 @@ export default function FoodForm({
           protein: parseDecimal(values.protein),
           carbs: parseDecimal(values.carbs),
           fat: parseDecimal(values.fat),
-          servingQuantity: parseDecimal(values.servingQuantity),
+          units,
         },
         foodId,
       );
@@ -142,14 +161,29 @@ export default function FoodForm({
             </Field>
           ))}
         </div>
-        <Field label={`Porción en ${values.unit} (opcional)`}>
-          <input
-            value={values.servingQuantity}
-            onChange={set("servingQuantity")}
-            inputMode="decimal"
-            className={`${INPUT} tabular`}
-          />
-        </Field>
+      </section>
+
+      <section className="space-y-3 rounded-3xl border border-line bg-surface px-5 py-5">
+        <h2 className="text-sm font-medium text-muted">Equivalencias (opcional)</h2>
+        <p className="text-xs text-faint">
+          Para registrar sin pesar: completá cuánto es una de las que tengan sentido para este
+          alimento. El envase es todo lo que trae (una lata, un pote); si el líquido se tira, poné
+          el peso escurrido.
+        </p>
+        <div className="grid grid-cols-2 gap-3">
+          {UNIT_KIND_LIST.map((kind) => (
+            <Field key={kind} label={`1 ${UNIT_KINDS[kind].one} (${values.unit})`}>
+              <input
+                value={values.units[kind]}
+                onChange={(e) =>
+                  setValues({ ...values, units: { ...values.units, [kind]: e.target.value } })
+                }
+                inputMode="decimal"
+                className={`${INPUT} tabular`}
+              />
+            </Field>
+          ))}
+        </div>
       </section>
 
       <div className="space-y-3">

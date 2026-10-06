@@ -2,7 +2,14 @@
 
 import { useState, useTransition } from "react";
 import { deleteEntry, updateEntry } from "@/app/actions";
-import { formatAmount, formatKcal, macrosFor, parseDecimal, type Entry } from "@/lib/foods";
+import {
+  formatAmount,
+  formatKcal,
+  formatQuantity,
+  macrosFor,
+  parseDecimal,
+  type Entry,
+} from "@/lib/foods";
 import { formatTime, toLocalInputValue } from "@/lib/time";
 
 /** A diary line. Tapping it opens the quantity and the date and time for editing. */
@@ -47,7 +54,7 @@ export default function EntryRow({ entry }: { entry: Entry }) {
           <span className="block truncate font-medium">{food.name}</span>
           <span className="block truncate text-xs text-muted">
             {food.brand && `${food.brand} · `}
-            {formatAmount(entry.quantity)} {food.unit}
+            {formatQuantity(food, entry.quantity)}
           </span>
         </span>
         <span className="tabular shrink-0 text-sm font-medium">

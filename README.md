@@ -5,7 +5,7 @@ A minimal, mobile-first food diary: log what you eat each day and see calories a
 ## Features
 
 - **Diario** — one day at a time: the day's calories, protein, carbs and fat, and everything eaten in chronological order. Tap an entry to change its quantity or its date and time, or delete it. A logged meal is one line that opens into its foods.
-- **Agregar** — a food or a saved meal. Foods are found from one search box: your own, the built-in list of generic foods, packaged products by name, or a barcode (typed, or scanned with the camera). The quantity starts at the last amount you logged of that food, or its serving, and the entry is timestamped now unless you change it. A meal can be logged whole or in portions (½, 2…).
+- **Agregar** — a food or a saved meal. Foods are found from one search box: your own, the built-in list of generic foods, packaged products by name, or a barcode (typed, or scanned with the camera). The quantity can be typed in grams or counted in the food's own units — slices of ham, a whole can, a banana — and starts where you left off last time; the entry is timestamped now unless you change it. A meal can be logged whole or in portions (½, 2…).
 - **Comidas** — saved groups of foods with their quantities: a recipe, or what you always have for breakfast. Editing one doesn't rewrite the days it was already logged on.
 - **Alimentos** — every food scanned or created, editable. Correcting a food recalculates the days it was logged on.
 - **Ajustes** — log out.
@@ -50,6 +50,6 @@ Import the repo in Vercel and add the same environment variables (none are `NEXT
 
 See [`db/migrations`](./db/migrations):
 
-- `foods` — name, brand, optional barcode, and nutrition per 100 g (or 100 ml). `source` says whether it came from Open Food Facts, the built-in catalog, or was typed in.
+- `foods` — name, brand, optional barcode, and nutrition per 100 g (or 100 ml). `source` says whether it came from Open Food Facts, the built-in catalog, or was typed in. `units` lists the ways it can be counted and how much each one is: a unit, a slice, a serving, the whole package.
 - `meals` / `meal_items` — a named list of foods with quantities.
 - `entries` — one row per thing eaten: food, quantity and when it was eaten (ISO-8601 UTC; days are grouped in Argentina time). Nutrition is computed from the food, not copied. Logging a meal adds one entry per food, tied together by `group_id`.

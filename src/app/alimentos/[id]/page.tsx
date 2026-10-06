@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import FoodForm from "@/components/FoodForm";
 import { getFood, getFoodUsage } from "@/lib/data";
-import type { Food } from "@/lib/foods";
+import { unitFields, type Food } from "@/lib/foods";
 
 const SOURCES: Record<Food["source"], string> = {
   off: "Traído de Open Food Facts",
@@ -45,7 +45,7 @@ export default async function FoodPage({ params }: PageProps<"/alimentos/[id]">)
           protein: text(food.protein),
           carbs: text(food.carbs),
           fat: text(food.fat),
-          servingQuantity: text(food.servingQuantity),
+          units: unitFields(food.units),
         }}
       />
     </div>

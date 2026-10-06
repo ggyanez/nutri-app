@@ -13,7 +13,7 @@ import {
 } from "@/lib/auth";
 import { CATALOG } from "@/lib/catalog";
 import { FOOD_COLUMNS, getMeal, toFood } from "@/lib/data";
-import type { Food, Unit } from "@/lib/foods";
+import { cleanUnits, type Food, type FoodUnit, type Unit } from "@/lib/foods";
 import { fetchOffProduct, searchOffProducts, type OffHit } from "@/lib/off";
 
 export type ActionResult<T = null> = { ok: true; data: T } | { ok: false; error: string };
@@ -93,13 +93,13 @@ export async function lookupBarcode(
   const now = new Date().toISOString();
   await getDb().execute({
     sql: `INSERT INTO foods (barcode, name, brand, source, unit, kcal, protein, carbs, fat,
-                             serving_quantity, created_at, updated_at)
+                             units, created_at, updated_at)
           VALUES (?, ?, ?, 'off', ?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT(barcode) DO NOTHING`,
     args: [
       barcode, product.name, product.brand, product.unit,
       product.kcal, product.protein, product.carbs, product.fat,
-      product.servingQuantity, now, now,
+      JSON.stringify(product.units), now, now,
     ],
   });
   revalidatePath("/", "layout");
@@ -127,12 +127,12 @@ export async function pickCatalogFood(key: string): Promise<ActionResult<Food>> 
   const now = new Date().toISOString();
   await db.execute({
     sql: `INSERT INTO foods (catalog_key, name, source, unit, kcal, protein, carbs, fat,
-                             serving_quantity, created_at, updated_at)
+                             units, created_at, updated_at)
           VALUES (?, ?, 'catalog', ?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT(catalog_key) DO NOTHING`,
     args: [
       item.key, item.name, item.unit, item.kcal, item.protein, item.carbs, item.fat,
-      item.serving, now, now,
+      JSON.stringify(cleanUnits(item.units)), now, now,
     ],
   });
   const res = await db.execute({
@@ -152,7 +152,7 @@ export type FoodInput = {
   protein: number | null;
   carbs: number | null;
   fat: number | null;
-  servingQuantity: number | null;
+  units: FoodUnit[];
 };
 
 /** Creates a food, or updates the one with the given id. */
@@ -171,16 +171,15 @@ export async function saveFood(
     return { ok: false, error: "El código de barras tiene que tener entre 8 y 14 dígitos" };
   }
 
-  const { kcal, protein, carbs, fat, servingQuantity } = input;
+  const { kcal, protein, carbs, fat } = input;
   const values = { Calorías: kcal, Proteínas: protein, Carbohidratos: carbs, Grasas: fat };
   for (const [label, value] of Object.entries(values)) {
     if (value === null || !Number.isFinite(value) || value < 0) {
       return { ok: false, error: `${label}: ingresá un número` };
     }
   }
-  if (servingQuantity !== null && !(Number.isFinite(servingQuantity) && servingQuantity > 0)) {
-    return { ok: false, error: "Porción inválida" };
-  }
+  const units = cleanUnits(input.units);
+  if (units.length !== input.units.length) return { ok: false, error: "Revisá las equivalencias" };
 
   const db = getDb();
   const clash = barcode
@@ -197,17 +196,23 @@ export async function saveFood(
     id === undefined
       ? await db.execute({
           sql: `INSERT INTO foods (barcode, name, brand, source, unit, kcal, protein, carbs, fat,
-                                   serving_quantity, created_at, updated_at)
+                                   units, created_at, updated_at)
                 VALUES (?, ?, ?, 'manual', ?, ?, ?, ?, ?, ?, ?, ?)
                 RETURNING id`,
-          args: [barcode, name, brand, input.unit, kcal, protein, carbs, fat, servingQuantity, now, now],
+          args: [
+            barcode, name, brand, input.unit, kcal, protein, carbs, fat,
+            JSON.stringify(units), now, now,
+          ],
         })
       : await db.execute({
           sql: `UPDATE foods SET barcode = ?, name = ?, brand = ?, unit = ?, kcal = ?, protein = ?,
-                                 carbs = ?, fat = ?, serving_quantity = ?, updated_at = ?
+                                 carbs = ?, fat = ?, units = ?, updated_at = ?
                 WHERE id = ?
                 RETURNING id`,
-          args: [barcode, name, brand, input.unit, kcal, protein, carbs, fat, servingQuantity, now, id],
+          args: [
+            barcode, name, brand, input.unit, kcal, protein, carbs, fat,
+            JSON.stringify(units), now, id,
+          ],
         });
   if (res.rows.length === 0) return { ok: false, error: "No existe ese alimento" };
 
