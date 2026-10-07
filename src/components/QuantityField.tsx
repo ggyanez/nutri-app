@@ -9,6 +9,11 @@ import {
   type UnitKind,
 } from "@/lib/foods";
 
+/** For fields where the keyboard's Enter key should just mean "done typing": it closes the keyboard. */
+export function blurOnEnter(e: React.KeyboardEvent<HTMLInputElement>) {
+  if (e.key === "Enter") e.currentTarget.blur();
+}
+
 /**
  * A compact quantity of a food for rows and lists: a number and, when the
  * food can be counted, what it's a number of (g, fetas, envases…).
@@ -36,6 +41,8 @@ export default function QuantityField({
         value={value.text}
         onChange={(e) => onChange({ ...value, text: e.target.value })}
         inputMode="decimal"
+        enterKeyHint="done"
+        onKeyDown={blurOnEnter}
         aria-label={`Cantidad de ${food.name}`}
         className="tabular w-20 rounded-xl border border-line bg-bg px-2 py-2 text-right text-base outline-none focus:border-accent"
       />

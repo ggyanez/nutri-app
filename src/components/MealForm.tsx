@@ -15,7 +15,7 @@ import {
   type QuantityDraft,
 } from "@/lib/foods";
 import FoodPicker from "./FoodPicker";
-import QuantityField from "./QuantityField";
+import QuantityField, { blurOnEnter } from "./QuantityField";
 
 type Item = { food: Food; quantity: QuantityDraft };
 
@@ -49,8 +49,7 @@ export default function MealForm({ meal, foods }: { meal?: Meal; foods: Food[] }
     setItems(items.map((item) => (item.food.id === foodId ? { ...item, quantity } : item)));
   }
 
-  function submit(e: React.FormEvent) {
-    e.preventDefault();
+  function save() {
     setError(null);
     const parsed = items.map((item) => ({
       foodId: item.food.id,
@@ -98,13 +97,17 @@ export default function MealForm({ meal, foods }: { meal?: Meal; foods: Food[] }
   }
 
   return (
-    <form onSubmit={submit} className="space-y-6">
+    // Not a <form> on purpose: the keyboard's Enter / "Go" key on a field would
+    // save the meal while it's still being put together.
+    <div className="space-y-6">
       <section className="rounded-3xl border border-line bg-surface px-5 py-5">
         <label className="block">
           <span className="mb-1 block text-sm text-muted">Nombre</span>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
+            enterKeyHint="done"
+            onKeyDown={blurOnEnter}
             placeholder="Milanesa con puré, desayuno de siempre…"
             className="w-full rounded-2xl border border-line bg-bg px-4 py-3 text-base outline-none placeholder:text-faint focus:border-accent"
           />
@@ -164,7 +167,8 @@ export default function MealForm({ meal, foods }: { meal?: Meal; foods: Food[] }
 
       <div className="space-y-3">
         <button
-          type="submit"
+          type="button"
+          onClick={save}
           disabled={pending}
           className="w-full rounded-3xl bg-accent py-4 text-lg font-medium text-white shadow-sm transition active:scale-[0.98] disabled:opacity-40"
         >
@@ -182,6 +186,6 @@ export default function MealForm({ meal, foods }: { meal?: Meal; foods: Food[] }
         )}
         {error && <p className="text-center text-sm text-danger">{error}</p>}
       </div>
-    </form>
+    </div>
   );
 }

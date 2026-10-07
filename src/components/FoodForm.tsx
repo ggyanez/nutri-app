@@ -32,6 +32,11 @@ const NUTRIENTS = [
   { field: "fat", label: "Grasas", suffix: "g" },
 ] as const;
 
+// Enter on any field just means "done typing".
+function closeKeyboardOnEnter(e: React.KeyboardEvent) {
+  if (e.key === "Enter" && e.target instanceof HTMLInputElement) e.target.blur();
+}
+
 const INPUT =
   "w-full rounded-2xl border border-line bg-bg px-4 py-3 text-base outline-none placeholder:text-faint focus:border-accent";
 
@@ -59,8 +64,7 @@ export default function FoodForm({
     (field: Exclude<keyof FoodFormValues, "units">) => (e: React.ChangeEvent<HTMLInputElement>) =>
       setValues({ ...values, [field]: e.target.value });
 
-  function submit(e: React.FormEvent) {
-    e.preventDefault();
+  function save() {
     setError(null);
     const units: FoodUnit[] = [];
     for (const kind of UNIT_KIND_LIST) {
@@ -109,7 +113,9 @@ export default function FoodForm({
   }
 
   return (
-    <form onSubmit={submit} className="space-y-6">
+    // Not a <form> on purpose: the keyboard's Enter / "Go" key on a field would
+    // save the food halfway through.
+    <div className="space-y-6" onKeyDown={closeKeyboardOnEnter}>
       <section className="space-y-3 rounded-3xl border border-line bg-surface px-5 py-5">
         <Field label="Nombre">
           <input value={values.name} onChange={set("name")} className={INPUT} />
@@ -188,7 +194,8 @@ export default function FoodForm({
 
       <div className="space-y-3">
         <button
-          type="submit"
+          type="button"
+          onClick={save}
           disabled={pending}
           className="w-full rounded-3xl bg-accent py-4 text-lg font-medium text-white shadow-sm transition active:scale-[0.98] disabled:opacity-40"
         >
@@ -206,7 +213,7 @@ export default function FoodForm({
         )}
         {error && <p className="text-center text-sm text-danger">{error}</p>}
       </div>
-    </form>
+    </div>
   );
 }
 

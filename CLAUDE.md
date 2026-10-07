@@ -20,6 +20,7 @@ Vocabulary: an *alimento* is a `food`; a *comida* is a `meal` — a saved group 
 - Open Food Facts (`src/lib/off.ts`) is read-only and server-side. A product is saved as a food only when it has a name and all four values; otherwise the new-food form opens prefilled with whatever it has.
 - Barcode scanning uses the browser's native `BarcodeDetector` (`src/components/BarcodeScanner.tsx`), with typing the code in the search box as the fallback. No scanning library.
 - A food that's in the diary or in a meal can't be deleted.
+- The meal and food forms are deliberately not `<form>` elements: on a phone the keyboard's Enter / "Go" key would submit them halfway through (it saved meals with a single food). They save only from their button; Enter just closes the keyboard.
 - Number fields accept a decimal comma: parse with `parseDecimal`, display with `formatAmount` / `formatKcal`.
 - Light palette defined as Tailwind theme tokens in `src/app/globals.css`.
 - Local dev uses `TURSO_DATABASE_URL=file:local.db` (gitignored); the Turso credentials live only in Vercel.
