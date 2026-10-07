@@ -220,6 +220,27 @@ export async function saveFood(
   return { ok: true, data: { id: Number(res.rows[0].id) } };
 }
 
+/** Sets how much one of a unit is on a food (replacing that unit if it had it) and returns the food. */
+export async function setFoodUnit(id: number, unit: FoodUnit): Promise<ActionResult<Food>> {
+  await requireSession();
+  if (cleanUnits([unit]).length !== 1) return { ok: false, error: "Ingresá cuánto es" };
+
+  const db = getDb();
+  const current = await db.execute({ sql: "SELECT units FROM foods WHERE id = ?", args: [id] });
+  if (current.rows.length === 0) return { ok: false, error: "No existe ese alimento" };
+  const others = cleanUnits(current.rows[0].units).filter((u) => u.kind !== unit.kind);
+  await db.execute({
+    sql: "UPDATE foods SET units = ?, updated_at = ? WHERE id = ?",
+    args: [JSON.stringify(cleanUnits([...others, unit])), new Date().toISOString(), id],
+  });
+  const res = await db.execute({
+    sql: `SELECT ${FOOD_COLUMNS} FROM foods f WHERE f.id = ?`,
+    args: [id],
+  });
+  revalidatePath("/", "layout");
+  return { ok: true, data: toFood(res.rows[0]) };
+}
+
 export async function deleteFood(id: number): Promise<ActionResult> {
   await requireSession();
   // Foods in use stay: deleting one would leave holes in past days or in a meal.

@@ -3,17 +3,20 @@
 import Link from "next/link";
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { logEntry, logMeal } from "@/app/actions";
+import { logEntry, logMeal, setFoodUnit } from "@/app/actions";
 import {
   UNIT_KINDS,
-  asUnits,
+  UNIT_KIND_LIST,
   countFoods,
+  draftOf,
   formatAmount,
   formatKcal,
   formatQuantity,
   macrosFor,
   parseDecimal,
   totalOf,
+  unitName,
+  usualDraft,
   type Food,
   type Macros,
   type Meal,
@@ -60,6 +63,7 @@ export default function AddEntry({
         food={food}
         initialEatenAt={initialEatenAt}
         onBack={() => setFood(null)}
+        onFoodChange={setFood}
       />
     );
   }
@@ -171,23 +175,23 @@ function QuantityForm({
   food,
   initialEatenAt,
   onBack,
+  onFoodChange,
 }: {
   food: Food;
   /** A `datetime-local` value, or null for "now". */
   initialEatenAt: string | null;
   onBack: () => void;
+  /** The food gained a unit while it was being logged. */
+  onFoodChange: (food: Food) => void;
 }) {
   const router = useRouter();
   // Start where the last entry of this food left off: counted in a unit if
   // it was a round number of one, weighed otherwise. A food never logged
-  // starts at one piece or serving — never at a whole package.
-  const last =
-    food.lastQuantity === null
-      ? { unit: food.units.find((u) => u.kind === "unit" || u.kind === "serving"), count: 1 }
-      : asUnits(food.units, food.lastQuantity);
-  const [kind, setKind] = useState<UnitKind | null>(last?.unit?.kind ?? null);
+  // starts at one of its most natural unit.
+  const start = food.lastQuantity === null ? usualDraft(food) : draftOf(food, food.lastQuantity);
+  const [kind, setKind] = useState<UnitKind | null>(start.kind);
   const [amount, setAmount] = useState(formatAmount(food.lastQuantity ?? 100));
-  const [count, setCount] = useState(formatAmount(last?.unit ? last.count : 1));
+  const [count, setCount] = useState(start.kind ? start.text : "1");
   const [eatenAt, setEatenAt] = useState(initialEatenAt);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -236,26 +240,35 @@ function QuantityForm({
       </section>
 
       <section className="space-y-4 rounded-3xl border border-line bg-surface px-5 py-5">
-        {food.units.length > 0 && (
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Unidad">
-            {[null, ...food.units].map((u) => (
-              <button
-                key={u?.kind ?? "amount"}
-                type="button"
-                onClick={() => setKind(u?.kind ?? null)}
-                aria-pressed={kind === (u?.kind ?? null)}
-                className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                  kind === (u?.kind ?? null) ? "bg-ink text-surface" : "border border-line text-muted"
-                }`}
-              >
-                {u ? `${UNIT_KINDS[u.kind].one} · ${formatAmount(u.quantity)} ${food.unit}` : food.unit}
-              </button>
-            ))}
-          </div>
-        )}
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Unidad">
+          {[...food.units, null].map((u) => (
+            <button
+              key={u?.kind ?? "amount"}
+              type="button"
+              onClick={() => setKind(u?.kind ?? null)}
+              aria-pressed={kind === (u?.kind ?? null)}
+              className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                kind === (u?.kind ?? null) ? "bg-ink text-surface" : "border border-line text-muted"
+              }`}
+            >
+              {u
+                ? `${unitName(u.kind, food.units)} · ${formatAmount(u.quantity)} ${food.unit}`
+                : food.unit}
+            </button>
+          ))}
+        </div>
+        <UnitAdder
+          key={food.units.length}
+          food={food}
+          onAdded={(updated, added) => {
+            onFoodChange(updated);
+            setKind(added);
+            setCount("1");
+          }}
+        />
         <label className="block">
           <span className="text-sm font-medium text-muted">
-            {unit ? `Cantidad de ${UNIT_KINDS[unit.kind].many}` : `Cantidad (${food.unit})`}
+            {unit ? `Cantidad de ${unitName(unit.kind, food.units, true)}` : `Cantidad (${food.unit})`}
           </span>
           <input
             // One field per way of counting, so switching keeps what was typed in each.
@@ -302,6 +315,99 @@ function QuantityForm({
       </section>
 
       <SubmitButton pending={pending} error={error} onClick={submit} />
+    </div>
+  );
+}
+
+/**
+ * Gives a food one more unit without leaving the form: "1 envase = 340 g".
+ * A food with no units at all gets it open, so the first time is the last
+ * time it has to be weighed.
+ */
+function UnitAdder({
+  food,
+  onAdded,
+}: {
+  food: Food;
+  onAdded: (food: Food, kind: UnitKind) => void;
+}) {
+  const free = UNIT_KIND_LIST.filter((k) => !food.units.some((u) => u.kind === k));
+  const [open, setOpen] = useState(food.units.length === 0);
+  // Packaged products are counted by the package; anything else, by the piece.
+  const [kind, setKind] = useState<UnitKind>(
+    () => free.find((k) => k === (food.source === "catalog" ? "unit" : "package")) ?? free[0],
+  );
+  const [size, setSize] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [pending, startTransition] = useTransition();
+
+  if (free.length === 0) return null;
+  if (!open) {
+    return (
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+      >
+        + Otra unidad
+      </button>
+    );
+  }
+
+  function add() {
+    const quantity = parseDecimal(size);
+    if (quantity === null || quantity <= 0) {
+      setError("Ingresá cuánto es");
+      return;
+    }
+    setError(null);
+    startTransition(async () => {
+      const res = await setFoodUnit(food.id, { kind, quantity });
+      if (res.ok) onAdded(res.data, kind);
+      else setError(res.error);
+    });
+  }
+
+  return (
+    <div className="space-y-2 rounded-2xl bg-accent-soft px-3 py-3">
+      {food.units.length === 0 && (
+        <p className="text-sm text-ink">
+          Este alimento todavía no tiene unidades. Cargá una y no lo pesás más.
+        </p>
+      )}
+      <div className="flex flex-wrap items-center gap-2 text-sm">
+        <span>1</span>
+        <select
+          value={kind}
+          onChange={(e) => setKind(e.target.value as UnitKind)}
+          aria-label="Unidad nueva"
+          className="rounded-xl border border-line bg-surface px-2 py-2 text-base outline-none focus:border-accent"
+        >
+          {free.map((k) => (
+            <option key={k} value={k}>
+              {UNIT_KINDS[k].one}
+            </option>
+          ))}
+        </select>
+        <span>=</span>
+        <input
+          value={size}
+          onChange={(e) => setSize(e.target.value)}
+          inputMode="decimal"
+          aria-label={`Cuánto es, en ${food.unit}`}
+          className="tabular w-20 rounded-xl border border-line bg-surface px-2 py-2 text-right text-base outline-none focus:border-accent"
+        />
+        <span>{food.unit}</span>
+        <button
+          type="button"
+          onClick={add}
+          disabled={pending}
+          className="rounded-xl bg-accent px-3 py-2 font-medium text-white disabled:opacity-60"
+        >
+          Guardar
+        </button>
+      </div>
+      {error && <p className="text-sm text-danger">{error}</p>}
     </div>
   );
 }

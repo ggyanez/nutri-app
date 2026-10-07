@@ -1,9 +1,9 @@
 "use client";
 
 import {
-  UNIT_KINDS,
   formatAmount,
   quantityOf,
+  unitName,
   type Food,
   type QuantityDraft,
   type UnitKind,
@@ -59,7 +59,7 @@ export default function QuantityField({
             <option value="">{food.unit}</option>
             {food.units.map((u) => (
               <option key={u.kind} value={u.kind}>
-                {UNIT_KINDS[u.kind].many}
+                {unitName(u.kind, food.units, true)}
               </option>
             ))}
           </select>

@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "db:migrate": "node --env-file=.env.local db/migrate.mjs",
-    "db:migrate:prod": "TURSO_DATABASE_URL=$(turso db show nutri-app --url) TURSO_AUTH_TOKEN=$(turso db tokens create nutri-app --expiration 1d) node db/migrate.mjs"
+    "db:migrate": "node --env-file=.env.local db/migrate.mjs && node --env-file=.env.local scripts/catalog/sync.mjs",
+    "db:migrate:prod": "TURSO_DATABASE_URL=$(turso db show nutri-app --url) TURSO_AUTH_TOKEN=$(turso db tokens create nutri-app --expiration 1d) sh -c \"node db/migrate.mjs && node scripts/catalog/sync.mjs\""
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",

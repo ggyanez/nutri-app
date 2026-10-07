@@ -57,8 +57,17 @@ export default function FoodForm({
 }) {
   const router = useRouter();
   const [values, setValues] = useState(initial);
+  // The units with a field on screen: the ones the food has, or the two a
+  // package label always states when it has none yet.
+  const [shown, setShown] = useState<UnitKind[]>(() => {
+    const filled = UNIT_KIND_LIST.filter((kind) => initial.units[kind].trim() !== "");
+    return filled.length > 0 ? filled : ["serving", "package"];
+  });
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+
+  const setUnit = (kind: UnitKind, text: string) =>
+    setValues({ ...values, units: { ...values.units, [kind]: text } });
 
   const set =
     (field: Exclude<keyof FoodFormValues, "units">) => (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -71,7 +80,7 @@ export default function FoodForm({
       if (values.units[kind].trim() === "") continue;
       const quantity = parseDecimal(values.units[kind]);
       if (quantity === null || quantity <= 0) {
-        setError(`Equivalencia de ${UNIT_KINDS[kind].one}: ingresá un número`);
+        setError(`${UNIT_KINDS[kind].one}: ingresá cuánto es`);
         return;
       }
       units.push({ kind, quantity });
@@ -170,26 +179,54 @@ export default function FoodForm({
       </section>
 
       <section className="space-y-3 rounded-3xl border border-line bg-surface px-5 py-5">
-        <h2 className="text-sm font-medium text-muted">Equivalencias (opcional)</h2>
+        <h2 className="text-sm font-medium text-muted">Unidades</h2>
         <p className="text-xs text-faint">
-          Para registrar sin pesar: completá cuánto es una de las que tengan sentido para este
-          alimento. El envase es todo lo que trae (una lata, un pote); si el líquido se tira, poné
-          el peso escurrido.
+          Para registrarlo sin pesar: cuánto es una de cada una. El envase es todo lo que trae (una
+          lata, un pote); si el líquido se tira, poné el peso escurrido.
         </p>
-        <div className="grid grid-cols-2 gap-3">
-          {UNIT_KIND_LIST.map((kind) => (
-            <Field key={kind} label={`1 ${UNIT_KINDS[kind].one} (${values.unit})`}>
+        <ul className="space-y-2">
+          {UNIT_KIND_LIST.filter((kind) => shown.includes(kind)).map((kind) => (
+            <li key={kind} className="flex items-center gap-2">
+              <label htmlFor={`unit-${kind}`} className="min-w-0 flex-1 text-sm">
+                1 {UNIT_KINDS[kind].one} =
+              </label>
               <input
+                id={`unit-${kind}`}
                 value={values.units[kind]}
-                onChange={(e) =>
-                  setValues({ ...values, units: { ...values.units, [kind]: e.target.value } })
-                }
+                onChange={(e) => setUnit(kind, e.target.value)}
                 inputMode="decimal"
-                className={`${INPUT} tabular`}
+                className="tabular w-24 rounded-xl border border-line bg-bg px-3 py-2 text-right text-base outline-none focus:border-accent"
               />
-            </Field>
+              <span className="w-5 text-sm text-muted">{values.unit}</span>
+              <button
+                type="button"
+                onClick={() => {
+                  setUnit(kind, "");
+                  setShown(shown.filter((k) => k !== kind));
+                }}
+                aria-label={`Quitar ${UNIT_KINDS[kind].one}`}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-lg text-faint active:bg-accent-soft"
+              >
+                ×
+              </button>
+            </li>
           ))}
-        </div>
+        </ul>
+        {shown.length < UNIT_KIND_LIST.length && (
+          <select
+            value=""
+            onChange={(e) => setShown([...shown, e.target.value as UnitKind])}
+            aria-label="Agregar unidad"
+            className="w-full rounded-2xl border border-line bg-bg px-3 py-2.5 text-base text-accent outline-none focus:border-accent"
+          >
+            <option value="">+ Agregar unidad…</option>
+            {UNIT_KIND_LIST.filter((kind) => !shown.includes(kind)).map((kind) => (
+              <option key={kind} value={kind}>
+                {UNIT_KINDS[kind].one}
+              </option>
+            ))}
+          </select>
+        )}
       </section>
 
       <div className="space-y-3">

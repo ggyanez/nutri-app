@@ -6,9 +6,17 @@
   "fdcId": 173944,
   "usda": "Bananas, raw",
   "units": {
+   "unitSmall": {
+    "usda": "small (6\" to 6-7/8\" long)",
+    "grams": 101.0
+   },
    "unit": {
     "usda": "medium (7\" to 7-7/8\" long)",
     "grams": 118.0
+   },
+   "unitLarge": {
+    "usda": "large (8\" to 8-7/8\" long)",
+    "grams": 136.0
    }
   }
  },
@@ -19,9 +27,17 @@
   "fdcId": 171688,
   "usda": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
   "units": {
+   "unitSmall": {
+    "usda": "small (2-3/4\" dia)",
+    "grams": 149.0
+   },
    "unit": {
     "usda": "medium (3\" dia)",
     "grams": 182.0
+   },
+   "unitLarge": {
+    "usda": "large (3-1/4\" dia)",
+    "grams": 223.0
    }
   }
  },
@@ -32,9 +48,17 @@
   "fdcId": 168203,
   "usda": "Apples, raw, granny smith, with skin (Includes foods for USDA's Food Distribution Program)",
   "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 144.0
+   },
    "unit": {
     "usda": "medium",
     "grams": 167.0
+   },
+   "unitLarge": {
+    "usda": "large",
+    "grams": 206.0
    }
   }
  },
@@ -45,9 +69,17 @@
   "fdcId": 169097,
   "usda": "Oranges, raw, all commercial varieties",
   "units": {
+   "unitSmall": {
+    "usda": "small (2-3/8\" dia)",
+    "grams": 96.0
+   },
    "unit": {
     "usda": "fruit (2-5/8\" dia)",
     "grams": 131.0
+   },
+   "unitLarge": {
+    "usda": "large (3-1/16\" dia)",
+    "grams": 184.0
    }
   }
  },
@@ -58,9 +90,17 @@
   "fdcId": 169105,
   "usda": "Tangerines, (mandarin oranges), raw",
   "units": {
+   "unitSmall": {
+    "usda": "small (2-1/4\" dia)",
+    "grams": 76.0
+   },
    "unit": {
     "usda": "medium (2-1/2\" dia)",
     "grams": 88.0
+   },
+   "unitLarge": {
+    "usda": "large (2-3/4\" dia)",
+    "grams": 120.0
    }
   }
  },
@@ -71,9 +111,17 @@
   "fdcId": 169118,
   "usda": "Pears, raw",
   "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 148.0
+   },
    "unit": {
     "usda": "medium",
     "grams": 178.0
+   },
+   "unitLarge": {
+    "usda": "large",
+    "grams": 230.0
    }
   }
  },
@@ -84,9 +132,17 @@
   "fdcId": 169928,
   "usda": "Peaches, yellow, raw",
   "units": {
+   "unitSmall": {
+    "usda": "small (2-1/2\" dia)",
+    "grams": 130.0
+   },
    "unit": {
     "usda": "medium (2-2/3\" dia)",
     "grams": 150.0
+   },
+   "unitLarge": {
+    "usda": "large (2-3/4\" dia)",
+    "grams": 175.0
    }
   }
  },
@@ -108,7 +164,18 @@
   "name": "Uva",
   "category": "Frutas",
   "fdcId": 174683,
-  "usda": "Grapes, red or green (European type, such as Thompson seedless), raw"
+  "usda": "Grapes, red or green (European type, such as Thompson seedless), raw",
+  "units": {
+   "unit": {
+    "usda": "grapes",
+    "grams": 49.0,
+    "count": 10
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 151.0
+   }
+  }
  },
  {
   "key": "frutilla",
@@ -116,7 +183,25 @@
   "category": "Frutas",
   "fdcId": 167762,
   "usda": "Strawberries, raw",
-  "also": "fresa"
+  "also": "fresa",
+  "units": {
+   "unitSmall": {
+    "usda": "small (1\" dia)",
+    "grams": 7.0
+   },
+   "unit": {
+    "usda": "medium (1-1/4\" dia)",
+    "grams": 12.0
+   },
+   "unitLarge": {
+    "usda": "large (1-3/8\" dia)",
+    "grams": 18.0
+   },
+   "cup": {
+    "usda": "cup, whole",
+    "grams": 144.0
+   }
+  }
  },
  {
   "key": "kiwi",
@@ -137,28 +222,76 @@
   "category": "Frutas",
   "fdcId": 169124,
   "usda": "Pineapple, raw, all varieties",
-  "also": "piña"
+  "also": "piña",
+  "units": {
+   "unit": {
+    "usda": "fruit",
+    "grams": 905.0
+   },
+   "round": {
+    "usda": "slice (3-1/2\" dia x 3/4\" thick)",
+    "grams": 84.0
+   },
+   "cup": {
+    "usda": "cup, chunks",
+    "grams": 165.0
+   }
+  }
  },
  {
   "key": "sandia",
   "name": "Sandía",
   "category": "Frutas",
   "fdcId": 167765,
-  "usda": "Watermelon, raw"
+  "usda": "Watermelon, raw",
+  "units": {
+   "round": {
+    "usda": "wedge (approx 1/16 of melon)",
+    "grams": 286.0
+   },
+   "cup": {
+    "usda": "cup, diced",
+    "grams": 152.0
+   }
+  }
  },
  {
   "key": "melon",
   "name": "Melón",
   "category": "Frutas",
   "fdcId": 169911,
-  "usda": "Melons, honeydew, raw"
+  "usda": "Melons, honeydew, raw",
+  "units": {
+   "unit": {
+    "usda": "melon (5-1/4\" dia)",
+    "grams": 1000.0
+   },
+   "round": {
+    "usda": "wedge (1/8 of 5-1/4\" dia melon)",
+    "grams": 125.0
+   },
+   "cup": {
+    "usda": "cup, diced (approx 20 pieces per cup)",
+    "grams": 170.0
+   }
+  }
  },
  {
   "key": "limon",
   "name": "Limón",
   "category": "Frutas",
   "fdcId": 167746,
-  "usda": "Lemons, raw, without peel"
+  "usda": "Lemons, raw, without peel",
+  "units": {
+   "unit": {
+    "usda": "fruit (2-1/8\" dia)",
+    "grams": 58.0
+   },
+   "round": {
+    "usda": "wedge or slice (1/8 of one 2-1/8\" dia lemon)",
+    "grams": 7.0
+   }
+  }
  },
  {
   "key": "pomelo",
@@ -166,42 +299,97 @@
   "category": "Frutas",
   "fdcId": 174673,
   "usda": "Grapefruit, raw, pink and red, all areas",
-  "also": "toronja"
+  "also": "toronja",
+  "units": {
+   "unit": {
+    "usda": "fruit (3-3/4\" dia)",
+    "grams": 123.0,
+    "count": 0.5
+   }
+  }
  },
  {
   "key": "cereza",
   "name": "Cereza",
   "category": "Frutas",
   "fdcId": 171719,
-  "usda": "Cherries, sweet, raw"
+  "usda": "Cherries, sweet, raw",
+  "units": {
+   "unit": {
+    "usda": "cherry",
+    "grams": 8.2
+   },
+   "cup": {
+    "usda": "cup, with pits, yields",
+    "grams": 138.0
+   }
+  }
  },
  {
   "key": "arandanos",
   "name": "Arándanos",
   "category": "Frutas",
   "fdcId": 171711,
-  "usda": "Blueberries, raw"
+  "usda": "Blueberries, raw",
+  "units": {
+   "unit": {
+    "usda": "berries",
+    "grams": 68.0,
+    "count": 50
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 148.0
+   }
+  }
  },
  {
   "key": "frambuesa",
   "name": "Frambuesa",
   "category": "Frutas",
   "fdcId": 167755,
-  "usda": "Raspberries, raw"
+  "usda": "Raspberries, raw",
+  "units": {
+   "unit": {
+    "usda": "raspberries",
+    "grams": 19.0,
+    "count": 10
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 123.0
+   }
+  }
  },
  {
   "key": "mora",
   "name": "Mora",
   "category": "Frutas",
   "fdcId": 173946,
-  "usda": "Blackberries, raw"
+  "usda": "Blackberries, raw",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 144.0
+   }
+  }
  },
  {
   "key": "mango",
   "name": "Mango",
   "category": "Frutas",
   "fdcId": 169910,
-  "usda": "Mangos, raw"
+  "usda": "Mangos, raw",
+  "units": {
+   "unit": {
+    "usda": "fruit without refuse",
+    "grams": 336.0
+   },
+   "cup": {
+    "usda": "cup pieces",
+    "grams": 165.0
+   }
+  }
  },
  {
   "key": "palta",
@@ -209,14 +397,48 @@
   "category": "Frutas",
   "fdcId": 171705,
   "usda": "Avocados, raw, all commercial varieties",
-  "also": "aguacate"
+  "also": "aguacate",
+  "units": {
+   "unitSmall": {
+    "usda": "fruit, without skin and seed",
+    "grams": 136.0,
+    "from": 171706
+   },
+   "unit": {
+    "usda": "avocado, NS as to Florida or California",
+    "grams": 201.0
+   },
+   "unitLarge": {
+    "usda": "fruit without skin and seeds",
+    "grams": 304.0,
+    "from": 171707
+   },
+   "cup": {
+    "usda": "cup, cubes",
+    "grams": 150.0
+   }
+  }
  },
  {
   "key": "higo",
   "name": "Higo",
   "category": "Frutas",
   "fdcId": 173021,
-  "usda": "Figs, raw"
+  "usda": "Figs, raw",
+  "units": {
+   "unitSmall": {
+    "usda": "small (1-1/2\" dia)",
+    "grams": 40.0
+   },
+   "unit": {
+    "usda": "medium (2-1/4\" dia)",
+    "grams": 50.0
+   },
+   "unitLarge": {
+    "usda": "large (2-1/2\" dia)",
+    "grams": 64.0
+   }
+  }
  },
  {
   "key": "damasco",
@@ -224,7 +446,13 @@
   "category": "Frutas",
   "fdcId": 171697,
   "usda": "Apricots, raw",
-  "also": "albaricoque"
+  "also": "albaricoque",
+  "units": {
+   "unit": {
+    "usda": "apricot",
+    "grams": 35.0
+   }
+  }
  },
  {
   "key": "papaya",
@@ -232,98 +460,222 @@
   "category": "Frutas",
   "fdcId": 169926,
   "usda": "Papayas, raw",
-  "also": "mamón"
+  "also": "mamón",
+  "units": {
+   "unitSmall": {
+    "usda": "fruit, small",
+    "grams": 157.0
+   },
+   "unitLarge": {
+    "usda": "fruit, large",
+    "grams": 781.0
+   },
+   "cup": {
+    "usda": "cup 1\" pieces",
+    "grams": 145.0
+   }
+  }
  },
  {
   "key": "granada",
   "name": "Granada",
   "category": "Frutas",
   "fdcId": 169134,
-  "usda": "Pomegranates, raw"
+  "usda": "Pomegranates, raw",
+  "units": {
+   "unit": {
+    "usda": "pomegranate (4\" dia)",
+    "grams": 282.0
+   }
+  }
  },
  {
   "key": "maracuya",
   "name": "Maracuyá",
   "category": "Frutas",
   "fdcId": 169108,
-  "usda": "Passion-fruit, (granadilla), purple, raw"
+  "usda": "Passion-fruit, (granadilla), purple, raw",
+  "units": {
+   "unit": {
+    "usda": "fruit without refuse",
+    "grams": 18.0
+   }
+  }
  },
  {
   "key": "pasas-de-uva",
   "name": "Pasas de uva",
   "category": "Frutas",
   "fdcId": 168165,
-  "usda": "Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program)"
+  "usda": "Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program)",
+  "units": {
+   "cup": {
+    "usda": "cup (not packed)",
+    "grams": 145.0
+   },
+   "handful": {
+    "usda": "oz (60 raisins)",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "ciruelas-pasas",
   "name": "Ciruelas pasas",
   "category": "Frutas",
   "fdcId": 168162,
-  "usda": "Plums, dried (prunes), uncooked"
+  "usda": "Plums, dried (prunes), uncooked",
+  "units": {
+   "unit": {
+    "usda": "prune, pitted",
+    "grams": 9.5
+   },
+   "cup": {
+    "usda": "cup, pitted",
+    "grams": 174.0
+   }
+  }
  },
  {
   "key": "datiles",
   "name": "Dátiles",
   "category": "Frutas",
   "fdcId": 171726,
-  "usda": "Dates, deglet noor"
+  "usda": "Dates, deglet noor",
+  "units": {
+   "unit": {
+    "usda": "date, pitted",
+    "grams": 7.1
+   }
+  }
  },
  {
   "key": "orejones-de-durazno",
   "name": "Orejones de durazno",
   "category": "Frutas",
   "fdcId": 169934,
-  "usda": "Peaches, dried, sulfured, uncooked"
+  "usda": "Peaches, dried, sulfured, uncooked",
+  "units": {
+   "unit": {
+    "usda": "half",
+    "grams": 13.0
+   }
+  }
  },
  {
   "key": "damascos-secos",
   "name": "Damascos secos",
   "category": "Frutas",
   "fdcId": 173941,
-  "usda": "Apricots, dried, sulfured, uncooked"
+  "usda": "Apricots, dried, sulfured, uncooked",
+  "units": {
+   "unit": {
+    "usda": "half",
+    "grams": 3.5
+   }
+  }
  },
  {
   "key": "higos-secos",
   "name": "Higos secos",
   "category": "Frutas",
   "fdcId": 174665,
-  "usda": "Figs, dried, uncooked"
+  "usda": "Figs, dried, uncooked",
+  "units": {
+   "unit": {
+    "usda": "fig",
+    "grams": 8.4
+   }
+  }
  },
  {
   "key": "papa-cruda",
   "name": "Papa cruda",
   "category": "Verduras",
   "fdcId": 170026,
-  "usda": "Potatoes, flesh and skin, raw"
+  "usda": "Potatoes, flesh and skin, raw",
+  "units": {
+   "unitSmall": {
+    "usda": "Potato small (1-3/4\" to 2-1/2\" dia)",
+    "grams": 170.0
+   },
+   "unit": {
+    "usda": "Potato medium (2-1/4\" to 3-1/4\" dia)",
+    "grams": 213.0
+   },
+   "unitLarge": {
+    "usda": "Potato large (3\" to 4-1/4\" dia)",
+    "grams": 369.0
+   }
+  }
  },
  {
   "key": "papa-hervida",
   "name": "Papa hervida",
   "category": "Verduras",
   "fdcId": 170440,
-  "usda": "Potatoes, boiled, cooked without skin, flesh, without salt"
+  "usda": "Potatoes, boiled, cooked without skin, flesh, without salt",
+  "units": {
+   "unitSmall": {
+    "usda": "small (1-3/4\" to 2-1/2\" dia.)",
+    "grams": 125.0
+   },
+   "unit": {
+    "usda": "medium (2-1/4\" to 3-1/4\" dia.)",
+    "grams": 167.0
+   },
+   "unitLarge": {
+    "usda": "large (3\" to 4-1/4\" dia.)",
+    "grams": 300.0
+   }
+  }
  },
  {
   "key": "papa-al-horno",
   "name": "Papa al horno",
   "category": "Verduras",
   "fdcId": 170093,
-  "usda": "Potatoes, baked, flesh and skin, without salt"
+  "usda": "Potatoes, baked, flesh and skin, without salt",
+  "units": {
+   "unitSmall": {
+    "usda": "potato small",
+    "grams": 138.0
+   },
+   "unit": {
+    "usda": "potato medium",
+    "grams": 173.0
+   },
+   "unitLarge": {
+    "usda": "potato large",
+    "grams": 299.0
+   }
+  }
  },
  {
   "key": "pure-de-papas",
   "name": "Puré de papas",
   "category": "Verduras",
   "fdcId": 168555,
-  "usda": "Potatoes, mashed, home-prepared, whole milk and butter added"
+  "usda": "Potatoes, mashed, home-prepared, whole milk and butter added",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 210.0
+   }
+  }
  },
  {
   "key": "papas-fritas",
   "name": "Papas fritas",
   "category": "Verduras",
   "fdcId": 170698,
-  "usda": "Fast foods, potato, french fried in vegetable oil"
+  "usda": "Fast foods, potato, french fried in vegetable oil",
+  "units": {
+   "serving": {
+    "usda": "serving medium",
+    "grams": 117.0
+   }
+  }
  },
  {
   "key": "batata-cruda",
@@ -331,7 +683,17 @@
   "category": "Verduras",
   "fdcId": 168482,
   "usda": "Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)",
-  "also": "boniato camote"
+  "also": "boniato camote",
+  "units": {
+   "unit": {
+    "usda": "sweetpotato, 5\" long",
+    "grams": 130.0
+   },
+   "cup": {
+    "usda": "cup, cubes",
+    "grams": 133.0
+   }
+  }
  },
  {
   "key": "batata-hervida",
@@ -339,7 +701,17 @@
   "category": "Verduras",
   "fdcId": 168484,
   "usda": "Sweet potato, cooked, boiled, without skin",
-  "also": "boniato camote"
+  "also": "boniato camote",
+  "units": {
+   "unit": {
+    "usda": "medium",
+    "grams": 151.0
+   },
+   "cup": {
+    "usda": "cup, mashed",
+    "grams": 328.0
+   }
+  }
  },
  {
   "key": "batata-al-horno",
@@ -347,42 +719,142 @@
   "category": "Verduras",
   "fdcId": 168483,
   "usda": "Sweet potato, cooked, baked in skin, flesh, without salt",
-  "also": "boniato camote"
+  "also": "boniato camote",
+  "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 60.0
+   },
+   "unit": {
+    "usda": "medium (2\" dia, 5\" long, raw)",
+    "grams": 114.0
+   },
+   "unitLarge": {
+    "usda": "large",
+    "grams": 180.0
+   }
+  }
  },
  {
   "key": "zanahoria",
   "name": "Zanahoria",
   "category": "Verduras",
   "fdcId": 170393,
-  "usda": "Carrots, raw"
+  "usda": "Carrots, raw",
+  "units": {
+   "unitSmall": {
+    "usda": "small (5-1/2\" long)",
+    "grams": 50.0
+   },
+   "unit": {
+    "usda": "medium",
+    "grams": 61.0
+   },
+   "unitLarge": {
+    "usda": "large (7-1/4\" to 8-/1/2\" long)",
+    "grams": 72.0
+   },
+   "cup": {
+    "usda": "cup grated",
+    "grams": 110.0
+   }
+  }
  },
  {
   "key": "zanahoria-hervida",
   "name": "Zanahoria hervida",
   "category": "Verduras",
   "fdcId": 170394,
-  "usda": "Carrots, cooked, boiled, drained, without salt"
+  "usda": "Carrots, cooked, boiled, drained, without salt",
+  "units": {
+   "unit": {
+    "usda": "carrot",
+    "grams": 46.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 9.7
+   }
+  }
  },
  {
   "key": "cebolla",
   "name": "Cebolla",
   "category": "Verduras",
   "fdcId": 170000,
-  "usda": "Onions, raw"
+  "usda": "Onions, raw",
+  "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 70.0
+   },
+   "unit": {
+    "usda": "medium (2-1/2\" dia)",
+    "grams": 110.0
+   },
+   "unitLarge": {
+    "usda": "large",
+    "grams": 150.0
+   },
+   "round": {
+    "usda": "slice, medium (1/8\" thick)",
+    "grams": 14.0
+   },
+   "cup": {
+    "usda": "cup, chopped",
+    "grams": 160.0
+   },
+   "tbsp": {
+    "usda": "tbsp chopped",
+    "grams": 10.0
+   }
+  }
  },
  {
   "key": "cebolla-de-verdeo",
   "name": "Cebolla de verdeo",
   "category": "Verduras",
   "fdcId": 170005,
-  "usda": "Onions, spring or scallions (includes tops and bulb), raw"
+  "usda": "Onions, spring or scallions (includes tops and bulb), raw",
+  "units": {
+   "unitSmall": {
+    "usda": "small (3\" long)",
+    "grams": 5.0
+   },
+   "unit": {
+    "usda": "medium (4-1/8\" long)",
+    "grams": 15.0
+   },
+   "unitLarge": {
+    "usda": "large",
+    "grams": 25.0
+   },
+   "cup": {
+    "usda": "cup, chopped",
+    "grams": 100.0
+   },
+   "tbsp": {
+    "usda": "tbsp chopped",
+    "grams": 6.0
+   }
+  }
  },
  {
   "key": "ajo",
   "name": "Ajo",
   "category": "Verduras",
   "fdcId": 169230,
-  "usda": "Garlic, raw"
+  "usda": "Garlic, raw",
+  "units": {
+   "unit": {
+    "usda": "clove",
+    "grams": 3.0
+   },
+   "tsp": {
+    "usda": "tsp",
+    "grams": 2.8
+   }
+  }
  },
  {
   "key": "tomate",
@@ -391,9 +863,25 @@
   "fdcId": 170457,
   "usda": "Tomatoes, red, ripe, raw, year round average",
   "units": {
+   "unitSmall": {
+    "usda": "small whole (2-2/5\" dia)",
+    "grams": 91.0
+   },
    "unit": {
     "usda": "medium whole (2-3/5\" dia)",
     "grams": 123.0
+   },
+   "unitLarge": {
+    "usda": "large whole (3\" dia)",
+    "grams": 182.0
+   },
+   "round": {
+    "usda": "slice, medium (1/4\" thick)",
+    "grams": 20.0
+   },
+   "cup": {
+    "usda": "cup, chopped or sliced",
+    "grams": 180.0
    }
   }
  },
@@ -402,112 +890,268 @@
   "name": "Tomate triturado",
   "category": "Verduras",
   "fdcId": 170501,
-  "usda": "Tomatoes, crushed, canned"
+  "usda": "Tomatoes, crushed, canned",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 121.0,
+    "count": 0.5
+   }
+  }
  },
  {
   "key": "pure-de-tomate",
   "name": "Puré de tomate",
   "category": "Verduras",
   "fdcId": 170460,
-  "usda": "Tomato products, canned, puree, without salt added"
+  "usda": "Tomato products, canned, puree, without salt added",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 250.0
+   }
+  }
  },
  {
   "key": "salsa-de-tomate",
   "name": "Salsa de tomate",
   "category": "Verduras",
   "fdcId": 170054,
-  "usda": "Tomato products, canned, sauce"
+  "usda": "Tomato products, canned, sauce",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 245.0
+   }
+  }
  },
  {
   "key": "extracto-de-tomate",
   "name": "Extracto de tomate",
   "category": "Verduras",
   "fdcId": 170459,
-  "usda": "Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program)"
+  "usda": "Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program)",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 262.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 16.0
+   }
+  }
  },
  {
   "key": "lechuga",
   "name": "Lechuga",
   "category": "Verduras",
   "fdcId": 169249,
-  "usda": "Lettuce, green leaf, raw"
+  "usda": "Lettuce, green leaf, raw",
+  "units": {
+   "unit": {
+    "usda": "head",
+    "grams": 360.0
+   },
+   "leaf": {
+    "usda": "leaf outer",
+    "grams": 24.0
+   },
+   "cup": {
+    "usda": "cup shredded",
+    "grams": 36.0
+   }
+  }
  },
  {
   "key": "espinaca",
   "name": "Espinaca",
   "category": "Verduras",
   "fdcId": 168462,
-  "usda": "Spinach, raw"
+  "usda": "Spinach, raw",
+  "units": {
+   "leaf": {
+    "usda": "leaf",
+    "grams": 10.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 30.0
+   }
+  }
  },
  {
   "key": "espinaca-hervida",
   "name": "Espinaca hervida",
   "category": "Verduras",
   "fdcId": 168463,
-  "usda": "Spinach, cooked, boiled, drained, without salt"
+  "usda": "Spinach, cooked, boiled, drained, without salt",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 180.0
+   }
+  }
  },
  {
   "key": "acelga",
   "name": "Acelga",
   "category": "Verduras",
   "fdcId": 169991,
-  "usda": "Chard, swiss, raw"
+  "usda": "Chard, swiss, raw",
+  "units": {
+   "leaf": {
+    "usda": "leaf",
+    "grams": 48.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 36.0
+   }
+  }
  },
  {
   "key": "acelga-hervida",
   "name": "Acelga hervida",
   "category": "Verduras",
   "fdcId": 170401,
-  "usda": "Chard, swiss, cooked, boiled, drained, without salt"
+  "usda": "Chard, swiss, cooked, boiled, drained, without salt",
+  "units": {
+   "cup": {
+    "usda": "cup, chopped",
+    "grams": 175.0
+   }
+  }
  },
  {
   "key": "rucula",
   "name": "Rúcula",
   "category": "Verduras",
   "fdcId": 169387,
-  "usda": "Arugula, raw"
+  "usda": "Arugula, raw",
+  "units": {
+   "leaf": {
+    "usda": "leaf",
+    "grams": 2.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 10.0,
+    "count": 0.5
+   }
+  }
  },
  {
   "key": "repollo-blanco",
   "name": "Repollo blanco",
   "category": "Verduras",
   "fdcId": 169975,
-  "usda": "Cabbage, raw"
+  "usda": "Cabbage, raw",
+  "units": {
+   "unit": {
+    "usda": "head, medium (about 5-3/4\" dia)",
+    "grams": 908.0
+   },
+   "leaf": {
+    "usda": "leaf, medium",
+    "grams": 23.0
+   },
+   "cup": {
+    "usda": "cup, shredded",
+    "grams": 70.0
+   }
+  }
  },
  {
   "key": "repollo-colorado",
   "name": "Repollo colorado",
   "category": "Verduras",
   "fdcId": 169977,
-  "usda": "Cabbage, red, raw"
+  "usda": "Cabbage, red, raw",
+  "units": {
+   "unit": {
+    "usda": "head, medium (about 5\" dia)",
+    "grams": 839.0
+   },
+   "leaf": {
+    "usda": "leaf",
+    "grams": 23.0
+   },
+   "cup": {
+    "usda": "cup, shredded",
+    "grams": 70.0
+   }
+  }
  },
  {
   "key": "brocoli",
   "name": "Brócoli",
   "category": "Verduras",
   "fdcId": 170379,
-  "usda": "Broccoli, raw"
+  "usda": "Broccoli, raw",
+  "units": {
+   "unit": {
+    "usda": "bunch",
+    "grams": 608.0
+   },
+   "cup": {
+    "usda": "cup chopped",
+    "grams": 91.0
+   }
+  }
  },
  {
   "key": "brocoli-hervido",
   "name": "Brócoli hervido",
   "category": "Verduras",
   "fdcId": 169967,
-  "usda": "Broccoli, cooked, boiled, drained, without salt"
+  "usda": "Broccoli, cooked, boiled, drained, without salt",
+  "units": {
+   "cup": {
+    "usda": "cup, chopped",
+    "grams": 78.0,
+    "count": 0.5
+   }
+  }
  },
  {
   "key": "coliflor",
   "name": "Coliflor",
   "category": "Verduras",
   "fdcId": 169986,
-  "usda": "Cauliflower, raw"
+  "usda": "Cauliflower, raw",
+  "units": {
+   "unitSmall": {
+    "usda": "head small (4\" dia.)",
+    "grams": 265.0
+   },
+   "unit": {
+    "usda": "head medium (5-6\" dia.)",
+    "grams": 588.0
+   },
+   "unitLarge": {
+    "usda": "head large (6-7\" dia.)",
+    "grams": 840.0
+   },
+   "cup": {
+    "usda": "cup chopped (1/2\" pieces)",
+    "grams": 107.0
+   }
+  }
  },
  {
   "key": "coliflor-hervida",
   "name": "Coliflor hervida",
   "category": "Verduras",
   "fdcId": 170397,
-  "usda": "Cauliflower, cooked, boiled, drained, without salt"
+  "usda": "Cauliflower, cooked, boiled, drained, without salt",
+  "units": {
+   "cup": {
+    "usda": "cup (1\" pieces)",
+    "grams": 62.0,
+    "count": 0.5
+   }
+  }
  },
  {
   "key": "zapallo-anco-crudo",
@@ -515,7 +1159,13 @@
   "category": "Verduras",
   "fdcId": 169295,
   "usda": "Squash, winter, butternut, raw",
-  "also": "calabaza cabutia"
+  "also": "calabaza cabutia",
+  "units": {
+   "cup": {
+    "usda": "cup, cubes",
+    "grams": 140.0
+   }
+  }
  },
  {
   "key": "zapallo-anco-al-horno",
@@ -523,7 +1173,13 @@
   "category": "Verduras",
   "fdcId": 169296,
   "usda": "Squash, winter, butternut, cooked, baked, without salt",
-  "also": "calabaza cabutia"
+  "also": "calabaza cabutia",
+  "units": {
+   "cup": {
+    "usda": "cup, cubes",
+    "grams": 205.0
+   }
+  }
  },
  {
   "key": "zapallo-crudo",
@@ -531,7 +1187,13 @@
   "category": "Verduras",
   "fdcId": 168448,
   "usda": "Pumpkin, raw",
-  "also": "calabaza"
+  "also": "calabaza",
+  "units": {
+   "cup": {
+    "usda": "cup (1\" cubes)",
+    "grams": 116.0
+   }
+  }
  },
  {
   "key": "zapallo-hervido",
@@ -539,7 +1201,13 @@
   "category": "Verduras",
   "fdcId": 168449,
   "usda": "Pumpkin, cooked, boiled, drained, without salt",
-  "also": "calabaza"
+  "also": "calabaza",
+  "units": {
+   "cup": {
+    "usda": "cup, mashed",
+    "grams": 245.0
+   }
+  }
  },
  {
   "key": "zapallito",
@@ -547,7 +1215,29 @@
   "category": "Verduras",
   "fdcId": 169291,
   "usda": "Squash, summer, zucchini, includes skin, raw",
-  "also": "zucchini zuchini calabacín"
+  "also": "zucchini zuchini calabacín",
+  "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 118.0
+   },
+   "unit": {
+    "usda": "medium",
+    "grams": 196.0
+   },
+   "unitLarge": {
+    "usda": "large",
+    "grams": 323.0
+   },
+   "round": {
+    "usda": "slice",
+    "grams": 9.9
+   },
+   "cup": {
+    "usda": "cup, sliced",
+    "grams": 113.0
+   }
+  }
  },
  {
   "key": "zapallito-hervido",
@@ -555,14 +1245,30 @@
   "category": "Verduras",
   "fdcId": 169292,
   "usda": "Squash, summer, zucchini, includes skin, cooked, boiled, drained, without salt",
-  "also": "zucchini zuchini calabacín"
+  "also": "zucchini zuchini calabacín",
+  "units": {
+   "cup": {
+    "usda": "cup, sliced",
+    "grams": 180.0
+   }
+  }
  },
  {
   "key": "berenjena",
   "name": "Berenjena",
   "category": "Verduras",
   "fdcId": 169228,
-  "usda": "Eggplant, raw"
+  "usda": "Eggplant, raw",
+  "units": {
+   "unit": {
+    "usda": "eggplant, unpeeled (approx 1-1/4 lb)",
+    "grams": 548.0
+   },
+   "cup": {
+    "usda": "cup, cubes",
+    "grams": 82.0
+   }
+  }
  },
  {
   "key": "morron-rojo",
@@ -570,7 +1276,29 @@
   "category": "Verduras",
   "fdcId": 170108,
   "usda": "Peppers, sweet, red, raw",
-  "also": "pimiento ají"
+  "also": "pimiento ají",
+  "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 74.0
+   },
+   "unit": {
+    "usda": "medium (approx 2-3/4\" long, 2-1/2 dia.)",
+    "grams": 119.0
+   },
+   "unitLarge": {
+    "usda": "large (2-1/4 per pound, approx 3-3/4\" long, 3\" dia.)",
+    "grams": 164.0
+   },
+   "cup": {
+    "usda": "cup, chopped",
+    "grams": 149.0
+   },
+   "tbsp": {
+    "usda": "tablespoon",
+    "grams": 9.3
+   }
+  }
  },
  {
   "key": "morron-verde",
@@ -578,42 +1306,125 @@
   "category": "Verduras",
   "fdcId": 170427,
   "usda": "Peppers, sweet, green, raw",
-  "also": "pimiento ají"
+  "also": "pimiento ají",
+  "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 74.0
+   },
+   "unit": {
+    "usda": "medium (approx 2-3/4\" long, 2-1/2\" dia)",
+    "grams": 119.0
+   },
+   "unitLarge": {
+    "usda": "large (2-1/4 per lb, approx 3-3/4\" long, 3\" dia)",
+    "grams": 164.0
+   },
+   "cup": {
+    "usda": "cup, chopped",
+    "grams": 149.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 9.3
+   }
+  }
  },
  {
   "key": "pepino",
   "name": "Pepino",
   "category": "Verduras",
   "fdcId": 168409,
-  "usda": "Cucumber, with peel, raw"
+  "usda": "Cucumber, with peel, raw",
+  "units": {
+   "unit": {
+    "usda": "cucumber (8-1/4\")",
+    "grams": 301.0
+   },
+   "cup": {
+    "usda": "cup slices",
+    "grams": 52.0,
+    "count": 0.5
+   }
+  }
  },
  {
   "key": "remolacha-cruda",
   "name": "Remolacha cruda",
   "category": "Verduras",
   "fdcId": 169145,
-  "usda": "Beets, raw"
+  "usda": "Beets, raw",
+  "units": {
+   "unit": {
+    "usda": "beet (2\" dia)",
+    "grams": 82.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 136.0
+   }
+  }
  },
  {
   "key": "remolacha-hervida",
   "name": "Remolacha hervida",
   "category": "Verduras",
   "fdcId": 169146,
-  "usda": "Beets, cooked, boiled, drained"
+  "usda": "Beets, cooked, boiled, drained",
+  "units": {
+   "unit": {
+    "usda": "beets (2\" dia, sphere)",
+    "grams": 100.0,
+    "count": 2
+   },
+   "cup": {
+    "usda": "cup slices",
+    "grams": 85.0,
+    "count": 0.5
+   }
+  }
  },
  {
   "key": "apio",
   "name": "Apio",
   "category": "Verduras",
   "fdcId": 169988,
-  "usda": "Celery, raw"
+  "usda": "Celery, raw",
+  "units": {
+   "unitSmall": {
+    "usda": "stalk, small (5\" long)",
+    "grams": 17.0
+   },
+   "unit": {
+    "usda": "stalk, medium (7-1/2\" - 8\" long)",
+    "grams": 40.0
+   },
+   "unitLarge": {
+    "usda": "stalk, large (11\"-12\" long)",
+    "grams": 64.0
+   },
+   "cup": {
+    "usda": "cup chopped",
+    "grams": 101.0
+   }
+  }
  },
  {
   "key": "puerro",
   "name": "Puerro",
   "category": "Verduras",
   "fdcId": 169246,
-  "usda": "Leeks, (bulb and lower leaf-portion), raw"
+  "usda": "Leeks, (bulb and lower leaf-portion), raw",
+  "units": {
+   "unit": {
+    "usda": "leek",
+    "grams": 89.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 89.0
+   }
+  }
  },
  {
   "key": "choclo-crudo",
@@ -621,7 +1432,25 @@
   "category": "Verduras",
   "fdcId": 169998,
   "usda": "Corn, sweet, yellow, raw",
-  "also": "maíz"
+  "also": "maíz",
+  "units": {
+   "unitSmall": {
+    "usda": "ear, small (5-1/2\" to 6-1/2\" long)",
+    "grams": 73.0
+   },
+   "unit": {
+    "usda": "ear, medium (6-3/4\" to 7-1/2\" long) yields",
+    "grams": 102.0
+   },
+   "unitLarge": {
+    "usda": "ear, large (7-3/4\" to 9\" long) yields",
+    "grams": 143.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 145.0
+   }
+  }
  },
  {
   "key": "choclo-hervido",
@@ -629,7 +1458,25 @@
   "category": "Verduras",
   "fdcId": 169999,
   "usda": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
-  "also": "maíz"
+  "also": "maíz",
+  "units": {
+   "unitSmall": {
+    "usda": "ear small (5-1/2\" to 6-1/2\" long)",
+    "grams": 89.0
+   },
+   "unit": {
+    "usda": "ear medium (6-3/4\" to 7-1/2\" long)",
+    "grams": 103.0
+   },
+   "unitLarge": {
+    "usda": "ear large (7-3/4\" to 9\" long)",
+    "grams": 118.0
+   },
+   "cup": {
+    "usda": "cup cut",
+    "grams": 149.0
+   }
+  }
  },
  {
   "key": "choclo-en-lata",
@@ -637,7 +1484,17 @@
   "category": "Verduras",
   "fdcId": 169214,
   "usda": "Corn, sweet, yellow, canned, whole kernel, drained solids",
-  "also": "maíz"
+  "also": "maíz",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 164.0
+   },
+   "package": {
+    "usda": "can (12 oz) yields",
+    "grams": 211.0
+   }
+  }
  },
  {
   "key": "chauchas",
@@ -645,7 +1502,18 @@
   "category": "Verduras",
   "fdcId": 169961,
   "usda": "Beans, snap, green, raw",
-  "also": "judías verdes"
+  "also": "judías verdes",
+  "units": {
+   "unit": {
+    "usda": "beans (4\" long)",
+    "grams": 55.0,
+    "count": 10
+   },
+   "cup": {
+    "usda": "cup 1/2\" pieces",
+    "grams": 100.0
+   }
+  }
  },
  {
   "key": "chauchas-hervidas",
@@ -653,7 +1521,13 @@
   "category": "Verduras",
   "fdcId": 169141,
   "usda": "Beans, snap, green, cooked, boiled, drained, without salt",
-  "also": "judías verdes"
+  "also": "judías verdes",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 125.0
+   }
+  }
  },
  {
   "key": "arvejas-frescas",
@@ -661,7 +1535,13 @@
   "category": "Verduras",
   "fdcId": 170419,
   "usda": "Peas, green, raw",
-  "also": "guisantes"
+  "also": "guisantes",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 145.0
+   }
+  }
  },
  {
   "key": "arvejas-en-lata",
@@ -669,14 +1549,42 @@
   "category": "Verduras",
   "fdcId": 170013,
   "usda": "Peas, green (includes baby and lesuer types), canned, drained solids, unprepared",
-  "also": "guisantes"
+  "also": "guisantes",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 175.0
+   },
+   "package": {
+    "usda": "can (303 x 406)",
+    "grams": 313.0
+   }
+  }
  },
  {
   "key": "esparragos",
   "name": "Espárragos",
   "category": "Verduras",
   "fdcId": 168389,
-  "usda": "Asparagus, raw"
+  "usda": "Asparagus, raw",
+  "units": {
+   "unitSmall": {
+    "usda": "spear, small (5\" long or less)",
+    "grams": 12.0
+   },
+   "unit": {
+    "usda": "spear, medium (5-1/4\" to 7\" long)",
+    "grams": 16.0
+   },
+   "unitLarge": {
+    "usda": "spear, large (7-1/4\" to 8-1/2\")",
+    "grams": 20.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 134.0
+   }
+  }
  },
  {
   "key": "champinones",
@@ -684,7 +1592,25 @@
   "category": "Verduras",
   "fdcId": 169251,
   "usda": "Mushrooms, white, raw",
-  "also": "hongos"
+  "also": "hongos",
+  "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 10.0
+   },
+   "unit": {
+    "usda": "medium",
+    "grams": 18.0
+   },
+   "unitLarge": {
+    "usda": "large",
+    "grams": 23.0
+   },
+   "cup": {
+    "usda": "cup, pieces or slices",
+    "grams": 70.0
+   }
+  }
  },
  {
   "key": "alcaucil",
@@ -692,35 +1618,90 @@
   "category": "Verduras",
   "fdcId": 169205,
   "usda": "Artichokes, (globe or french), raw",
-  "also": "alcachofa"
+  "also": "alcachofa",
+  "units": {
+   "unit": {
+    "usda": "artichoke, medium",
+    "grams": 128.0
+   },
+   "unitLarge": {
+    "usda": "artichoke, large",
+    "grams": 162.0
+   }
+  }
  },
  {
   "key": "hinojo",
   "name": "Hinojo",
   "category": "Verduras",
   "fdcId": 169385,
-  "usda": "Fennel, bulb, raw"
+  "usda": "Fennel, bulb, raw",
+  "units": {
+   "unit": {
+    "usda": "bulb",
+    "grams": 234.0
+   },
+   "cup": {
+    "usda": "cup, sliced",
+    "grams": 87.0
+   }
+  }
  },
  {
   "key": "rabanito",
   "name": "Rabanito",
   "category": "Verduras",
   "fdcId": 169276,
-  "usda": "Radishes, raw"
+  "usda": "Radishes, raw",
+  "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 2.0
+   },
+   "unit": {
+    "usda": "medium (3/4\" to 1\" dia)",
+    "grams": 4.5
+   },
+   "unitLarge": {
+    "usda": "large (1\" to 1-1/4\" dia)",
+    "grams": 9.0
+   },
+   "cup": {
+    "usda": "cup slices",
+    "grams": 116.0
+   }
+  }
  },
  {
   "key": "radicheta",
   "name": "Radicheta",
   "category": "Verduras",
   "fdcId": 169992,
-  "usda": "Chicory greens, raw"
+  "usda": "Chicory greens, raw",
+  "units": {
+   "cup": {
+    "usda": "cup, chopped",
+    "grams": 29.0
+   }
+  }
  },
  {
   "key": "endivia",
   "name": "Endivia",
   "category": "Verduras",
   "fdcId": 170404,
-  "usda": "Chicory, witloof, raw"
+  "usda": "Chicory, witloof, raw",
+  "units": {
+   "unit": {
+    "usda": "head",
+    "grams": 53.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 45.0,
+    "count": 0.5
+   }
+  }
  },
  {
   "key": "mandioca",
@@ -728,91 +1709,219 @@
   "category": "Verduras",
   "fdcId": 169985,
   "usda": "Cassava, raw",
-  "also": "yuca"
+  "also": "yuca",
+  "units": {
+   "unit": {
+    "usda": "root",
+    "grams": 408.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 206.0
+   }
+  }
  },
  {
   "key": "repollitos-de-bruselas",
   "name": "Repollitos de Bruselas",
   "category": "Verduras",
   "fdcId": 170383,
-  "usda": "Brussels sprouts, raw"
+  "usda": "Brussels sprouts, raw",
+  "units": {
+   "unit": {
+    "usda": "sprout",
+    "grams": 19.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 88.0
+   }
+  }
  },
  {
   "key": "kale",
   "name": "Kale",
   "category": "Verduras",
   "fdcId": 168421,
-  "usda": "Kale, raw"
+  "usda": "Kale, raw",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 21.0
+   }
+  }
  },
  {
   "key": "nabo",
   "name": "Nabo",
   "category": "Verduras",
   "fdcId": 170465,
-  "usda": "Turnips, raw"
+  "usda": "Turnips, raw",
+  "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 61.0
+   },
+   "unit": {
+    "usda": "medium",
+    "grams": 122.0
+   },
+   "unitLarge": {
+    "usda": "large",
+    "grams": 183.0
+   },
+   "cup": {
+    "usda": "cup, cubes",
+    "grams": 130.0
+   }
+  }
  },
  {
   "key": "perejil",
   "name": "Perejil",
   "category": "Verduras",
   "fdcId": 170416,
-  "usda": "Parsley, fresh"
+  "usda": "Parsley, fresh",
+  "units": {
+   "cup": {
+    "usda": "cup chopped",
+    "grams": 60.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 3.8
+   }
+  }
  },
  {
   "key": "albahaca",
   "name": "Albahaca",
   "category": "Verduras",
   "fdcId": 172232,
-  "usda": "Basil, fresh"
+  "usda": "Basil, fresh",
+  "units": {
+   "leaf": {
+    "usda": "leaves",
+    "grams": 2.5,
+    "count": 5
+   },
+   "tbsp": {
+    "usda": "tbsp, chopped",
+    "grams": 5.3,
+    "count": 2
+   }
+  }
  },
  {
   "key": "jengibre",
   "name": "Jengibre",
   "category": "Verduras",
   "fdcId": 169231,
-  "usda": "Ginger root, raw"
+  "usda": "Ginger root, raw",
+  "units": {
+   "tsp": {
+    "usda": "tsp",
+    "grams": 2.0
+   }
+  }
  },
  {
   "key": "aceitunas-verdes",
   "name": "Aceitunas verdes",
   "category": "Verduras",
   "fdcId": 169096,
-  "usda": "Olives, pickled, canned or bottled, green"
+  "usda": "Olives, pickled, canned or bottled, green",
+  "units": {
+   "unit": {
+    "usda": "olive",
+    "grams": 2.7
+   }
+  }
  },
  {
   "key": "aceitunas-negras",
   "name": "Aceitunas negras",
   "category": "Verduras",
   "fdcId": 169094,
-  "usda": "Olives, ripe, canned (small-extra large)"
+  "usda": "Olives, ripe, canned (small-extra large)",
+  "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 3.2
+   },
+   "unitLarge": {
+    "usda": "large",
+    "grams": 4.4
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 8.4
+   }
+  }
  },
  {
   "key": "lentejas-crudas",
   "name": "Lentejas crudas",
   "category": "Legumbres",
   "fdcId": 172420,
-  "usda": "Lentils, raw"
+  "usda": "Lentils, raw",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 192.0
+   },
+   "tbsp": {
+    "usda": "tablespoon",
+    "grams": 12.0
+   }
+  }
  },
  {
   "key": "lentejas-cocidas",
   "name": "Lentejas cocidas",
   "category": "Legumbres",
   "fdcId": 172421,
-  "usda": "Lentils, mature seeds, cooked, boiled, without salt"
+  "usda": "Lentils, mature seeds, cooked, boiled, without salt",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 198.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 12.3
+   }
+  }
  },
  {
   "key": "garbanzos-crudos",
   "name": "Garbanzos crudos",
   "category": "Legumbres",
   "fdcId": 173756,
-  "usda": "Chickpeas (garbanzo beans, bengal gram), mature seeds, raw"
+  "usda": "Chickpeas (garbanzo beans, bengal gram), mature seeds, raw",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 200.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 12.5
+   }
+  }
  },
  {
   "key": "garbanzos-cocidos",
   "name": "Garbanzos cocidos",
   "category": "Legumbres",
   "fdcId": 173757,
-  "usda": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt"
+  "usda": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 164.0
+   }
+  }
  },
  {
   "key": "porotos-negros-crudos",
@@ -820,7 +1929,17 @@
   "category": "Legumbres",
   "fdcId": 173734,
   "usda": "Beans, black, mature seeds, raw",
-  "also": "frijoles"
+  "also": "frijoles",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 194.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 12.1
+   }
+  }
  },
  {
   "key": "porotos-negros-cocidos",
@@ -828,7 +1947,13 @@
   "category": "Legumbres",
   "fdcId": 173735,
   "usda": "Beans, black, mature seeds, cooked, boiled, without salt",
-  "also": "frijoles"
+  "also": "frijoles",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 172.0
+   }
+  }
  },
  {
   "key": "porotos-alubia-crudos",
@@ -836,7 +1961,17 @@
   "category": "Legumbres",
   "fdcId": 175202,
   "usda": "Beans, white, mature seeds, raw",
-  "also": "blancos frijoles"
+  "also": "blancos frijoles",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 202.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 12.6
+   }
+  }
  },
  {
   "key": "porotos-alubia-cocidos",
@@ -844,7 +1979,17 @@
   "category": "Legumbres",
   "fdcId": 175203,
   "usda": "Beans, white, mature seeds, cooked, boiled, without salt",
-  "also": "blancos frijoles"
+  "also": "blancos frijoles",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 179.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 11.2
+   }
+  }
  },
  {
   "key": "porotos-colorados-crudos",
@@ -852,7 +1997,17 @@
   "category": "Legumbres",
   "fdcId": 173744,
   "usda": "Beans, kidney, red, mature seeds, raw",
-  "also": "frijoles"
+  "also": "frijoles",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 184.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 12.2
+   }
+  }
  },
  {
   "key": "porotos-colorados-cocidos",
@@ -860,105 +2015,257 @@
   "category": "Legumbres",
   "fdcId": 175194,
   "usda": "Beans, kidney, red, mature seeds, cooked, boiled, without salt",
-  "also": "frijoles"
+  "also": "frijoles",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 177.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 11.0
+   }
+  }
  },
  {
   "key": "porotos-de-soja-crudos",
   "name": "Porotos de soja crudos",
   "category": "Legumbres",
   "fdcId": 174270,
-  "usda": "Soybeans, mature seeds, raw"
+  "usda": "Soybeans, mature seeds, raw",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 186.0
+   }
+  }
  },
  {
   "key": "porotos-de-soja-cocidos",
   "name": "Porotos de soja cocidos",
   "category": "Legumbres",
   "fdcId": 174271,
-  "usda": "Soybeans, mature cooked, boiled, without salt"
+  "usda": "Soybeans, mature cooked, boiled, without salt",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 172.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 10.7
+   }
+  }
  },
  {
   "key": "arvejas-secas-partidas-crudas",
   "name": "Arvejas secas partidas crudas",
   "category": "Legumbres",
   "fdcId": 172428,
-  "usda": "Peas, green, split, mature seeds, raw"
+  "usda": "Peas, green, split, mature seeds, raw",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 196.0
+   }
+  }
  },
  {
   "key": "arvejas-secas-partidas-cocidas",
   "name": "Arvejas secas partidas cocidas",
   "category": "Legumbres",
   "fdcId": 172429,
-  "usda": "Peas, split, mature seeds, cooked, boiled, without salt"
+  "usda": "Peas, split, mature seeds, cooked, boiled, without salt",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 196.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 12.2
+   }
+  }
  },
  {
   "key": "tofu",
   "name": "Tofu",
   "category": "Legumbres",
   "fdcId": 172475,
-  "usda": "Tofu, raw, firm, prepared with calcium sulfate"
+  "usda": "Tofu, raw, firm, prepared with calcium sulfate",
+  "units": {
+   "unit": {
+    "usda": "block",
+    "grams": 81.0,
+    "count": 0.25
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 126.0,
+    "count": 0.5
+   }
+  }
  },
  {
   "key": "hummus",
   "name": "Hummus",
   "category": "Legumbres",
   "fdcId": 174289,
-  "usda": "Hummus, commercial"
+  "usda": "Hummus, commercial",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 246.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 15.0
+   }
+  }
  },
  {
   "key": "bife-de-chorizo-crudo",
   "name": "Bife de chorizo crudo",
   "category": "Carne vacuna",
   "fdcId": 171775,
-  "usda": "Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+  "usda": "Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, raw",
+  "units": {
+   "unit": {
+    "usda": "steak",
+    "grams": 302.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "bife-de-chorizo-a-la-parrilla",
   "name": "Bife de chorizo a la parrilla",
   "category": "Carne vacuna",
   "fdcId": 174714,
-  "usda": "Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, grilled"
+  "usda": "Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, grilled",
+  "units": {
+   "unit": {
+    "usda": "steak",
+    "grams": 235.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "ojo-de-bife-crudo",
   "name": "Ojo de bife crudo",
   "category": "Carne vacuna",
   "fdcId": 172156,
-  "usda": "Beef, rib eye steak/roast, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+  "usda": "Beef, rib eye steak/roast, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, raw",
+  "units": {
+   "unit": {
+    "usda": "steak",
+    "grams": 361.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "ojo-de-bife-a-la-parrilla",
   "name": "Ojo de bife a la parrilla",
   "category": "Carne vacuna",
   "fdcId": 173392,
-  "usda": "Beef, rib eye steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, grilled"
+  "usda": "Beef, rib eye steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, grilled",
+  "units": {
+   "unit": {
+    "usda": "steak",
+    "grams": 291.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "lomo-crudo",
   "name": "Lomo crudo",
   "category": "Carne vacuna",
   "fdcId": 169542,
-  "usda": "Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+  "usda": "Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw",
+  "units": {
+   "unit": {
+    "usda": "steak",
+    "grams": 164.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "lomo-cocido",
   "name": "Lomo cocido",
   "category": "Carne vacuna",
   "fdcId": 169543,
-  "usda": "Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, broiled"
+  "usda": "Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, broiled",
+  "units": {
+   "unit": {
+    "usda": "steak, excluding refuse (yield from 1 raw steak, with refuse, weighing 154 g)",
+    "grams": 104.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "vacio-crudo",
   "name": "Vacío crudo",
   "category": "Carne vacuna",
   "fdcId": 169563,
-  "usda": "Beef, flank, steak, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+  "usda": "Beef, flank, steak, separable lean and fat, trimmed to 0\" fat, all grades, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "vacio-cocido",
   "name": "Vacío cocido",
   "category": "Carne vacuna",
   "fdcId": 168733,
-  "usda": "Beef, flank, steak, separable lean and fat, trimmed to 0\" fat, all grades, cooked, broiled"
+  "usda": "Beef, flank, steak, separable lean and fat, trimmed to 0\" fat, all grades, cooked, broiled",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "asado-de-tira-crudo",
@@ -966,7 +2273,19 @@
   "category": "Carne vacuna",
   "fdcId": 170826,
   "usda": "Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0\" fat, all grades, raw",
-  "also": "costilla"
+  "also": "costilla",
+  "units": {
+   "unit": {
+    "usda": "piece",
+    "grams": 432.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "asado-de-tira-cocido",
@@ -974,49 +2293,117 @@
   "category": "Carne vacuna",
   "fdcId": 171222,
   "usda": "Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0\" fat, all grades, cooked, braised",
-  "also": "costilla"
+  "also": "costilla",
+  "units": {
+   "unit": {
+    "usda": "piece",
+    "grams": 289.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "entrana-cruda",
   "name": "Entraña cruda",
   "category": "Carne vacuna",
   "fdcId": 173400,
-  "usda": "Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+  "usda": "Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0\" fat, all grades, raw",
+  "units": {
+   "unit": {
+    "usda": "steak",
+    "grams": 266.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "entrana-a-la-parrilla",
   "name": "Entraña a la parrilla",
   "category": "Carne vacuna",
   "fdcId": 173397,
-  "usda": "Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0\" fat, all grades, cooked, grilled"
+  "usda": "Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0\" fat, all grades, cooked, grilled",
+  "units": {
+   "unit": {
+    "usda": "steak",
+    "grams": 174.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "cuadril-crudo",
   "name": "Cuadril crudo",
   "category": "Carne vacuna",
   "fdcId": 168726,
-  "usda": "Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+  "usda": "Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "cuadril-cocido",
   "name": "Cuadril cocido",
   "category": "Carne vacuna",
   "fdcId": 168727,
-  "usda": "Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, broiled"
+  "usda": "Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, broiled",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "colita-de-cuadril-cruda",
   "name": "Colita de cuadril cruda",
   "category": "Carne vacuna",
   "fdcId": 168734,
-  "usda": "Beef, bottom sirloin, tri-tip roast, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+  "usda": "Beef, bottom sirloin, tri-tip roast, separable lean and fat, trimmed to 0\" fat, all grades, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "colita-de-cuadril-al-horno",
   "name": "Colita de cuadril al horno",
   "category": "Carne vacuna",
   "fdcId": 169558,
-  "usda": "Beef, bottom sirloin, tri-tip roast, separable lean and fat, trimmed to 0\" fat, all grades, cooked, roasted"
+  "usda": "Beef, bottom sirloin, tri-tip roast, separable lean and fat, trimmed to 0\" fat, all grades, cooked, roasted",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "nalga-cruda",
@@ -1024,7 +2411,15 @@
   "category": "Carne vacuna",
   "fdcId": 169529,
   "usda": "Beef, round, top round, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw",
-  "also": "milanesa"
+  "also": "milanesa",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "nalga-cocida",
@@ -1032,7 +2427,15 @@
   "category": "Carne vacuna",
   "fdcId": 169531,
   "usda": "Beef, round, top round steak, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, broiled",
-  "also": "milanesa"
+  "also": "milanesa",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "bola-de-lomo-cruda",
@@ -1040,7 +2443,15 @@
   "category": "Carne vacuna",
   "fdcId": 169470,
   "usda": "Beef, round, tip round, roast, separable lean and fat, trimmed to 0\" fat, all grades, raw",
-  "also": "milanesa"
+  "also": "milanesa",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "bola-de-lomo-al-horno",
@@ -1048,56 +2459,123 @@
   "category": "Carne vacuna",
   "fdcId": 170230,
   "usda": "Beef, round, tip round, roast, separable lean and fat, trimmed to 0\" fat, all grades, cooked, roasted",
-  "also": "milanesa"
+  "also": "milanesa",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "peceto-crudo",
   "name": "Peceto crudo",
   "category": "Carne vacuna",
   "fdcId": 169523,
-  "usda": "Beef, round, eye of round, roast, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+  "usda": "Beef, round, eye of round, roast, separable lean and fat, trimmed to 1/8\" fat, all grades, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "peceto-al-horno",
   "name": "Peceto al horno",
   "category": "Carne vacuna",
   "fdcId": 169524,
-  "usda": "Beef, round, eye of round, roast, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, roasted"
+  "usda": "Beef, round, eye of round, roast, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, roasted",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "cuadrada-cruda",
   "name": "Cuadrada cruda",
   "category": "Carne vacuna",
   "fdcId": 169519,
-  "usda": "Beef, round, bottom round, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+  "usda": "Beef, round, bottom round, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "paleta-cruda",
   "name": "Paleta cruda",
   "category": "Carne vacuna",
   "fdcId": 169491,
-  "usda": "Beef, chuck, arm pot roast, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+  "usda": "Beef, chuck, arm pot roast, separable lean and fat, trimmed to 1/8\" fat, all grades, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "roast-beef-crudo",
   "name": "Roast beef crudo",
   "category": "Carne vacuna",
   "fdcId": 171231,
-  "usda": "Beef, chuck eye steak, boneless, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+  "usda": "Beef, chuck eye steak, boneless, separable lean and fat, trimmed to 0\" fat, all grades, raw",
+  "units": {
+   "unit": {
+    "usda": "steak",
+    "grams": 384.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "osobuco-crudo",
   "name": "Osobuco crudo",
   "category": "Carne vacuna",
   "fdcId": 169441,
-  "usda": "Beef, shank crosscuts, separable lean only, trimmed to 1/4\" fat, choice, raw"
+  "usda": "Beef, shank crosscuts, separable lean only, trimmed to 1/4\" fat, choice, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 28.35,
+    "per": 0.25
+   }
+  }
  },
  {
   "key": "osobuco-cocido",
   "name": "Osobuco cocido",
   "category": "Carne vacuna",
   "fdcId": 169442,
-  "usda": "Beef, shank crosscuts, separable lean only, trimmed to 1/4\" fat, choice, cooked, simmered"
+  "usda": "Beef, shank crosscuts, separable lean only, trimmed to 1/4\" fat, choice, cooked, simmered",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "carne-picada-comun-cruda",
@@ -1105,7 +2583,15 @@
   "category": "Carne vacuna",
   "fdcId": 174036,
   "usda": "Beef, ground, 80% lean meat / 20% fat, raw",
-  "also": "molida"
+  "also": "molida",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "carne-picada-especial-cruda",
@@ -1113,7 +2599,15 @@
   "category": "Carne vacuna",
   "fdcId": 174030,
   "usda": "Beef, ground, 90% lean meat / 10% fat, raw",
-  "also": "molida"
+  "also": "molida",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "carne-picada-magra-cruda",
@@ -1121,7 +2615,15 @@
   "category": "Carne vacuna",
   "fdcId": 171790,
   "usda": "Beef, ground, 95% lean meat / 5% fat, raw",
-  "also": "molida"
+  "also": "molida",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "carne-picada-comun-cocida",
@@ -1129,7 +2631,15 @@
   "category": "Carne vacuna",
   "fdcId": 171798,
   "usda": "Beef, ground, 80% lean meat / 20% fat, patty, cooked, pan-broiled",
-  "also": "molida"
+  "also": "molida",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "carne-picada-especial-cocida",
@@ -1137,63 +2647,139 @@
   "category": "Carne vacuna",
   "fdcId": 171793,
   "usda": "Beef, ground, 90% lean meat / 10% fat, patty, cooked, pan-broiled",
-  "also": "molida"
+  "also": "molida",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "hamburguesa-casera-cocida",
   "name": "Hamburguesa casera cocida",
   "category": "Carne vacuna",
   "fdcId": 171797,
-  "usda": "Beef, ground, 80% lean meat / 20% fat, patty, cooked, broiled"
+  "usda": "Beef, ground, 80% lean meat / 20% fat, patty, cooked, broiled",
+  "units": {
+   "unit": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "higado-vacuno-crudo",
   "name": "Hígado vacuno crudo",
   "category": "Carne vacuna",
   "fdcId": 169451,
-  "usda": "Beef, variety meats and by-products, liver, raw"
+  "usda": "Beef, variety meats and by-products, liver, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "lengua-vacuna-cruda",
   "name": "Lengua vacuna cruda",
   "category": "Carne vacuna",
   "fdcId": 170196,
-  "usda": "Beef, variety meats and by-products, tongue, raw"
+  "usda": "Beef, variety meats and by-products, tongue, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "mondongo-crudo",
   "name": "Mondongo crudo",
   "category": "Carne vacuna",
   "fdcId": 170599,
-  "usda": "Beef, variety meats and by-products, tripe, raw"
+  "usda": "Beef, variety meats and by-products, tripe, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "rinon-vacuno-crudo",
   "name": "Riñón vacuno crudo",
   "category": "Carne vacuna",
   "fdcId": 169449,
-  "usda": "Beef, variety meats and by-products, kidneys, raw"
+  "usda": "Beef, variety meats and by-products, kidneys, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "molleja-cruda",
   "name": "Molleja cruda",
   "category": "Carne vacuna",
   "fdcId": 170194,
-  "usda": "Beef, variety meats and by-products, thymus, raw"
+  "usda": "Beef, variety meats and by-products, thymus, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "corazon-vacuno-crudo",
   "name": "Corazón vacuno crudo",
   "category": "Carne vacuna",
   "fdcId": 168625,
-  "usda": "Beef, variety meats and by-products, heart, raw"
+  "usda": "Beef, variety meats and by-products, heart, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "carre-de-cerdo-crudo",
   "name": "Carré de cerdo crudo",
   "category": "Cerdo",
   "fdcId": 167818,
-  "usda": "Pork, fresh, loin, whole, separable lean and fat, raw"
+  "usda": "Pork, fresh, loin, whole, separable lean and fat, raw",
+  "units": {
+   "unit": {
+    "usda": "chop, excluding refuse (yield from 1 raw chop, with refuse, weighing 151 g)",
+    "grams": 117.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "costeleta-de-cerdo-cocida",
@@ -1201,14 +2787,38 @@
   "category": "Cerdo",
   "fdcId": 167827,
   "usda": "Pork, fresh, loin, center loin (chops), bone-in, separable lean and fat, cooked, broiled",
-  "also": "chuleta"
+  "also": "chuleta",
+  "units": {
+   "unit": {
+    "usda": "chop without refuse (Yield from 1 cooked chop, with refuse, weighing 209g)",
+    "grams": 157.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "bondiola-cruda",
   "name": "Bondiola cruda",
   "category": "Cerdo",
   "fdcId": 167849,
-  "usda": "Pork, fresh, shoulder, (Boston butt), blade (steaks), separable lean and fat, raw"
+  "usda": "Pork, fresh, shoulder, (Boston butt), blade (steaks), separable lean and fat, raw",
+  "units": {
+   "unit": {
+    "usda": "steak without refuse (Yield from 1 raw steak, with refuse, weighing 380g)",
+    "grams": 288.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "pechito-de-cerdo-crudo",
@@ -1216,35 +2826,79 @@
   "category": "Cerdo",
   "fdcId": 167853,
   "usda": "Pork, fresh, spareribs, separable lean and fat, raw",
-  "also": "costillas ribs"
+  "also": "costillas ribs",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "solomillo-de-cerdo-crudo",
   "name": "Solomillo de cerdo crudo",
   "category": "Cerdo",
   "fdcId": 168312,
-  "usda": "Pork, fresh, loin, tenderloin, separable lean and fat, raw"
+  "usda": "Pork, fresh, loin, tenderloin, separable lean and fat, raw",
+  "units": {
+   "unit": {
+    "usda": "roast (Yield from 1 raw roast, with refuse, weighing 504g)",
+    "grams": 505.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "pernil-de-cerdo-crudo",
   "name": "Pernil de cerdo crudo",
   "category": "Cerdo",
   "fdcId": 168222,
-  "usda": "Pork, fresh, leg (ham), whole, separable lean and fat, raw"
+  "usda": "Pork, fresh, leg (ham), whole, separable lean and fat, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "carne-picada-de-cerdo-cruda",
   "name": "Carne picada de cerdo cruda",
   "category": "Cerdo",
   "fdcId": 167902,
-  "usda": "Pork, fresh, ground, raw"
+  "usda": "Pork, fresh, ground, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "panceta-fresca-cruda",
   "name": "Panceta fresca cruda",
   "category": "Cerdo",
   "fdcId": 167812,
-  "usda": "Pork, fresh, belly, raw"
+  "usda": "Pork, fresh, belly, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "panceta-ahumada-cruda",
@@ -1306,7 +2960,14 @@
   "category": "Fiambres y embutidos",
   "fdcId": 174603,
   "usda": "Salami, Italian, pork",
-  "also": "salamín"
+  "also": "salamín",
+  "units": {
+   "slice": {
+    "usda": "slice",
+    "grams": 9.8,
+    "from": 174582
+   }
+  }
  },
  {
   "key": "mortadela",
@@ -1328,10 +2989,10 @@
   "fdcId": 171618,
   "usda": "Blood sausage",
   "units": {
-   "slice": {
+   "round": {
     "usda": "slices",
     "grams": 100.0,
-    "count": 4.0
+    "count": 4
    }
   }
  },
@@ -1393,210 +3054,544 @@
   "name": "Pechuga de pollo sin piel cruda",
   "category": "Pollo",
   "fdcId": 171077,
-  "usda": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw"
+  "usda": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+  "units": {
+   "unit": {
+    "usda": "piece",
+    "grams": 272.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "pechuga-de-pollo-sin-piel-cocida",
   "name": "Pechuga de pollo sin piel cocida",
   "category": "Pollo",
   "fdcId": 171534,
-  "usda": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, cooked, grilled"
+  "usda": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, cooked, grilled",
+  "units": {
+   "unit": {
+    "usda": "piece",
+    "grams": 196.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "pechuga-de-pollo-con-piel-cruda",
   "name": "Pechuga de pollo con piel cruda",
   "category": "Pollo",
   "fdcId": 171474,
-  "usda": "Chicken, broilers or fryers, breast, meat and skin, raw"
+  "usda": "Chicken, broilers or fryers, breast, meat and skin, raw",
+  "units": {
+   "unit": {
+    "usda": "breast, bone removed",
+    "grams": 145.0,
+    "count": 0.5,
+    "per": 1
+   }
+  }
  },
  {
   "key": "muslo-de-pollo-sin-piel-crudo",
   "name": "Muslo de pollo sin piel crudo",
   "category": "Pollo",
   "fdcId": 173627,
-  "usda": "Chicken, broilers or fryers, dark meat, thigh, meat only, raw"
+  "usda": "Chicken, broilers or fryers, dark meat, thigh, meat only, raw",
+  "units": {
+   "unit": {
+    "usda": "thigh without skin",
+    "grams": 149.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "muslo-de-pollo-sin-piel-cocido",
   "name": "Muslo de pollo sin piel cocido",
   "category": "Pollo",
   "fdcId": 172388,
-  "usda": "Chicken, broilers or fryers, thigh, meat only, cooked, roasted"
+  "usda": "Chicken, broilers or fryers, thigh, meat only, cooked, roasted",
+  "units": {
+   "unit": {
+    "usda": "thigh without skin",
+    "grams": 116.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "pata-de-pollo-con-piel-cruda",
   "name": "Pata de pollo con piel cruda",
   "category": "Pollo",
   "fdcId": 172373,
-  "usda": "Chicken, broilers or fryers, drumstick, meat and skin, raw"
+  "usda": "Chicken, broilers or fryers, drumstick, meat and skin, raw",
+  "units": {
+   "unit": {
+    "usda": "drumstick with skin",
+    "grams": 133.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "pata-de-pollo-con-piel-cocida",
   "name": "Pata de pollo con piel cocida",
   "category": "Pollo",
   "fdcId": 173612,
-  "usda": "Chicken, broilers or fryers, drumstick, meat and skin, cooked, roasted"
+  "usda": "Chicken, broilers or fryers, drumstick, meat and skin, cooked, roasted",
+  "units": {
+   "unit": {
+    "usda": "drumstick with skin (yield from 1 lb ready-to-cook chicken)",
+    "grams": 105.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "pata-muslo-de-pollo-con-piel-crudo",
   "name": "Pata muslo de pollo con piel crudo",
   "category": "Pollo",
   "fdcId": 172378,
-  "usda": "Chicken, broilers or fryers, leg, meat and skin, raw"
+  "usda": "Chicken, broilers or fryers, leg, meat and skin, raw",
+  "units": {
+   "unit": {
+    "usda": "leg, with skin (Sum of drumstick+thigh+back)",
+    "grams": 344.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "pata-muslo-de-pollo-con-piel-cocido",
   "name": "Pata muslo de pollo con piel cocido",
   "category": "Pollo",
   "fdcId": 173617,
-  "usda": "Chicken, broilers or fryers, leg, meat and skin, cooked, roasted"
+  "usda": "Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",
+  "units": {
+   "unit": {
+    "usda": "leg, with skin (Sum of drumstick+thigh+back)",
+    "grams": 258.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "alitas-de-pollo-crudas",
   "name": "Alitas de pollo crudas",
   "category": "Pollo",
   "fdcId": 172390,
-  "usda": "Chicken, broilers or fryers, wing, meat and skin, raw"
+  "usda": "Chicken, broilers or fryers, wing, meat and skin, raw",
+  "units": {
+   "unit": {
+    "usda": "piece",
+    "grams": 107.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "alitas-de-pollo-cocidas",
   "name": "Alitas de pollo cocidas",
   "category": "Pollo",
   "fdcId": 173630,
-  "usda": "Chicken, broilers or fryers, wing, meat and skin, cooked, roasted"
+  "usda": "Chicken, broilers or fryers, wing, meat and skin, cooked, roasted",
+  "units": {
+   "unit": {
+    "usda": "piece",
+    "grams": 85.0
+   }
+  }
  },
  {
   "key": "pollo-entero-con-piel-crudo",
   "name": "Pollo entero con piel crudo",
   "category": "Pollo",
   "fdcId": 171447,
-  "usda": "Chicken, broilers or fryers, meat and skin, raw"
+  "usda": "Chicken, broilers or fryers, meat and skin, raw",
+  "units": {
+   "unit": {
+    "usda": "chicken, bone removed",
+    "grams": 460.0,
+    "count": 0.5
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "pollo-entero-con-piel-al-horno",
   "name": "Pollo entero con piel al horno",
   "category": "Pollo",
   "fdcId": 171450,
-  "usda": "Chicken, broilers or fryers, meat and skin, cooked, roasted"
+  "usda": "Chicken, broilers or fryers, meat and skin, cooked, roasted",
+  "units": {
+   "cup": {
+    "usda": "cup, chopped or diced",
+    "grams": 140.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "carne-picada-de-pollo-cruda",
   "name": "Carne picada de pollo cruda",
   "category": "Pollo",
   "fdcId": 171116,
-  "usda": "Chicken, ground, raw"
+  "usda": "Chicken, ground, raw",
+  "units": {
+   "serving": {
+    "usda": "oz crumbled",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "higado-de-pollo-crudo",
   "name": "Hígado de pollo crudo",
   "category": "Pollo",
   "fdcId": 171060,
-  "usda": "Chicken, liver, all classes, raw"
+  "usda": "Chicken, liver, all classes, raw",
+  "units": {
+   "unit": {
+    "usda": "liver",
+    "grams": 44.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "merluza-cruda",
   "name": "Merluza cruda",
   "category": "Pescados y mariscos",
   "fdcId": 173713,
-  "usda": "Fish, whiting, mixed species, raw"
+  "usda": "Fish, whiting, mixed species, raw",
+  "units": {
+   "unit": {
+    "usda": "fillet",
+    "grams": 92.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "merluza-cocida",
   "name": "Merluza cocida",
   "category": "Pescados y mariscos",
   "fdcId": 175161,
-  "usda": "Fish, whiting, mixed species, cooked, dry heat"
+  "usda": "Fish, whiting, mixed species, cooked, dry heat",
+  "units": {
+   "unit": {
+    "usda": "fillet",
+    "grams": 72.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "salmon-rosado-crudo",
   "name": "Salmón rosado crudo",
   "category": "Pescados y mariscos",
   "fdcId": 175167,
-  "usda": "Fish, salmon, Atlantic, farmed, raw"
+  "usda": "Fish, salmon, Atlantic, farmed, raw",
+  "units": {
+   "unit": {
+    "usda": "fillet",
+    "grams": 198.0,
+    "count": 0.5,
+    "per": 1
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "salmon-rosado-cocido",
   "name": "Salmón rosado cocido",
   "category": "Pescados y mariscos",
   "fdcId": 175168,
-  "usda": "Fish, salmon, Atlantic, farmed, cooked, dry heat"
+  "usda": "Fish, salmon, Atlantic, farmed, cooked, dry heat",
+  "units": {
+   "unit": {
+    "usda": "fillet",
+    "grams": 178.0,
+    "count": 0.5,
+    "per": 1
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "salmon-ahumado",
   "name": "Salmón ahumado",
   "category": "Pescados y mariscos",
   "fdcId": 173687,
-  "usda": "Fish, salmon, chinook, smoked"
+  "usda": "Fish, salmon, chinook, smoked",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "atun-fresco-crudo",
   "name": "Atún fresco crudo",
   "category": "Pescados y mariscos",
   "fdcId": 175159,
-  "usda": "Fish, tuna, fresh, yellowfin, raw"
+  "usda": "Fish, tuna, fresh, yellowfin, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "atun-en-lata-al-natural",
   "name": "Atún en lata al natural",
   "category": "Pescados y mariscos",
   "fdcId": 173709,
-  "usda": "Fish, tuna, light, canned in water, drained solids (Includes foods for USDA's Food Distribution Program)"
+  "usda": "Fish, tuna, light, canned in water, drained solids (Includes foods for USDA's Food Distribution Program)",
+  "units": {
+   "cup": {
+    "usda": "cup, solid or chunks",
+    "grams": 154.0
+   },
+   "package": {
+    "usda": "can",
+    "grams": 165.0
+   }
+  }
  },
  {
   "key": "atun-en-lata-en-aceite",
   "name": "Atún en lata en aceite",
   "category": "Pescados y mariscos",
   "fdcId": 173708,
-  "usda": "Fish, tuna, light, canned in oil, drained solids"
+  "usda": "Fish, tuna, light, canned in oil, drained solids",
+  "units": {
+   "cup": {
+    "usda": "cup, solid or chunks",
+    "grams": 146.0
+   },
+   "package": {
+    "usda": "can",
+    "grams": 171.0
+   }
+  }
  },
  {
   "key": "caballa-cruda",
   "name": "Caballa cruda",
   "category": "Pescados y mariscos",
   "fdcId": 175119,
-  "usda": "Fish, mackerel, Atlantic, raw"
+  "usda": "Fish, mackerel, Atlantic, raw",
+  "units": {
+   "unit": {
+    "usda": "fillet",
+    "grams": 112.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "caballa-en-lata",
   "name": "Caballa en lata",
   "category": "Pescados y mariscos",
   "fdcId": 175121,
-  "usda": "Fish, mackerel, jack, canned, drained solids"
+  "usda": "Fish, mackerel, jack, canned, drained solids",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 190.0
+   },
+   "package": {
+    "usda": "can (15 oz)",
+    "grams": 361.0
+   }
+  }
  },
  {
   "key": "lenguado-crudo",
   "name": "Lenguado crudo",
   "category": "Pescados y mariscos",
   "fdcId": 174196,
-  "usda": "Fish, flatfish (flounder and sole species), raw"
+  "usda": "Fish, flatfish (flounder and sole species), raw",
+  "units": {
+   "unit": {
+    "usda": "fillet",
+    "grams": 163.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "trucha-cruda",
   "name": "Trucha cruda",
   "category": "Pescados y mariscos",
   "fdcId": 173717,
-  "usda": "Fish, trout, rainbow, farmed, raw"
+  "usda": "Fish, trout, rainbow, farmed, raw",
+  "units": {
+   "unit": {
+    "usda": "fillet",
+    "grams": 79.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "bacalao-crudo",
   "name": "Bacalao crudo",
   "category": "Pescados y mariscos",
   "fdcId": 171955,
-  "usda": "Fish, cod, Atlantic, raw"
+  "usda": "Fish, cod, Atlantic, raw",
+  "units": {
+   "unit": {
+    "usda": "fillet",
+    "grams": 231.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "sardinas-en-aceite",
   "name": "Sardinas en aceite",
   "category": "Pescados y mariscos",
   "fdcId": 175139,
-  "usda": "Fish, sardine, Atlantic, canned in oil, drained solids with bone"
+  "usda": "Fish, sardine, Atlantic, canned in oil, drained solids with bone",
+  "units": {
+   "unit": {
+    "usda": "sardines",
+    "grams": 24.0,
+    "count": 2
+   },
+   "package": {
+    "usda": "can (3.75 oz)",
+    "grams": 92.0
+   }
+  }
  },
  {
   "key": "anchoas-en-aceite",
   "name": "Anchoas en aceite",
   "category": "Pescados y mariscos",
   "fdcId": 174183,
-  "usda": "Fish, anchovy, european, canned in oil, drained solids"
+  "usda": "Fish, anchovy, european, canned in oil, drained solids",
+  "units": {
+   "unit": {
+    "usda": "anchovy",
+    "grams": 4.0
+   },
+   "package": {
+    "usda": "can (2 oz)",
+    "grams": 45.0
+   }
+  }
  },
  {
   "key": "langostinos-crudos",
@@ -1604,7 +3599,15 @@
   "category": "Pescados y mariscos",
   "fdcId": 175179,
   "usda": "Crustaceans, shrimp, raw",
-  "also": "camarones gambas"
+  "also": "camarones gambas",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "langostinos-cocidos",
@@ -1612,7 +3615,15 @@
   "category": "Pescados y mariscos",
   "fdcId": 175180,
   "usda": "Crustaceans, shrimp, cooked",
-  "also": "camarones gambas"
+  "also": "camarones gambas",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "calamar-crudo",
@@ -1620,21 +3631,55 @@
   "category": "Pescados y mariscos",
   "fdcId": 174223,
   "usda": "Mollusks, squid, mixed species, raw",
-  "also": "rabas"
+  "also": "rabas",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "mejillones-crudos",
   "name": "Mejillones crudos",
   "category": "Pescados y mariscos",
   "fdcId": 174216,
-  "usda": "Mollusks, mussel, blue, raw"
+  "usda": "Mollusks, mussel, blue, raw",
+  "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 10.0
+   },
+   "unit": {
+    "usda": "medium",
+    "grams": 16.0
+   },
+   "unitLarge": {
+    "usda": "large",
+    "grams": 20.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 150.0
+   }
+  }
  },
  {
   "key": "pulpo-crudo",
   "name": "Pulpo crudo",
   "category": "Pescados y mariscos",
   "fdcId": 174218,
-  "usda": "Mollusks, octopus, common, raw"
+  "usda": "Mollusks, octopus, common, raw",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "kani-kama",
@@ -1642,7 +3687,15 @@
   "category": "Pescados y mariscos",
   "fdcId": 174203,
   "usda": "Crustaceans, crab, alaska king, imitation, made from surimi",
-  "also": "surimi"
+  "also": "surimi",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 85.0,
+    "count": 3,
+    "per": 1
+   }
+  }
  },
  {
   "key": "leche-entera",
@@ -1654,6 +3707,17 @@
    "usda": "cup",
    "grams": 244.0,
    "ml": 236.588
+  },
+  "units": {
+   "cup": {
+    "ml": 250
+   },
+   "glass": {
+    "ml": 200
+   },
+   "tbsp": {
+    "ml": 15
+   }
   }
  },
  {
@@ -1666,6 +3730,17 @@
    "usda": "cup",
    "grams": 244.0,
    "ml": 236.588
+  },
+  "units": {
+   "cup": {
+    "ml": 250
+   },
+   "glass": {
+    "ml": 200
+   },
+   "tbsp": {
+    "ml": 15
+   }
   }
  },
  {
@@ -1678,6 +3753,17 @@
    "usda": "cup",
    "grams": 245.0,
    "ml": 236.588
+  },
+  "units": {
+   "cup": {
+    "ml": 250
+   },
+   "glass": {
+    "ml": 200
+   },
+   "tbsp": {
+    "ml": 15
+   }
   }
  },
  {
@@ -1685,49 +3771,104 @@
   "name": "Leche en polvo entera",
   "category": "Lácteos y huevos",
   "fdcId": 170876,
-  "usda": "Milk, dry, whole, with added vitamin D"
+  "usda": "Milk, dry, whole, with added vitamin D",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 128.0
+   }
+  }
  },
  {
   "key": "leche-condensada",
   "name": "Leche condensada",
   "category": "Lácteos y huevos",
   "fdcId": 171275,
-  "usda": "Milk, canned, condensed, sweetened"
+  "usda": "Milk, canned, condensed, sweetened",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 306.0
+   }
+  }
  },
  {
   "key": "yogur-natural-entero",
   "name": "Yogur natural entero",
   "category": "Lácteos y huevos",
   "fdcId": 171284,
-  "usda": "Yogurt, plain, whole milk"
+  "usda": "Yogurt, plain, whole milk",
+  "units": {
+   "cup": {
+    "usda": "cup (8 fl oz)",
+    "grams": 245.0
+   },
+   "package": {
+    "usda": "container (6 oz)",
+    "grams": 170.0
+   }
+  }
  },
  {
   "key": "yogur-natural-descremado",
   "name": "Yogur natural descremado",
   "category": "Lácteos y huevos",
   "fdcId": 170887,
-  "usda": "Yogurt, plain, skim milk"
+  "usda": "Yogurt, plain, skim milk",
+  "units": {
+   "cup": {
+    "usda": "cup (8 fl oz)",
+    "grams": 245.0
+   },
+   "package": {
+    "usda": "container (6 oz)",
+    "grams": 170.0
+   }
+  }
  },
  {
   "key": "yogur-de-vainilla-descremado",
   "name": "Yogur de vainilla descremado",
   "category": "Lácteos y huevos",
   "fdcId": 170888,
-  "usda": "Yogurt, vanilla, low fat."
+  "usda": "Yogurt, vanilla, low fat.",
+  "units": {
+   "cup": {
+    "usda": "cup (8 fl oz)",
+    "grams": 245.0
+   },
+   "package": {
+    "usda": "container (6 oz)",
+    "grams": 170.0
+   }
+  }
  },
  {
   "key": "yogur-griego-natural-entero",
   "name": "Yogur griego natural entero",
   "category": "Lácteos y huevos",
   "fdcId": 171304,
-  "usda": "Yogurt, Greek, plain, whole milk"
+  "usda": "Yogurt, Greek, plain, whole milk",
+  "units": {
+   "package": {
+    "usda": "container (7 oz)",
+    "grams": 200.0,
+    "from": 170903
+   }
+  }
  },
  {
   "key": "yogur-griego-natural-descremado",
   "name": "Yogur griego natural descremado",
   "category": "Lácteos y huevos",
   "fdcId": 170903,
-  "usda": "Yogurt, Greek, plain, lowfat"
+  "usda": "Yogurt, Greek, plain, lowfat",
+  "units": {
+   "package": {
+    "usda": "container (7 oz)",
+    "grams": 200.0
+   }
+  }
  },
  {
   "key": "queso-muzzarella",
@@ -1740,7 +3881,11 @@
    "slice": {
     "usda": "slices",
     "grams": 170.0,
-    "count": 6.0
+    "count": 6
+   },
+   "cup": {
+    "usda": "cup, shredded",
+    "grams": 112.0
    }
   }
  },
@@ -1750,7 +3895,17 @@
   "category": "Lácteos y huevos",
   "fdcId": 171247,
   "usda": "Cheese, parmesan, grated",
-  "also": "reggianito sardo"
+  "also": "reggianito sardo",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 100.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 5.0
+   }
+  }
  },
  {
   "key": "queso-azul",
@@ -1758,7 +3913,13 @@
   "category": "Lácteos y huevos",
   "fdcId": 172175,
   "usda": "Cheese, blue",
-  "also": "roquefort"
+  "also": "roquefort",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "queso-port-salut",
@@ -1778,7 +3939,13 @@
   "name": "Queso fresco",
   "category": "Lácteos y huevos",
   "fdcId": 172223,
-  "usda": "Cheese, fresh, queso fresco"
+  "usda": "Cheese, fresh, queso fresco",
+  "units": {
+   "cup": {
+    "usda": "cup, crumbled",
+    "grams": 122.0
+   }
+  }
  },
  {
   "key": "queso-cheddar",
@@ -1790,6 +3957,10 @@
    "slice": {
     "usda": "slice (1 oz)",
     "grams": 28.0
+   },
+   "cup": {
+    "usda": "cup, shredded",
+    "grams": 113.0
    }
   }
  },
@@ -1812,7 +3983,13 @@
   "name": "Queso gouda",
   "category": "Lácteos y huevos",
   "fdcId": 171241,
-  "usda": "Cheese, gouda"
+  "usda": "Cheese, gouda",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "queso-fontina",
@@ -1832,14 +4009,30 @@
   "name": "Queso brie",
   "category": "Lácteos y huevos",
   "fdcId": 172177,
-  "usda": "Cheese, brie"
+  "usda": "Cheese, brie",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "queso-feta",
   "name": "Queso feta",
   "category": "Lácteos y huevos",
   "fdcId": 173420,
-  "usda": "Cheese, feta"
+  "usda": "Cheese, feta",
+  "units": {
+   "cup": {
+    "usda": "cup, crumbled",
+    "grams": 150.0
+   },
+   "serving": {
+    "usda": "wedge (1.33 oz)",
+    "grams": 38.0
+   }
+  }
  },
  {
   "key": "queso-crema",
@@ -1847,7 +4040,13 @@
   "category": "Lácteos y huevos",
   "fdcId": 173418,
   "usda": "Cheese, cream",
-  "also": "untable"
+  "also": "untable",
+  "units": {
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 14.5
+   }
+  }
  },
  {
   "key": "queso-crema-light",
@@ -1855,7 +4054,13 @@
   "category": "Lácteos y huevos",
   "fdcId": 169079,
   "usda": "Cheese, cream, low fat",
-  "also": "untable"
+  "also": "untable",
+  "units": {
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 15.0
+   }
+  }
  },
  {
   "key": "ricota-entera",
@@ -1863,7 +4068,13 @@
   "category": "Lácteos y huevos",
   "fdcId": 170851,
   "usda": "Cheese, ricotta, whole milk",
-  "also": "ricotta"
+  "also": "ricotta",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 246.0
+   }
+  }
  },
  {
   "key": "ricota-descremada",
@@ -1871,14 +4082,32 @@
   "category": "Lácteos y huevos",
   "fdcId": 171248,
   "usda": "Cheese, ricotta, part skim milk",
-  "also": "ricotta"
+  "also": "ricotta",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 246.0
+   }
+  }
  },
  {
   "key": "queso-cottage",
   "name": "Queso cottage",
   "category": "Lácteos y huevos",
   "fdcId": 172179,
-  "usda": "Cheese, cottage, creamed, large or small curd"
+  "usda": "Cheese, cottage, creamed, large or small curd",
+  "units": {
+   "cup": {
+    "usda": "cup, small curd (not packed)",
+    "grams": 225.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 113.0,
+    "count": 4,
+    "per": 1
+   }
+  }
  },
  {
   "key": "manteca",
@@ -1886,7 +4115,18 @@
   "category": "Lácteos y huevos",
   "fdcId": 173410,
   "usda": "Butter, salted",
-  "also": "mantequilla"
+  "also": "mantequilla",
+  "units": {
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 14.2
+   },
+   "tsp": {
+    "usda": "tbsp",
+    "grams": 14.2,
+    "per": 3
+   }
+  }
  },
  {
   "key": "crema-de-leche",
@@ -1894,7 +4134,17 @@
   "category": "Lácteos y huevos",
   "fdcId": 170859,
   "usda": "Cream, fluid, heavy whipping",
-  "also": "nata"
+  "also": "nata",
+  "units": {
+   "cup": {
+    "usda": "cup, fluid (yields 2 cups whipped)",
+    "grams": 238.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 15.0
+   }
+  }
  },
  {
   "key": "huevo-crudo",
@@ -1903,7 +4153,15 @@
   "fdcId": 171287,
   "usda": "Egg, whole, raw, fresh",
   "units": {
+   "unitSmall": {
+    "usda": "small",
+    "grams": 38.0
+   },
    "unit": {
+    "usda": "medium",
+    "grams": 44.0
+   },
+   "unitLarge": {
     "usda": "large",
     "grams": 50.0
    }
@@ -1979,28 +4237,52 @@
   "name": "Arroz blanco crudo",
   "category": "Cereales y pastas",
   "fdcId": 169756,
-  "usda": "Rice, white, long-grain, regular, raw, unenriched"
+  "usda": "Rice, white, long-grain, regular, raw, unenriched",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 185.0
+   }
+  }
  },
  {
   "key": "arroz-blanco-cocido",
   "name": "Arroz blanco cocido",
   "category": "Cereales y pastas",
   "fdcId": 169757,
-  "usda": "Rice, white, long-grain, regular, unenriched, cooked without salt"
+  "usda": "Rice, white, long-grain, regular, unenriched, cooked without salt",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 158.0
+   }
+  }
  },
  {
   "key": "arroz-integral-crudo",
   "name": "Arroz integral crudo",
   "category": "Cereales y pastas",
   "fdcId": 169703,
-  "usda": "Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)"
+  "usda": "Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 185.0
+   }
+  }
  },
  {
   "key": "arroz-integral-cocido",
   "name": "Arroz integral cocido",
   "category": "Cereales y pastas",
   "fdcId": 169704,
-  "usda": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)"
+  "usda": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 202.0
+   }
+  }
  },
  {
   "key": "fideos-secos-crudos",
@@ -2008,7 +4290,19 @@
   "category": "Cereales y pastas",
   "fdcId": 168927,
   "usda": "Pasta, dry, unenriched",
-  "also": "pasta tallarines espagueti"
+  "also": "pasta tallarines espagueti",
+  "units": {
+   "cup": {
+    "usda": "cup penne",
+    "grams": 95.0
+   },
+   "serving": {
+    "usda": "oz",
+    "grams": 57.0,
+    "count": 2,
+    "per": 1
+   }
+  }
  },
  {
   "key": "fideos-secos-cocidos",
@@ -2016,35 +4310,65 @@
   "category": "Cereales y pastas",
   "fdcId": 168928,
   "usda": "Pasta, cooked, unenriched, without added salt",
-  "also": "pasta tallarines espagueti"
+  "also": "pasta tallarines espagueti",
+  "units": {
+   "cup": {
+    "usda": "cup spaghetti not packed",
+    "grams": 124.0
+   }
+  }
  },
  {
   "key": "fideos-integrales-crudos",
   "name": "Fideos integrales crudos",
   "category": "Cereales y pastas",
   "fdcId": 169738,
-  "usda": "Pasta, whole-wheat, dry (Includes foods for USDA's Food Distribution Program)"
+  "usda": "Pasta, whole-wheat, dry (Includes foods for USDA's Food Distribution Program)",
+  "units": {
+   "cup": {
+    "usda": "cup penne",
+    "grams": 95.0
+   }
+  }
  },
  {
   "key": "fideos-integrales-cocidos",
   "name": "Fideos integrales cocidos",
   "category": "Cereales y pastas",
   "fdcId": 168910,
-  "usda": "Pasta, whole-wheat, cooked (Includes foods for USDA's Food Distribution Program)"
+  "usda": "Pasta, whole-wheat, cooked (Includes foods for USDA's Food Distribution Program)",
+  "units": {
+   "cup": {
+    "usda": "cup spaghetti not packed",
+    "grams": 117.0
+   }
+  }
  },
  {
   "key": "fideos-al-huevo-crudos",
   "name": "Fideos al huevo crudos",
   "category": "Cereales y pastas",
   "fdcId": 169755,
-  "usda": "Noodles, egg, dry, unenriched"
+  "usda": "Noodles, egg, dry, unenriched",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 38.0
+   }
+  }
  },
  {
   "key": "fideos-al-huevo-cocidos",
   "name": "Fideos al huevo cocidos",
   "category": "Cereales y pastas",
   "fdcId": 169732,
-  "usda": "Noodles, egg, enriched, cooked"
+  "usda": "Noodles, egg, enriched, cooked",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 160.0
+   }
+  }
  },
  {
   "key": "pasta-fresca-cruda",
@@ -2052,7 +4376,15 @@
   "category": "Cereales y pastas",
   "fdcId": 169727,
   "usda": "Pasta, fresh-refrigerated, plain, as purchased",
-  "also": "tallarines"
+  "also": "tallarines",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 128.0,
+    "count": 4.5,
+    "per": 1
+   }
+  }
  },
  {
   "key": "pasta-fresca-cocida",
@@ -2060,7 +4392,15 @@
   "category": "Cereales y pastas",
   "fdcId": 169728,
   "usda": "Pasta, fresh-refrigerated, plain, cooked",
-  "also": "tallarines"
+  "also": "tallarines",
+  "units": {
+   "serving": {
+    "usda": "oz",
+    "grams": 128.0,
+    "count": 2,
+    "per": 1
+   }
+  }
  },
  {
   "key": "polenta-cruda",
@@ -2068,35 +4408,69 @@
   "category": "Cereales y pastas",
   "fdcId": 168929,
   "usda": "Cornmeal, degermed, unenriched, yellow",
-  "also": "harina de maíz"
+  "also": "harina de maíz",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 157.0
+   }
+  }
  },
  {
   "key": "polenta-cocida",
   "name": "Polenta cocida",
   "category": "Cereales y pastas",
   "fdcId": 171672,
-  "usda": "Cereals, corn grits, yellow, regular and quick, enriched, cooked with water, without salt"
+  "usda": "Cereals, corn grits, yellow, regular and quick, enriched, cooked with water, without salt",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 233.0
+   }
+  }
  },
  {
   "key": "avena",
   "name": "Avena",
   "category": "Cereales y pastas",
   "fdcId": 173904,
-  "usda": "Cereals, oats, regular and quick, not fortified, dry"
+  "usda": "Cereals, oats, regular and quick, not fortified, dry",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 81.0
+   }
+  }
  },
  {
   "key": "avena-cocida",
   "name": "Avena cocida",
   "category": "Cereales y pastas",
   "fdcId": 173905,
-  "usda": "Cereals, oats, regular and quick, unenriched, cooked with water (includes boiling and microwaving), without salt"
+  "usda": "Cereals, oats, regular and quick, unenriched, cooked with water (includes boiling and microwaving), without salt",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 234.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 14.6
+   }
+  }
  },
  {
   "key": "salvado-de-avena",
   "name": "Salvado de avena",
   "category": "Cereales y pastas",
   "fdcId": 168872,
-  "usda": "Oat bran, raw"
+  "usda": "Oat bran, raw",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 94.0
+   }
+  }
  },
  {
   "key": "quinoa-cruda",
@@ -2104,7 +4478,13 @@
   "category": "Cereales y pastas",
   "fdcId": 168874,
   "usda": "Quinoa, uncooked",
-  "also": "quinua"
+  "also": "quinua",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 170.0
+   }
+  }
  },
  {
   "key": "quinoa-cocida",
@@ -2112,7 +4492,13 @@
   "category": "Cereales y pastas",
   "fdcId": 168917,
   "usda": "Quinoa, cooked",
-  "also": "quinua"
+  "also": "quinua",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 185.0
+   }
+  }
  },
  {
   "key": "cous-cous-crudo",
@@ -2120,7 +4506,13 @@
   "category": "Cereales y pastas",
   "fdcId": 169699,
   "usda": "Couscous, dry",
-  "also": "cuscús"
+  "also": "cuscús",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 173.0
+   }
+  }
  },
  {
   "key": "cous-cous-cocido",
@@ -2128,35 +4520,69 @@
   "category": "Cereales y pastas",
   "fdcId": 169700,
   "usda": "Couscous, cooked",
-  "also": "cuscús"
+  "also": "cuscús",
+  "units": {
+   "cup": {
+    "usda": "cup, cooked",
+    "grams": 157.0
+   }
+  }
  },
  {
   "key": "trigo-burgol-crudo",
   "name": "Trigo burgol crudo",
   "category": "Cereales y pastas",
   "fdcId": 170688,
-  "usda": "Bulgur, dry"
+  "usda": "Bulgur, dry",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 140.0
+   }
+  }
  },
  {
   "key": "trigo-burgol-cocido",
   "name": "Trigo burgol cocido",
   "category": "Cereales y pastas",
   "fdcId": 170287,
-  "usda": "Bulgur, cooked"
+  "usda": "Bulgur, cooked",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 182.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 8.4
+   }
+  }
  },
  {
   "key": "cebada-perlada-cruda",
   "name": "Cebada perlada cruda",
   "category": "Cereales y pastas",
   "fdcId": 170284,
-  "usda": "Barley, pearled, raw"
+  "usda": "Barley, pearled, raw",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 200.0
+   }
+  }
  },
  {
   "key": "cebada-perlada-cocida",
   "name": "Cebada perlada cocida",
   "category": "Cereales y pastas",
   "fdcId": 170285,
-  "usda": "Barley, pearled, cooked"
+  "usda": "Barley, pearled, cooked",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 157.0
+   }
+  }
  },
  {
   "key": "harina-de-trigo-000",
@@ -2164,14 +4590,26 @@
   "category": "Cereales y pastas",
   "fdcId": 169761,
   "usda": "Wheat flour, white, all-purpose, unenriched",
-  "also": "0000"
+  "also": "0000",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 125.0
+   }
+  }
  },
  {
   "key": "harina-integral",
   "name": "Harina integral",
   "category": "Cereales y pastas",
   "fdcId": 168893,
-  "usda": "Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)"
+  "usda": "Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 120.0
+   }
+  }
  },
  {
   "key": "fecula-de-maiz",
@@ -2179,14 +4617,26 @@
   "category": "Cereales y pastas",
   "fdcId": 169698,
   "usda": "Cornstarch",
-  "also": "maicena"
+  "also": "maicena",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 128.0
+   }
+  }
  },
  {
   "key": "granola",
   "name": "Granola",
   "category": "Cereales y pastas",
   "fdcId": 171646,
-  "usda": "Cereals ready-to-eat, granola, homemade"
+  "usda": "Cereals ready-to-eat, granola, homemade",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 122.0
+   }
+  }
  },
  {
   "key": "pochoclo",
@@ -2194,7 +4644,13 @@
   "category": "Cereales y pastas",
   "fdcId": 167959,
   "usda": "Snacks, popcorn, air-popped",
-  "also": "pororó pop"
+  "also": "pororó pop",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 8.0
+   }
+  }
  },
  {
   "key": "pan-frances",
@@ -2202,7 +4658,14 @@
   "category": "Panificados",
   "fdcId": 172675,
   "usda": "Bread, french or vienna (includes sourdough)",
-  "also": "flauta mignon baguette"
+  "also": "flauta mignon baguette",
+  "units": {
+   "unit": {
+    "usda": "roll",
+    "grams": 38.0,
+    "from": 172795
+   }
+  }
  },
  {
   "key": "pan-lactal-blanco",
@@ -2254,7 +4717,11 @@
   "usda": "Bread, pita, white, enriched",
   "also": "pita",
   "units": {
-   "unit": {
+   "unitSmall": {
+    "usda": "pita, small  (4\" dia)",
+    "grams": 28.0
+   },
+   "unitLarge": {
     "usda": "pita, large (6-1/2\" dia)",
     "grams": 60.0
    }
@@ -2279,7 +4746,13 @@
   "category": "Panificados",
   "fdcId": 174928,
   "usda": "Bread, crumbs, dry, grated, plain",
-  "also": "rebozador"
+  "also": "rebozador",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 108.0
+   }
+  }
  },
  {
   "key": "galletitas-de-agua",
@@ -2300,7 +4773,13 @@
   "name": "Grisines",
   "category": "Panificados",
   "fdcId": 174929,
-  "usda": "Bread, sticks, plain"
+  "usda": "Bread, sticks, plain",
+  "units": {
+   "unit": {
+    "usda": "stick (7-5/8\" x 5/8\")",
+    "grams": 10.0
+   }
+  }
  },
  {
   "key": "medialuna",
@@ -2310,9 +4789,17 @@
   "usda": "Croissants, butter",
   "also": "croissant factura",
   "units": {
+   "unitSmall": {
+    "usda": "croissant, small",
+    "grams": 42.0
+   },
    "unit": {
     "usda": "croissant, medium",
     "grams": 57.0
+   },
+   "unitLarge": {
+    "usda": "croissant, large",
+    "grams": 67.0
    }
   }
  },
@@ -2324,9 +4811,17 @@
   "usda": "Tortillas, ready-to-bake or -fry, flour, refrigerated",
   "also": "rapiditas",
   "units": {
+   "unitSmall": {
+    "usda": "tortilla medium (approx 6\" dia)",
+    "grams": 30.0
+   },
    "unit": {
     "usda": "tortilla",
     "grams": 48.0
+   },
+   "unitLarge": {
+    "usda": "tortilla (approx 10\" dia)",
+    "grams": 72.0
    }
   }
  },
@@ -2335,7 +4830,14 @@
   "name": "Pizza de muzzarella",
   "category": "Panificados",
   "fdcId": 170317,
-  "usda": "Pizza, cheese topping, regular crust, frozen, cooked"
+  "usda": "Pizza, cheese topping, regular crust, frozen, cooked",
+  "units": {
+   "serving": {
+    "usda": "slice",
+    "grams": 107.0,
+    "from": 173292
+   }
+  }
  },
  {
   "key": "empanada-de-carne",
@@ -2368,14 +4870,43 @@
   "name": "Nueces",
   "category": "Frutos secos y semillas",
   "fdcId": 170187,
-  "usda": "Nuts, walnuts, english"
+  "usda": "Nuts, walnuts, english",
+  "units": {
+   "unit": {
+    "usda": "cup, in shell, edible yield (7 nuts)",
+    "grams": 28.0,
+    "per": 7
+   },
+   "cup": {
+    "usda": "cup shelled (50 halves)",
+    "grams": 100.0
+   },
+   "handful": {
+    "usda": "oz (14 halves)",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "almendras",
   "name": "Almendras",
   "category": "Frutos secos y semillas",
   "fdcId": 170567,
-  "usda": "Nuts, almonds"
+  "usda": "Nuts, almonds",
+  "units": {
+   "unit": {
+    "usda": "almond",
+    "grams": 1.2
+   },
+   "cup": {
+    "usda": "cup, whole",
+    "grams": 143.0
+   },
+   "handful": {
+    "usda": "oz (23 whole kernels)",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "mani-crudo",
@@ -2383,7 +4914,17 @@
   "category": "Frutos secos y semillas",
   "fdcId": 172430,
   "usda": "Peanuts, all types, raw",
-  "also": "cacahuate"
+  "also": "cacahuate",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 146.0
+   },
+   "handful": {
+    "usda": "oz",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "mani-tostado",
@@ -2391,7 +4932,21 @@
   "category": "Frutos secos y semillas",
   "fdcId": 173806,
   "usda": "Peanuts, all types, dry-roasted, without salt",
-  "also": "cacahuate"
+  "also": "cacahuate",
+  "units": {
+   "unit": {
+    "usda": "peanut",
+    "grams": 1.0
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 146.0
+   },
+   "handful": {
+    "usda": "oz",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "castanas-de-caju",
@@ -2399,56 +4954,133 @@
   "category": "Frutos secos y semillas",
   "fdcId": 170162,
   "usda": "Nuts, cashew nuts, raw",
-  "also": "anacardo"
+  "also": "anacardo",
+  "units": {
+   "handful": {
+    "usda": "oz",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "avellanas",
   "name": "Avellanas",
   "category": "Frutos secos y semillas",
   "fdcId": 170581,
-  "usda": "Nuts, hazelnuts or filberts"
+  "usda": "Nuts, hazelnuts or filberts",
+  "units": {
+   "unit": {
+    "usda": "nuts",
+    "grams": 14.0,
+    "count": 10
+   },
+   "cup": {
+    "usda": "cup, whole",
+    "grams": 135.0
+   },
+   "handful": {
+    "usda": "oz (21 whole kernels)",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "pistachos",
   "name": "Pistachos",
   "category": "Frutos secos y semillas",
   "fdcId": 170184,
-  "usda": "Nuts, pistachio nuts, raw"
+  "usda": "Nuts, pistachio nuts, raw",
+  "units": {
+   "unit": {
+    "usda": "kernel",
+    "grams": 0.7
+   },
+   "cup": {
+    "usda": "cup",
+    "grams": 123.0
+   },
+   "handful": {
+    "usda": "oz (49 kernels)",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "nuez-pecan",
   "name": "Nuez pecán",
   "category": "Frutos secos y semillas",
   "fdcId": 170182,
-  "usda": "Nuts, pecans"
+  "usda": "Nuts, pecans",
+  "units": {
+   "cup": {
+    "usda": "cup, halves",
+    "grams": 99.0
+   },
+   "handful": {
+    "usda": "oz (19 halves)",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "castanas-de-para",
   "name": "Castañas de Pará",
   "category": "Frutos secos y semillas",
   "fdcId": 170569,
-  "usda": "Nuts, brazilnuts, dried, unblanched"
+  "usda": "Nuts, brazilnuts, dried, unblanched",
+  "units": {
+   "unit": {
+    "usda": "kernel",
+    "grams": 5.0
+   },
+   "cup": {
+    "usda": "cup, whole",
+    "grams": 133.0
+   },
+   "handful": {
+    "usda": "oz (6 kernels)",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "coco-rallado",
   "name": "Coco rallado",
   "category": "Frutos secos y semillas",
   "fdcId": 170170,
-  "usda": "Nuts, coconut meat, dried (desiccated), not sweetened"
+  "usda": "Nuts, coconut meat, dried (desiccated), not sweetened",
+  "units": {
+   "handful": {
+    "usda": "oz",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "semillas-de-girasol",
   "name": "Semillas de girasol",
   "category": "Frutos secos y semillas",
   "fdcId": 170562,
-  "usda": "Seeds, sunflower seed kernels, dried"
+  "usda": "Seeds, sunflower seed kernels, dried",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 140.0
+   }
+  }
  },
  {
   "key": "semillas-de-chia",
   "name": "Semillas de chía",
   "category": "Frutos secos y semillas",
   "fdcId": 170554,
-  "usda": "Seeds, chia seeds, dried"
+  "usda": "Seeds, chia seeds, dried",
+  "units": {
+   "handful": {
+    "usda": "oz",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "semillas-de-lino",
@@ -2456,21 +5088,55 @@
   "category": "Frutos secos y semillas",
   "fdcId": 169414,
   "usda": "Seeds, flaxseed",
-  "also": "linaza"
+  "also": "linaza",
+  "units": {
+   "cup": {
+    "usda": "cup, whole",
+    "grams": 168.0
+   },
+   "tbsp": {
+    "usda": "tbsp, whole",
+    "grams": 10.3
+   },
+   "tsp": {
+    "usda": "tsp, whole",
+    "grams": 3.4
+   }
+  }
  },
  {
   "key": "semillas-de-sesamo",
   "name": "Semillas de sésamo",
   "category": "Frutos secos y semillas",
   "fdcId": 170150,
-  "usda": "Seeds, sesame seeds, whole, dried"
+  "usda": "Seeds, sesame seeds, whole, dried",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 144.0
+   },
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 9.0
+   }
+  }
  },
  {
   "key": "semillas-de-zapallo",
   "name": "Semillas de zapallo",
   "category": "Frutos secos y semillas",
   "fdcId": 170556,
-  "usda": "Seeds, pumpkin and squash seed kernels, dried"
+  "usda": "Seeds, pumpkin and squash seed kernels, dried",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 129.0
+   },
+   "handful": {
+    "usda": "oz",
+    "grams": 28.35
+   }
+  }
  },
  {
   "key": "pasta-de-mani",
@@ -2478,7 +5144,14 @@
   "category": "Frutos secos y semillas",
   "fdcId": 172470,
   "usda": "Peanut butter, smooth style, without salt",
-  "also": "mantequilla de maní"
+  "also": "mantequilla de maní",
+  "units": {
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 32.0,
+    "count": 2
+   }
+  }
  },
  {
   "key": "aceite-de-oliva",
@@ -2490,6 +5163,14 @@
    "usda": "cup",
    "grams": 216.0,
    "ml": 236.588
+  },
+  "units": {
+   "tbsp": {
+    "ml": 15
+   },
+   "tsp": {
+    "ml": 5
+   }
   }
  },
  {
@@ -2502,6 +5183,14 @@
    "usda": "cup",
    "grams": 218.0,
    "ml": 236.588
+  },
+  "units": {
+   "tbsp": {
+    "ml": 15
+   },
+   "tsp": {
+    "ml": 5
+   }
   }
  },
  {
@@ -2514,6 +5203,14 @@
    "usda": "cup",
    "grams": 218.0,
    "ml": 236.588
+  },
+  "units": {
+   "tbsp": {
+    "ml": 15
+   },
+   "tsp": {
+    "ml": 5
+   }
   }
  },
  {
@@ -2521,21 +5218,54 @@
   "name": "Mayonesa",
   "category": "Aceites y aderezos",
   "fdcId": 171009,
-  "usda": "Salad dressing, mayonnaise, regular"
+  "usda": "Salad dressing, mayonnaise, regular",
+  "units": {
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 13.8
+   },
+   "tsp": {
+    "usda": "tbsp",
+    "grams": 13.8,
+    "per": 3
+   }
+  }
  },
  {
   "key": "ketchup",
   "name": "Ketchup",
   "category": "Aceites y aderezos",
   "fdcId": 168556,
-  "usda": "Catsup"
+  "usda": "Catsup",
+  "units": {
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 17.0
+   },
+   "tsp": {
+    "usda": "tbsp",
+    "grams": 17.0,
+    "per": 3
+   }
+  }
  },
  {
   "key": "mostaza",
   "name": "Mostaza",
   "category": "Aceites y aderezos",
   "fdcId": 172234,
-  "usda": "Mustard, prepared, yellow"
+  "usda": "Mustard, prepared, yellow",
+  "units": {
+   "tbsp": {
+    "usda": "tsp or 1 packet",
+    "grams": 5.0,
+    "per": 0.3333333333333333
+   },
+   "tsp": {
+    "usda": "tsp or 1 packet",
+    "grams": 5.0
+   }
+  }
  },
  {
   "key": "salsa-de-soja",
@@ -2547,6 +5277,14 @@
    "usda": "cup",
    "grams": 255.0,
    "ml": 236.588
+  },
+  "units": {
+   "tbsp": {
+    "ml": 15
+   },
+   "tsp": {
+    "ml": 5
+   }
   }
  },
  {
@@ -2559,6 +5297,14 @@
    "usda": "cup",
    "grams": 238.0,
    "ml": 236.588
+  },
+  "units": {
+   "tbsp": {
+    "ml": 15
+   },
+   "tsp": {
+    "ml": 5
+   }
   }
  },
  {
@@ -2571,6 +5317,14 @@
    "usda": "cup",
    "grams": 255.0,
    "ml": 236.588
+  },
+  "units": {
+   "tbsp": {
+    "ml": 15
+   },
+   "tsp": {
+    "ml": 5
+   }
   }
  },
  {
@@ -2578,49 +5332,120 @@
   "name": "Azúcar",
   "category": "Dulces",
   "fdcId": 169655,
-  "usda": "Sugars, granulated"
+  "usda": "Sugars, granulated",
+  "units": {
+   "cup": {
+    "usda": "cup",
+    "grams": 200.0
+   },
+   "tbsp": {
+    "usda": "tsp",
+    "grams": 4.2,
+    "per": 0.3333333333333333
+   },
+   "tsp": {
+    "usda": "tsp",
+    "grams": 4.2
+   }
+  }
  },
  {
   "key": "miel",
   "name": "Miel",
   "category": "Dulces",
   "fdcId": 169640,
-  "usda": "Honey"
+  "usda": "Honey",
+  "units": {
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 21.0
+   },
+   "tsp": {
+    "usda": "tbsp",
+    "grams": 21.0,
+    "per": 3
+   }
+  }
  },
  {
   "key": "mermelada",
   "name": "Mermelada",
   "category": "Dulces",
   "fdcId": 169641,
-  "usda": "Jams and preserves"
+  "usda": "Jams and preserves",
+  "units": {
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 20.0
+   },
+   "tsp": {
+    "usda": "tbsp",
+    "grams": 20.0,
+    "per": 3
+   }
+  }
  },
  {
   "key": "dulce-de-leche",
   "name": "Dulce de leche",
   "category": "Dulces",
   "fdcId": 173461,
-  "usda": "Dulce de Leche"
+  "usda": "Dulce de Leche",
+  "units": {
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 19.0
+   },
+   "tsp": {
+    "usda": "tbsp",
+    "grams": 19.0,
+    "per": 3
+   }
+  }
  },
  {
   "key": "chocolate-amargo",
   "name": "Chocolate amargo",
   "category": "Dulces",
   "fdcId": 170273,
-  "usda": "Chocolate, dark, 70-85% cacao solids"
+  "usda": "Chocolate, dark, 70-85% cacao solids",
+  "units": {
+   "unit": {
+    "usda": "bar",
+    "grams": 101.0
+   }
+  }
  },
  {
   "key": "chocolate-con-leche",
   "name": "Chocolate con leche",
   "category": "Dulces",
   "fdcId": 167587,
-  "usda": "Candies, milk chocolate"
+  "usda": "Candies, milk chocolate",
+  "units": {
+   "unit": {
+    "usda": "bar (1.55 oz)",
+    "grams": 44.0
+   }
+  }
  },
  {
   "key": "cacao-amargo-en-polvo",
   "name": "Cacao amargo en polvo",
   "category": "Dulces",
   "fdcId": 169593,
-  "usda": "Cocoa, dry powder, unsweetened"
+  "usda": "Cocoa, dry powder, unsweetened",
+  "units": {
+   "tbsp": {
+    "usda": "tbsp",
+    "grams": 5.4
+   },
+   "tsp": {
+    "usda": "tbsp",
+    "grams": 5.4,
+    "per": 3
+   }
+  }
  },
  {
   "key": "helado-de-vainilla",
@@ -2628,21 +5453,53 @@
   "category": "Dulces",
   "fdcId": 167575,
   "usda": "Ice creams, vanilla",
-  "also": "crema americana"
+  "also": "crema americana",
+  "units": {
+   "cup": {
+    "usda": "serving 1/2 cup",
+    "grams": 66.0,
+    "per": 0.5
+   },
+   "serving": {
+    "usda": "serving 1/2 cup",
+    "grams": 66.0
+   }
+  }
  },
  {
   "key": "helado-de-chocolate",
   "name": "Helado de chocolate",
   "category": "Dulces",
   "fdcId": 168809,
-  "usda": "Ice creams, chocolate"
+  "usda": "Ice creams, chocolate",
+  "units": {
+   "cup": {
+    "usda": "cup (4 fl oz)",
+    "grams": 66.0,
+    "count": 0.5
+   },
+   "serving": {
+    "usda": "cup (4 fl oz)",
+    "grams": 66.0,
+    "count": 0.5,
+    "per": 1
+   }
+  }
  },
  {
   "key": "flan",
   "name": "Flan",
   "category": "Dulces",
   "fdcId": 167574,
-  "usda": "Desserts, flan, caramel custard, prepared-from-recipe"
+  "usda": "Desserts, flan, caramel custard, prepared-from-recipe",
+  "units": {
+   "serving": {
+    "usda": "cup",
+    "grams": 153.0,
+    "count": 0.5,
+    "per": 1
+   }
+  }
  },
  {
   "key": "jugo-de-naranja-exprimido",
@@ -2654,6 +5511,14 @@
    "usda": "cup",
    "grams": 248.0,
    "ml": 236.588
+  },
+  "units": {
+   "cup": {
+    "ml": 250
+   },
+   "glass": {
+    "ml": 200
+   }
   }
  },
  {
@@ -2667,6 +5532,15 @@
    "usda": "fl oz",
    "grams": 30.7,
    "ml": 29.5735
+  },
+  "units": {
+   "glass": {
+    "ml": 200
+   },
+   "package": {
+    "usda": "can or bottle (12 fl oz)",
+    "grams": 370.0
+   }
   }
  },
  {
@@ -2679,6 +5553,15 @@
    "usda": "fl oz",
    "grams": 29.7,
    "ml": 29.5735
+  },
+  "units": {
+   "glass": {
+    "ml": 200
+   },
+   "package": {
+    "usda": "can",
+    "grams": 356.0
+   }
   }
  },
  {
@@ -2691,6 +5574,12 @@
    "usda": "fl oz",
    "grams": 29.4,
    "ml": 29.5735
+  },
+  "units": {
+   "serving": {
+    "usda": "serving (5 fl oz)",
+    "grams": 147.0
+   }
   }
  },
  {
@@ -2703,6 +5592,12 @@
    "usda": "fl oz",
    "grams": 29.4,
    "ml": 29.5735
+  },
+  "units": {
+   "serving": {
+    "usda": "serving (5 fl oz)",
+    "grams": 147.0
+   }
   }
  },
  {
@@ -2715,6 +5610,11 @@
    "usda": "fl oz",
    "grams": 29.6,
    "ml": 29.5735
+  },
+  "units": {
+   "cup": {
+    "ml": 250
+   }
   }
  }
 ]

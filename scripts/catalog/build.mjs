@@ -8,7 +8,20 @@
 //
 // Nothing here is typed in by hand: every number comes from the dataset, and
 // the build fails if an entry of source.json no longer matches it.
+//
+// Each entry also lists its units — ways to count the food instead of
+// weighing it — as portions of the USDA food:
+//
+//   "unit": { "usda": "grapes", "grams": 49, "count": 10 }
+//
+// is the dataset's portion "10 grapes = 49 g", so one is 4.9 g. `per` says
+// how many of our unit that portion is when it isn't `count` ("4 oz" taken
+// whole as a serving: count 4, per 1), and `from` takes the portion from a
+// closer USDA food when this one has none. Foods measured in ml can use
+// plain metric volumes instead: "cup": { "ml": 250 }. Every food must end up
+// with at least one unit.
 import { readFileSync, writeFileSync } from "node:fs";
+import { KINDS } from "./kinds.mjs";
 
 const datasetPath = process.argv[2];
 if (!datasetPath) {
@@ -28,15 +41,17 @@ const fail = (entry, message) => {
   throw new Error(`${entry.name} (fdcId ${entry.fdcId}): ${message}`);
 };
 
-// Checks that the dataset has that portion, and returns the weight of one of
-// them (a portion can be several: "4 slices").
+// Checks that the dataset has that portion and returns how many grams one of
+// our unit is.
 function portionGrams(entry, food, portion) {
+  const source = portion.from ? byId.get(portion.from) : food;
+  if (!source) fail(entry, `fdcId ${portion.from} is not in the dataset`);
   const count = portion.count ?? 1;
-  const found = food.foodPortions.some(
+  const found = source.foodPortions.some(
     (p) => p.modifier === portion.usda && p.gramWeight === portion.grams && p.amount === count,
   );
   if (!found) fail(entry, `no "${portion.usda}" portion of ${portion.grams} g`);
-  return round1(portion.grams / count);
+  return portion.grams / (portion.per ?? count);
 }
 
 const keys = new Set();
@@ -60,6 +75,17 @@ const catalog = source.map((entry) => {
   // ounce) gives the density to convert "per 100 g" into "per 100 ml".
   const density = entry.volume ? portionGrams(entry, food, entry.volume) / entry.volume.ml : 1;
 
+  // Ways to count it instead of weighing it: a unit, a slice, a cup…
+  const units = Object.entries(entry.units ?? {}).map(([kind, portion]) => {
+    if (!KINDS.includes(kind)) fail(entry, `unknown unit "${kind}"`);
+    if (portion.ml !== undefined) {
+      if (!entry.volume) fail(entry, `"${kind}" is a volume but the food is measured in g`);
+      return { kind, quantity: portion.ml };
+    }
+    return { kind, quantity: round1(portionGrams(entry, food, portion) / density) };
+  });
+  if (units.length === 0) fail(entry, "has no units");
+
   return {
     key: entry.key,
     name: entry.name,
@@ -70,11 +96,7 @@ const catalog = source.map((entry) => {
     protein: round1(per100g.protein * density),
     carbs: round1(per100g.carbs * density),
     fat: round1(per100g.fat * density),
-    // Ways to count it instead of weighing it: a unit, a slice…
-    units: Object.entries(entry.units ?? {}).map(([kind, portion]) => ({
-      kind,
-      quantity: portionGrams(entry, food, portion),
-    })),
+    units,
     fdcId: entry.fdcId,
   };
 });

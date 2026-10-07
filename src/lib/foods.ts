@@ -4,17 +4,35 @@ export type Unit = "g" | "ml";
 
 /**
  * Ways to count a food instead of weighing it, with their names in singular
- * and plural. The order is the one they're offered in, and the one a
- * quantity is read back in ("2 fetas" rather than "1 porción").
+ * and plural, in the order they're offered. Adding one is a line here (and
+ * in scripts/catalog/build.mjs if the catalog should use it).
  */
 export const UNIT_KINDS = {
+  // One piece of it: a fruit, an egg, a steak, a fillet. A food can have
+  // just "unit", or sizes around it.
+  unitSmall: { one: "unidad chica", many: "unidades chicas" },
   unit: { one: "unidad", many: "unidades" },
+  unitLarge: { one: "unidad grande", many: "unidades grandes" },
   slice: { one: "feta", many: "fetas" },
   breadSlice: { one: "rebanada", many: "rebanadas" },
+  round: { one: "rodaja", many: "rodajas" },
+  leaf: { one: "hoja", many: "hojas" },
+  cup: { one: "taza", many: "tazas" },
+  glass: { one: "vaso", many: "vasos" },
+  tbsp: { one: "cucharada", many: "cucharadas" },
+  tsp: { one: "cucharadita", many: "cucharaditas" },
+  handful: { one: "puñado", many: "puñados" },
   serving: { one: "porción", many: "porciones" },
   // The whole package: a can, a pot, a bottle.
   package: { one: "envase", many: "envases" },
 } as const;
+
+// Which unit a form starts in, most natural first. Never the whole package:
+// a default must not log a kilo by accident.
+const STARTING_KINDS = [
+  "unit", "breadSlice", "slice", "round", "serving", "cup", "glass", "tbsp", "tsp",
+  "handful", "leaf", "unitSmall", "unitLarge",
+] as const;
 
 export type UnitKind = keyof typeof UNIT_KINDS;
 export const UNIT_KIND_LIST = Object.keys(UNIT_KINDS) as UnitKind[];
@@ -143,19 +161,28 @@ export function cleanUnits(value: unknown): FoodUnit[] {
 
 /**
  * The unit a quantity is a whole or half number of, if any: 56 g of a ham
- * with 28 g slices is 2 slices.
+ * with 28 g slices is 2 slices. When several fit, one of something beats
+ * two of something smaller.
  */
 export function asUnits(
   units: FoodUnit[],
   quantity: number,
 ): { unit: FoodUnit; count: number } | null {
+  let best: { unit: FoodUnit; count: number } | null = null;
   for (const unit of units) {
     const halves = (quantity / unit.quantity) * 2;
-    if (halves >= 1 && Math.abs(halves - Math.round(halves)) < 1e-6) {
-      return { unit, count: Math.round(halves) / 2 };
+    if (halves < 1 || Math.abs(halves - Math.round(halves)) > 1e-6) continue;
+    const count = Math.round(halves) / 2;
+    const whole = Number.isInteger(count);
+    if (
+      !best ||
+      (whole && !Number.isInteger(best.count)) ||
+      (whole === Number.isInteger(best.count) && count < best.count)
+    ) {
+      best = { unit, count };
     }
   }
-  return null;
+  return best;
 }
 
 /** A food's units as the text fields of a form: how much one of each is, empty for the ones it doesn't have. */
@@ -168,18 +195,30 @@ export function unitFields(units: FoodUnit[]): Record<UnitKind, string> {
   return fields;
 }
 
+/**
+ * What a unit is called on a given food. A plain "unidad" next to a small or
+ * a large one is the medium one.
+ */
+export function unitName(kind: UnitKind, units: FoodUnit[], many = false): string {
+  if (kind === "unit" && units.some((u) => u.kind === "unitSmall" || u.kind === "unitLarge")) {
+    return many ? "unidades medianas" : "unidad mediana";
+  }
+  return UNIT_KINDS[kind][many ? "many" : "one"];
+}
+
 /** "½ feta", "1 feta", "2 fetas". */
-export function formatCount(kind: UnitKind, count: number): string {
-  const names = UNIT_KINDS[kind];
-  if (count === 0.5) return `½ ${names.one}`;
-  return `${formatAmount(count)} ${count === 1 ? names.one : names.many}`;
+export function formatCount(kind: UnitKind, count: number, units: FoodUnit[] = []): string {
+  if (count === 0.5) return `½ ${unitName(kind, units)}`;
+  return `${formatAmount(count)} ${unitName(kind, units, count !== 1)}`;
 }
 
 /** A quantity of a food: "80 g", or "2 fetas · 56 g" when it's a round number of one of its units. */
 export function formatQuantity(food: Pick<Food, "unit" | "units">, quantity: number): string {
   const amount = `${formatAmount(quantity)} ${food.unit}`;
   const counted = asUnits(food.units, quantity);
-  return counted ? `${formatCount(counted.unit.kind, counted.count)} · ${amount}` : amount;
+  return counted
+    ? `${formatCount(counted.unit.kind, counted.count, food.units)} · ${amount}`
+    : amount;
 }
 
 /**
@@ -205,12 +244,12 @@ export function draftOf(food: Pick<Food, "units">, quantity: number): QuantityDr
 }
 
 /**
- * Where a form starts for a food when nothing says otherwise: one piece or
- * serving, or 100 g/ml. Never a whole package.
+ * Where a form starts for a food when nothing says otherwise: one of its
+ * most natural unit, or 100 g/ml if it has none. Never a whole package.
  */
 export function usualDraft(food: Pick<Food, "units">): QuantityDraft {
-  const unit = food.units.find((u) => u.kind === "unit" || u.kind === "serving");
-  return unit ? { text: "1", kind: unit.kind } : { text: "100", kind: null };
+  const kind = STARTING_KINDS.find((k) => food.units.some((u) => u.kind === k));
+  return kind ? { text: "1", kind } : { text: "100", kind: null };
 }
 
 /** "1 alimento", "3 alimentos". */

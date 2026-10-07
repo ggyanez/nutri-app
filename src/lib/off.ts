@@ -1,5 +1,5 @@
 import "server-only";
-import { cleanUnits, type FoodUnit, type Macros, type Unit } from "./foods";
+import { cleanUnits, type FoodUnit, type Macros, type Unit, type UnitKind } from "./foods";
 
 // Open Food Facts: free, crowd-sourced product database (ODbL). Read-only
 // here. They ask every app to identify itself in the User-Agent.
@@ -15,6 +15,7 @@ const FIELDS = [
   "product_quantity",
   "product_quantity_unit",
   "nutrition_data_per",
+  "serving_size",
   "serving_quantity",
   "nutriments",
 ].join(",");
@@ -122,8 +123,41 @@ function toProduct(p: Record<string, unknown>): OffProduct {
     units: cleanUnits([
       { kind: "serving", quantity: amount(p.serving_quantity) },
       { kind: "package", quantity: sameUnit ? amount(p.product_quantity) : null },
+      countedServing(text(p.serving_size), amount(p.serving_quantity)),
     ]),
   };
+}
+
+// What labels count their serving in, in the languages they come in.
+const SERVING_WORDS: [RegExp, UnitKind][] = [
+  [/^(fetas?|lonjas?|slices?|fatias?)$/, "slice"],
+  [/^rebanadas?$/, "breadSlice"],
+  [/^rodajas?$/, "round"],
+  [/^(unidad(es)?|galletitas?|galletas?|alfajor(es)?|barras?|barritas?|piezas?|bombon(es)?|units?|pieces?|biscoitos?)$/, "unit"],
+  [/^(cucharadas?|cdas?|tbsp)$/, "tbsp"],
+  [/^(cucharaditas?|cditas?|tsp)$/, "tsp"],
+  [/^(tazas?|cups?|xicaras?)$/, "cup"],
+  [/^(vasos?|copos?)$/, "glass"],
+];
+
+/**
+ * The unit behind a serving stated as a count: "3 galletitas (30 g)" with a
+ * serving of 30 g means one galletita is 10 g; "1/2 taza (130 g)", that a
+ * cup is 260 g. Null when the serving isn't counted in anything we know.
+ */
+function countedServing(servingSize: string | null, grams: number | null): FoodUnit | null {
+  if (!servingSize || !grams) return null;
+  const plain = servingSize
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+  for (const [, number, word] of plain.matchAll(/(\d+\/\d+|\d+(?:[.,]\d+)?)\s*([a-z]+)/g)) {
+    const kind = SERVING_WORDS.find(([words]) => words.test(word))?.[1];
+    const [top, bottom] = number.replace(",", ".").split("/").map(Number);
+    const count = bottom ? top / bottom : top;
+    if (kind && count > 0) return { kind, quantity: round1(grams / count) };
+  }
+  return null;
 }
 
 function text(v: unknown): string | null {
