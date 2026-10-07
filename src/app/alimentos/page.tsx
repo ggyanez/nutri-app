@@ -16,13 +16,12 @@ export default async function FoodsPage() {
           + Nuevo
         </Link>
       </div>
-      {foods.length === 0 ? (
+      {foods.length === 0 && (
         <p className="rounded-3xl border border-dashed border-line px-4 py-5 text-center text-sm text-muted">
-          Acá queda guardado cada alimento que escanees o cargues a mano.
+          Acá queda guardado cada alimento que uses. Buscá uno por marca para agregarlo.
         </p>
-      ) : (
-        <FoodList foods={foods} />
       )}
+      <FoodList foods={foods} />
     </div>
   );
 }

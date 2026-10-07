@@ -5,14 +5,14 @@ A minimal, mobile-first food diary: log what you eat each day and see calories a
 ## Features
 
 - **Diario** — one day at a time: the day's calories, protein, carbs and fat, and everything eaten in chronological order. Tap an entry to change its quantity or its date and time, or delete it. A logged meal is one line that opens into its foods.
-- **Agregar** — a food or a saved meal. Foods are found from one search box: your own, the built-in list of generic foods, packaged products by name, or a barcode (typed, or scanned with the camera). The quantity is counted in the food's own units — a small, medium or large avocado, slices of ham, a cup of rice, a spoonful of oil, a whole can — or typed in grams, and starts where you left off last time; the entry is timestamped now unless you change it. A food that has no units yet asks for one on the spot. A meal can be logged whole or in portions (½, 2…).
+- **Agregar** — a food or a saved meal. Foods are found from one search box: your own, the built-in list of generic foods, any branded product by name or brand ("yogur Ser", "Oreo"), or a barcode (typed, or scanned with the camera). The quantity is counted in the food's own units — a small, medium or large avocado, slices of ham, a cup of rice, a spoonful of oil, a whole can — or typed in grams, and starts where you left off last time; the entry is timestamped now unless you change it. A food that has no units yet asks for one on the spot. A meal can be logged whole or in portions (½, 2…).
 - **Comidas** — saved groups of foods with their quantities: a recipe, or what you always have for breakfast. Editing one doesn't rewrite the days it was already logged on.
 - **Alimentos** — every food scanned or created, editable. Correcting a food recalculates the days it was logged on.
 - **Ajustes** — log out.
 
 ## Where the nutrition data comes from
 
-- **Packaged products** — [Open Food Facts](https://world.openfoodfacts.org), a free, collaborative product database (ODbL), by barcode or by name (products sold in Argentina first). A product found there is saved locally the first time it's used; one that's missing or incomplete opens a form prefilled with whatever is known.
+- **Packaged products** — [Open Food Facts](https://world.openfoodfacts.org), a free, collaborative product database (ODbL), by barcode, name or brand (products sold in Argentina first). Searches are cached, since theirs is rate-limited. A product found there is saved locally the first time it's used; one that's missing or incomplete opens a form prefilled with whatever is known.
 - **Generic foods** — about 330 everyday foods with their Argentine names (fruit, vegetables, beef, pork and chicken cuts, fish, dairy, pasta, legumes…), with values from [USDA FoodData Central](https://fdc.nal.usda.gov) (SR Legacy, public domain). [`scripts/catalog/source.json`](./scripts/catalog/source.json) maps each name to a USDA food and [`scripts/catalog/build.mjs`](./scripts/catalog/build.mjs) generates [`src/data/catalog.json`](./src/data/catalog.json) from the dataset, so no number is typed in by hand. Their units (how much a medium apple, a slice or a cup weighs) are USDA's portions for the same food. They're averages, and beef cuts are the closest US equivalent of the Argentine cut (*bife de chorizo* → top loin, *vacío* → flank…).
 - **Everything else** — typed in from the package.
 
@@ -52,4 +52,5 @@ See [`db/migrations`](./db/migrations):
 
 - `foods` — name, brand, optional barcode, and nutrition per 100 g (or 100 ml). `source` says whether it came from Open Food Facts, the built-in catalog, or was typed in. `units` lists the ways it can be counted and how much each one is: a unit (small, medium, large), a slice, a cup, a spoonful, a serving, the whole package…
 - `meals` / `meal_items` — a named list of foods with quantities.
+- `product_searches` — cache of Open Food Facts searches by name.
 - `entries` — one row per thing eaten: food, quantity and when it was eaten (ISO-8601 UTC; days are grouped in Argentina time). Nutrition is computed from the food, not copied. Logging a meal adds one entry per food, tied together by `group_id`.

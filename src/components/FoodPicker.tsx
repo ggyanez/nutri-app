@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { lookupBarcode, pickCatalogFood, searchProducts } from "@/app/actions";
+import { lookupBarcode, pickCatalogFood } from "@/app/actions";
 import { CATALOG } from "@/lib/catalog";
-import { formatKcal, type Food, type Unit } from "@/lib/foods";
-import type { OffHit } from "@/lib/off";
+import type { Food } from "@/lib/foods";
 import { normalize, searchBy } from "@/lib/search";
 import BarcodeScanner from "./BarcodeScanner";
+import ProductResults from "./ProductResults";
+import ResultList from "./ResultList";
 
 const MAX_RESULTS = 30;
 const INPUT =
@@ -17,8 +18,8 @@ const INPUT =
 /**
  * Finds a food and hands it over as one of the user's own. Three places to
  * look, all from one search box: the user's foods, the built-in catalog of
- * generic foods, and packaged products in Open Food Facts (by name on
- * request, or by barcode — scanned or typed).
+ * generic foods, and branded products in Open Food Facts (by name or brand
+ * as you type, or by barcode — scanned or typed).
  *
  * `newFoodHref` is where a food can be typed in by hand; pass it only where
  * leaving the page loses nothing.
@@ -35,8 +36,6 @@ export default function FoodPicker({
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [scanning, setScanning] = useState(false);
-  // Open Food Facts results, and what was typed when they were asked for.
-  const [products, setProducts] = useState<{ query: string; hits: OffHit[] } | null>(null);
   // A barcode that didn't resolve to a food: the way out is typing it in.
   const [problem, setProblem] = useState<{ message: string; barcode?: string } | null>(null);
   const [pending, startTransition] = useTransition();
@@ -90,17 +89,6 @@ export default function FoodPicker({
     });
   }
 
-  function searchPackaged() {
-    setProblem(null);
-    startTransition(async () => {
-      const res = await searchProducts(typed);
-      if (res.ok) setProducts({ query: typed, hits: res.data });
-      else setProblem({ message: res.error });
-    });
-  }
-
-  const nothingLocal = typed !== "" && !barcode && mine.length === 0 && generic.length === 0;
-
   return (
     <div className="space-y-5">
       <section className="space-y-3">
@@ -116,7 +104,6 @@ export default function FoodPicker({
           onSubmit={(e) => {
             e.preventDefault();
             if (barcode) lookup(barcode);
-            else if (typed.length >= 3) searchPackaged();
           }}
         >
           <input
@@ -124,8 +111,8 @@ export default function FoodPicker({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             enterKeyHint="search"
-            placeholder="Buscar: banana, arroz, o un código"
-            aria-label="Buscar alimento por nombre o código de barras"
+            placeholder="Buscar: banana, yogur Ser, o un código"
+            aria-label="Buscar alimento por nombre, marca o código de barras"
             className={INPUT}
           />
         </form>
@@ -159,13 +146,8 @@ export default function FoodPicker({
 
       {!barcode && (
         <>
-          <Results
+          <ResultList
             title="Mis alimentos"
-            empty={
-              typed === ""
-                ? "Todavía no tenés alimentos. Buscá uno por nombre o escaneá un envase."
-                : null
-            }
             rows={mine.map((f) => ({
               key: `food-${f.id}`,
               name: f.name,
@@ -174,9 +156,15 @@ export default function FoodPicker({
               unit: f.unit,
               onPick: () => onPick(f),
             }))}
-          />
+          >
+            {typed === "" && (
+              <p className="rounded-3xl border border-dashed border-line px-4 py-5 text-center text-sm text-muted">
+                Todavía no tenés alimentos. Buscá uno por nombre o marca, o escaneá un envase.
+              </p>
+            )}
+          </ResultList>
 
-          <Results
+          <ResultList
             title="Base de alimentos"
             rows={generic.map((item) => ({
               key: `catalog-${item.key}`,
@@ -189,38 +177,7 @@ export default function FoodPicker({
             disabled={pending}
           />
 
-          {nothingLocal && (
-            <p className="px-1 text-sm text-muted">
-              No hay ningún alimento con ese nombre entre los tuyos ni en la base.
-            </p>
-          )}
-
-          {typed.length >= 3 && products?.query !== typed && (
-            <button
-              type="button"
-              onClick={searchPackaged}
-              disabled={pending}
-              className="w-full rounded-2xl border border-line bg-surface px-4 py-3 text-sm font-medium text-accent disabled:opacity-40"
-            >
-              {pending ? "Buscando…" : `Buscar “${typed}” en productos envasados`}
-            </button>
-          )}
-
-          {products && products.query === typed && (
-            <Results
-              title="Productos envasados · Open Food Facts"
-              empty="Ningún producto con datos completos coincide."
-              rows={products.hits.map((hit) => ({
-                key: `off-${hit.barcode}`,
-                name: hit.name,
-                detail: hit.brand,
-                kcal: hit.kcal,
-                unit: hit.unit,
-                onPick: () => lookup(hit.barcode),
-              }))}
-              disabled={pending}
-            />
-          )}
+          <ProductResults query={query} onPick={(hit) => lookup(hit.barcode)} disabled={pending} />
         </>
       )}
 
@@ -235,65 +192,5 @@ export default function FoodPicker({
 
       {scanning && <BarcodeScanner onDetect={lookup} onClose={() => setScanning(false)} />}
     </div>
-  );
-}
-
-type ResultRow = {
-  key: string;
-  name: string;
-  detail: string | null;
-  kcal: number;
-  unit: Unit;
-  onPick: () => void;
-};
-
-/** A titled list of foods to pick from. Renders nothing when it's empty and has no `empty` text. */
-function Results({
-  title,
-  rows,
-  empty = null,
-  disabled = false,
-}: {
-  title: string;
-  rows: ResultRow[];
-  empty?: string | null;
-  disabled?: boolean;
-}) {
-  if (rows.length === 0 && !empty) return null;
-
-  return (
-    <section className="space-y-2">
-      <h2 className="px-1 text-sm font-medium text-muted">{title}</h2>
-      {rows.length > 0 ? (
-        <ul className="divide-y divide-line overflow-hidden rounded-3xl border border-line bg-surface">
-          {rows.map((row) => (
-            <li key={row.key}>
-              <button
-                type="button"
-                onClick={row.onPick}
-                disabled={disabled}
-                className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left active:bg-accent-soft disabled:opacity-60"
-              >
-                <span className="min-w-0">
-                  <span className="block truncate font-medium">{row.name}</span>
-                  {row.detail && (
-                    <span className="block truncate text-xs text-muted">{row.detail}</span>
-                  )}
-                </span>
-                <span className="tabular shrink-0 text-xs text-muted">
-                  {formatKcal(row.kcal)} kcal / 100 {row.unit}
-                </span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        empty && (
-          <p className="rounded-3xl border border-dashed border-line px-4 py-5 text-center text-sm text-muted">
-            {empty}
-          </p>
-        )
-      )}
-    </section>
   );
 }

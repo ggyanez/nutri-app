@@ -14,7 +14,8 @@ import {
 import { CATALOG } from "@/lib/catalog";
 import { FOOD_COLUMNS, getMeal, toFood } from "@/lib/data";
 import { cleanUnits, type Food, type FoodUnit, type Unit } from "@/lib/foods";
-import { fetchOffProduct, searchOffProducts, type OffHit } from "@/lib/off";
+import { fetchOffProduct, type OffHit } from "@/lib/off";
+import { searchProducts } from "@/lib/products";
 
 export type ActionResult<T = null> = { ok: true; data: T } | { ok: false; error: string };
 
@@ -106,12 +107,12 @@ export async function lookupBarcode(
   return { ok: true, data: { barcode, food: await findFoodByBarcode(barcode) } };
 }
 
-/** Packaged products by name, from Open Food Facts. Picking one goes through lookupBarcode. */
-export async function searchProducts(query: string): Promise<ActionResult<OffHit[]>> {
+/** Branded products by name or brand, from Open Food Facts. Picking one goes through lookupBarcode. */
+export async function findProducts(query: string): Promise<ActionResult<OffHit[]>> {
   await requireSession();
   if (query.trim().length < 3) return { ok: false, error: "Escribí al menos 3 letras" };
   try {
-    return { ok: true, data: await searchOffProducts(query) };
+    return { ok: true, data: await searchProducts(query) };
   } catch {
     return { ok: false, error: "No se pudo consultar Open Food Facts" };
   }

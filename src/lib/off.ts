@@ -4,10 +4,16 @@ import { cleanUnits, type FoodUnit, type Macros, type Unit, type UnitKind } from
 // Open Food Facts: free, crowd-sourced product database (ODbL). Read-only
 // here. They ask every app to identify itself in the User-Agent.
 const PRODUCT_API = "https://world.openfoodfacts.org/api/v2/product";
-const SEARCH_API = "https://search.openfoodfacts.org/search";
+// Two ways to search by name. The classic one requires every typed word, in
+// the name or the brand, which is what finding "yogur ser" needs — but it
+// allows about ten requests a minute and answers with an error page when
+// it's had enough. The newer one is always up but matches any of the words.
+const CLASSIC_SEARCH_API = "https://world.openfoodfacts.org/cgi/search.pl";
+const LOOSE_SEARCH_API = "https://search.openfoodfacts.org/search";
 const USER_AGENT = "NutriApp/0.1 (https://github.com/ggyanez/nutri-app)";
 const FIELDS = [
   "code",
+  "countries_tags",
   "product_name",
   "product_name_es",
   "brands",
@@ -21,8 +27,9 @@ const FIELDS = [
 ].join(",");
 const KJ_PER_KCAL = 4.184;
 const TIMEOUT_MS = 8000;
-const SEARCH_PAGE_SIZE = 40;
-const MAX_HITS = 20;
+const CLASSIC_PAGE_SIZE = 60;
+const LOOSE_PAGE_SIZE = 100;
+const MAX_HITS = 30;
 
 /** What Open Food Facts knows about a product. Any nutrition value can be missing. */
 export type OffProduct = {
@@ -37,8 +44,23 @@ export type OffProduct = {
   units: FoodUnit[];
 };
 
-/** A product found by name: one with a name and its four values, or it isn't listed. */
-export type OffHit = Macros & { barcode: string; name: string; brand: string | null; unit: Unit };
+/**
+ * A product found by name. `kcal` and the rest are null when Open Food Facts
+ * doesn't have its whole nutrition table: it can still be picked, and
+ * completed by hand.
+ */
+export type OffHit = {
+  barcode: string;
+  name: string;
+  brand: string | null;
+  /** The package size as printed: "340 g", "1 L". */
+  size: string | null;
+  unit: Unit;
+  nutrition: Macros | null;
+};
+
+/** `exact` is false when only the loose search could be reached. */
+export type OffSearch = { hits: OffHit[]; exact: boolean };
 
 /** Returns null when the barcode isn't in Open Food Facts. Throws if it can't be reached. */
 export async function fetchOffProduct(barcode: string): Promise<OffProduct | null> {
@@ -52,43 +74,113 @@ export async function fetchOffProduct(barcode: string): Promise<OffProduct | nul
 }
 
 /**
- * Packaged products whose name matches, the ones sold in Argentina first.
- * Throws if Open Food Facts can't be reached.
+ * Branded products matching what was typed — a name, a brand, or both —
+ * the ones sold in Argentina first. Throws if Open Food Facts can't be
+ * reached at all.
  */
-export async function searchOffProducts(query: string): Promise<OffHit[]> {
-  // The search box speaks Lucene: keep the typed words, drop its operators.
-  const words = query.replace(/[^\p{L}\p{N}\s%.,-]/gu, " ").replace(/\s+/g, " ").trim();
-  if (!words) return [];
+export async function searchOffProducts(query: string): Promise<OffSearch> {
+  const words = searchWords(query);
+  if (words.length === 0) return { hits: [], exact: true };
 
-  const hits = await searchOnce(`${words} countries_tags:"en:argentina"`);
-  if (hits.length < 5) {
-    const known = new Set(hits.map((hit) => hit.barcode));
-    hits.push(...(await searchOnce(words)).filter((hit) => !known.has(hit.barcode)));
+  try {
+    return { hits: complete(await classicSearch(words)).slice(0, MAX_HITS), exact: true };
+  } catch {
+    return { hits: complete(await looseSearch(words)).slice(0, MAX_HITS), exact: false };
   }
-  return hits.slice(0, MAX_HITS);
 }
 
-async function searchOnce(q: string): Promise<OffHit[]> {
+/** The typed words, without accents or anything a search could read as an operator. */
+function searchWords(query: string): string[] {
+  return plain(query)
+    .replace(/[^a-z0-9\s%]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+/** Products with their nutrition table before the ones without, otherwise in the same order. */
+function complete(hits: OffHit[]): OffHit[] {
+  return [...hits.filter((hit) => hit.nutrition), ...hits.filter((hit) => !hit.nutrition)];
+}
+
+// One request for the whole world, and the local products are moved to the
+// front here: asking it to filter by country gets the error page every time.
+async function classicSearch(words: string[]): Promise<OffHit[]> {
   const params = new URLSearchParams({
-    q,
-    langs: "es",
-    page_size: String(SEARCH_PAGE_SIZE),
+    search_terms: words.join(" "),
+    search_simple: "1",
+    action: "process",
+    json: "1",
+    page_size: String(CLASSIC_PAGE_SIZE),
+    sort_by: "unique_scans_n", // most scanned first
     fields: FIELDS,
   });
-  const res = await get(`${SEARCH_API}?${params}`);
+  const res = await get(`${CLASSIC_SEARCH_API}?${params}`);
+  // When it's unavailable it answers with an HTML page, sometimes as a 200.
+  if (!res.ok || !res.headers.get("content-type")?.includes("json")) {
+    throw new Error(`Open Food Facts search unavailable (${res.status})`);
+  }
+  const body = (await res.json()) as { products?: Record<string, unknown>[] };
+  return localFirst((body.products ?? []).flatMap(toHit));
+}
+
+async function looseSearch(words: string[]): Promise<OffHit[]> {
+  const params = new URLSearchParams({
+    q: words.join(" "),
+    langs: "es,pt,en",
+    page_size: String(LOOSE_PAGE_SIZE),
+    fields: FIELDS,
+  });
+  const res = await get(`${LOOSE_SEARCH_API}?${params}`);
   if (!res.ok) throw new Error(`Open Food Facts search responded ${res.status}`);
 
   const body = (await res.json()) as { hits?: Record<string, unknown>[] };
-  const hits: OffHit[] = [];
-  for (const raw of body.hits ?? []) {
-    const barcode = text(raw.code);
-    const { name, brand, unit, kcal, protein, carbs, fat } = toProduct(raw);
-    if (!barcode || !name || kcal === null || protein === null || carbs === null || fat === null) {
-      continue;
-    }
-    hits.push({ barcode, name, brand, unit, kcal, protein, carbs, fat });
-  }
-  return hits;
+  // It returns anything with one of the words; keep what has them all. Long
+  // words only have to start the same, so "sardinas" finds "sardinhas" too;
+  // short ones must be whole words, or "ser" would find "La Serenísima".
+  const found = (body.hits ?? []).flatMap(toHit).filter(({ hit }) => {
+    const have = plain(`${hit.name} ${hit.brand ?? ""}`).split(/[^a-z0-9]+/);
+    return words.every((word) =>
+      word.length > 5
+        ? have.some((w) => w.startsWith(word.slice(0, -2)))
+        : have.includes(word),
+    );
+  });
+  return localFirst(found);
+}
+
+/** Products sold in Argentina before the rest, otherwise in the same order. */
+function localFirst(found: { hit: OffHit; local: boolean }[]): OffHit[] {
+  return [...found.filter((f) => f.local), ...found.filter((f) => !f.local)].map(({ hit }) => hit);
+}
+
+/** A search result as a hit, and whether it's sold in Argentina. Nothing for one without a name. */
+function toHit(raw: Record<string, unknown>): { hit: OffHit; local: boolean }[] {
+  const barcode = text(raw.code);
+  const { name, unit, kcal, protein, carbs, fat } = toProduct(raw);
+  if (!barcode || !name) return [];
+  // Every brand it's filed under ("Danone, Ser"): the one typed may not be the first.
+  const brand = Array.isArray(raw.brands) ? raw.brands.join(", ") : text(raw.brands);
+  const whole = kcal !== null && protein !== null && carbs !== null && fat !== null;
+  return [
+    {
+      hit: {
+        barcode,
+        name,
+        brand,
+        size: text(raw.quantity),
+        unit,
+        nutrition: whole ? { kcal, protein, carbs, fat } : null,
+      },
+      local: Array.isArray(raw.countries_tags) && raw.countries_tags.includes("en:argentina"),
+    },
+  ];
+}
+
+function plain(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
 }
 
 function get(url: string): Promise<Response> {
@@ -147,11 +239,7 @@ const SERVING_WORDS: [RegExp, UnitKind][] = [
  */
 function countedServing(servingSize: string | null, grams: number | null): FoodUnit | null {
   if (!servingSize || !grams) return null;
-  const plain = servingSize
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
-  for (const [, number, word] of plain.matchAll(/(\d+\/\d+|\d+(?:[.,]\d+)?)\s*([a-z]+)/g)) {
+  for (const [, number, word] of plain(servingSize).matchAll(/(\d+\/\d+|\d+(?:[.,]\d+)?)\s*([a-z]+)/g)) {
     const kind = SERVING_WORDS.find(([words]) => words.test(word))?.[1];
     const [top, bottom] = number.replace(",", ".").split("/").map(Number);
     const count = bottom ? top / bottom : top;
