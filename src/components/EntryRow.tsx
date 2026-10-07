@@ -3,20 +3,21 @@
 import { useState, useTransition } from "react";
 import { deleteEntry, updateEntry } from "@/app/actions";
 import {
-  formatAmount,
+  draftOf,
   formatKcal,
   formatQuantity,
   macrosFor,
-  parseDecimal,
+  quantityOf,
   type Entry,
 } from "@/lib/foods";
 import { formatTime, toLocalInputValue } from "@/lib/time";
+import QuantityField from "./QuantityField";
 
 /** A diary line. Tapping it opens the quantity and the date and time for editing. */
 export default function EntryRow({ entry }: { entry: Entry }) {
   const { food } = entry;
   const [open, setOpen] = useState(false);
-  const [quantity, setQuantity] = useState(formatAmount(entry.quantity));
+  const [quantity, setQuantity] = useState(() => draftOf(food, entry.quantity));
   const [eatenAt, setEatenAt] = useState(() => toLocalInputValue(new Date(entry.eatenAt)));
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -30,7 +31,7 @@ export default function EntryRow({ entry }: { entry: Entry }) {
   }
 
   function save() {
-    const value = parseDecimal(quantity);
+    const value = quantityOf(food, quantity);
     if (value === null) {
       setError("Cantidad inválida");
       return;
@@ -64,16 +65,7 @@ export default function EntryRow({ entry }: { entry: Entry }) {
 
       {open && (
         <div className="space-y-3 px-4 pb-4">
-          <div className="flex items-center gap-2">
-            <input
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-              inputMode="decimal"
-              aria-label={`Cantidad en ${food.unit}`}
-              className="tabular w-24 rounded-2xl border border-line bg-bg px-3 py-2 text-base outline-none focus:border-accent"
-            />
-            <span className="text-sm text-muted">{food.unit}</span>
-          </div>
+          <QuantityField food={food} value={quantity} onChange={setQuantity} />
           <input
             type="datetime-local"
             value={eatenAt}

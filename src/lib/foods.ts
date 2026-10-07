@@ -182,10 +182,35 @@ export function formatQuantity(food: Pick<Food, "unit" | "units">, quantity: num
   return counted ? `${formatCount(counted.unit.kind, counted.count)} · ${amount}` : amount;
 }
 
-/** How much of a food to start a form with when nothing says otherwise: one piece or serving, or 100. */
-export function usualQuantity(food: Pick<Food, "units">): number {
+/**
+ * A quantity as it's typed in a form: a number of one of the food's units,
+ * or of g/ml when `kind` is null.
+ */
+export type QuantityDraft = { text: string; kind: UnitKind | null };
+
+/** What a draft amounts to in the food's g or ml; null when it isn't a number. */
+export function quantityOf(food: Pick<Food, "units">, draft: QuantityDraft): number | null {
+  const typed = parseDecimal(draft.text);
+  const size = draft.kind ? food.units.find((u) => u.kind === draft.kind)?.quantity : 1;
+  if (typed === null || size === undefined) return null;
+  return Math.round(typed * size * 10) / 10;
+}
+
+/** The draft to show for a stored quantity: counted in a unit when it's a round number of one. */
+export function draftOf(food: Pick<Food, "units">, quantity: number): QuantityDraft {
+  const counted = asUnits(food.units, quantity);
+  return counted
+    ? { text: formatAmount(counted.count), kind: counted.unit.kind }
+    : { text: formatAmount(quantity), kind: null };
+}
+
+/**
+ * Where a form starts for a food when nothing says otherwise: one piece or
+ * serving, or 100 g/ml. Never a whole package.
+ */
+export function usualDraft(food: Pick<Food, "units">): QuantityDraft {
   const unit = food.units.find((u) => u.kind === "unit" || u.kind === "serving");
-  return unit?.quantity ?? 100;
+  return unit ? { text: "1", kind: unit.kind } : { text: "100", kind: null };
 }
 
 /** "1 alimento", "3 alimentos". */

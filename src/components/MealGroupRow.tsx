@@ -4,14 +4,15 @@ import { useState, useTransition } from "react";
 import { deleteGroup, updateGroup } from "@/app/actions";
 import {
   countFoods,
-  formatAmount,
+  draftOf,
   formatKcal,
   macrosFor,
-  parseDecimal,
+  quantityOf,
   totalOf,
   type Entry,
 } from "@/lib/foods";
 import { formatTime, toLocalInputValue } from "@/lib/time";
+import QuantityField from "./QuantityField";
 
 /**
  * A meal in the diary: the entries that were logged together, shown as one
@@ -21,7 +22,7 @@ export default function MealGroupRow({ name, entries }: { name: string; entries:
   const { eatenAt, group } = entries[0];
   const [open, setOpen] = useState(false);
   const [quantities, setQuantities] = useState(() =>
-    Object.fromEntries(entries.map((e) => [e.id, formatAmount(e.quantity)])),
+    Object.fromEntries(entries.map((e) => [e.id, draftOf(e.food, e.quantity)])),
   );
   const [when, setWhen] = useState(() => toLocalInputValue(new Date(eatenAt)));
   const [error, setError] = useState<string | null>(null);
@@ -41,7 +42,7 @@ export default function MealGroupRow({ name, entries }: { name: string; entries:
       setError("Fecha inválida");
       return;
     }
-    const items = entries.map((e) => ({ id: e.id, quantity: parseDecimal(quantities[e.id]) }));
+    const items = entries.map((e) => ({ id: e.id, quantity: quantityOf(e.food, quantities[e.id]) }));
     if (items.some((item) => item.quantity !== null && item.quantity < 0)) {
       setError("Revisá las cantidades");
       return;
@@ -70,23 +71,20 @@ export default function MealGroupRow({ name, entries }: { name: string; entries:
 
       {open && (
         <div className="space-y-3 px-4 pb-4">
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {entries.map((e) => (
-              <li key={e.id} className="flex items-center gap-2">
-                <span className="min-w-0 flex-1">
-                  <span className="line-clamp-2 block text-sm leading-snug">{e.food.name}</span>
-                  <span className="tabular block text-xs text-muted">
+              <li key={e.id} className="space-y-1.5">
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="line-clamp-2 min-w-0 text-sm leading-snug">{e.food.name}</span>
+                  <span className="tabular shrink-0 text-xs text-muted">
                     {formatKcal(macrosFor(e.food, e.quantity).kcal)} kcal
                   </span>
-                </span>
-                <input
+                </div>
+                <QuantityField
+                  food={e.food}
                   value={quantities[e.id]}
-                  onChange={(ev) => setQuantities({ ...quantities, [e.id]: ev.target.value })}
-                  inputMode="decimal"
-                  aria-label={`Cantidad de ${e.food.name} en ${e.food.unit}`}
-                  className="tabular w-20 rounded-xl border border-line bg-bg px-2 py-2 text-right text-base outline-none focus:border-accent"
+                  onChange={(quantity) => setQuantities({ ...quantities, [e.id]: quantity })}
                 />
-                <span className="w-5 text-sm text-muted">{e.food.unit}</span>
               </li>
             ))}
           </ul>

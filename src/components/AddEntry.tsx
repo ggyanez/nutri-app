@@ -10,10 +10,10 @@ import {
   countFoods,
   formatAmount,
   formatKcal,
+  formatQuantity,
   macrosFor,
   parseDecimal,
   totalOf,
-  usualQuantity,
   type Food,
   type Macros,
   type Meal,
@@ -186,7 +186,7 @@ function QuantityForm({
       ? { unit: food.units.find((u) => u.kind === "unit" || u.kind === "serving"), count: 1 }
       : asUnits(food.units, food.lastQuantity);
   const [kind, setKind] = useState<UnitKind | null>(last?.unit?.kind ?? null);
-  const [amount, setAmount] = useState(formatAmount(food.lastQuantity ?? usualQuantity(food)));
+  const [amount, setAmount] = useState(formatAmount(food.lastQuantity ?? 100));
   const [count, setCount] = useState(formatAmount(last?.unit ? last.count : 1));
   const [eatenAt, setEatenAt] = useState(initialEatenAt);
   const [error, setError] = useState<string | null>(null);
@@ -357,7 +357,7 @@ function MealLogForm({
             <li key={item.food.id} className="flex items-baseline justify-between gap-3">
               <span className="min-w-0 truncate">{item.food.name}</span>
               <span className="tabular shrink-0 text-muted">
-                {formatAmount(item.quantity)} {item.food.unit}
+                {formatQuantity(item.food, item.quantity)}
               </span>
             </li>
           ))}

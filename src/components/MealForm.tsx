@@ -4,17 +4,20 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { deleteMeal, saveMeal } from "@/app/actions";
 import {
+  draftOf,
   formatAmount,
   formatKcal,
-  parseDecimal,
+  quantityOf,
   totalOf,
-  usualQuantity,
+  usualDraft,
   type Food,
   type Meal,
+  type QuantityDraft,
 } from "@/lib/foods";
 import FoodPicker from "./FoodPicker";
+import QuantityField from "./QuantityField";
 
-type Item = { food: Food; quantity: string };
+type Item = { food: Food; quantity: QuantityDraft };
 
 /**
  * Creates a meal, or edits `meal`: a name and a list of foods with their
@@ -25,24 +28,24 @@ export default function MealForm({ meal, foods }: { meal?: Meal; foods: Food[] }
   const router = useRouter();
   const [name, setName] = useState(meal?.name ?? "");
   const [items, setItems] = useState<Item[]>(
-    () => meal?.items.map((i) => ({ food: i.food, quantity: formatAmount(i.quantity) })) ?? [],
+    () => meal?.items.map((i) => ({ food: i.food, quantity: draftOf(i.food, i.quantity) })) ?? [],
   );
   const [picking, setPicking] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
   const total = totalOf(
-    items.map((item) => ({ food: item.food, quantity: parseDecimal(item.quantity) ?? 0 })),
+    items.map((item) => ({ food: item.food, quantity: quantityOf(item.food, item.quantity) ?? 0 })),
   );
 
   function add(food: Food) {
     setPicking(false);
     // Picking a food that's already there changes nothing: its quantity is right below.
     if (items.some((item) => item.food.id === food.id)) return;
-    setItems([...items, { food, quantity: formatAmount(usualQuantity(food)) }]);
+    setItems([...items, { food, quantity: usualDraft(food) }]);
   }
 
-  function setQuantity(foodId: number, quantity: string) {
+  function setQuantity(foodId: number, quantity: QuantityDraft) {
     setItems(items.map((item) => (item.food.id === foodId ? { ...item, quantity } : item)));
   }
 
@@ -51,7 +54,7 @@ export default function MealForm({ meal, foods }: { meal?: Meal; foods: Food[] }
     setError(null);
     const parsed = items.map((item) => ({
       foodId: item.food.id,
-      quantity: parseDecimal(item.quantity),
+      quantity: quantityOf(item.food, item.quantity),
     }));
     if (parsed.some((item) => item.quantity === null || item.quantity <= 0)) {
       setError("Revisá las cantidades");
@@ -114,29 +117,30 @@ export default function MealForm({ meal, foods }: { meal?: Meal; foods: Food[] }
           {items.length > 0 && (
             <ul className="divide-y divide-line border-b border-line">
               {items.map((item) => (
-                <li key={item.food.id} className="flex items-center gap-2 px-4 py-3">
-                  <span className="min-w-0 flex-1">
-                    <span className="line-clamp-2 block leading-snug font-medium">{item.food.name}</span>
-                    {item.food.brand && (
-                      <span className="block truncate text-xs text-muted">{item.food.brand}</span>
-                    )}
-                  </span>
-                  <input
+                <li key={item.food.id} className="space-y-2 py-3 pr-2 pl-4">
+                  <div className="flex items-start gap-2">
+                    <span className="min-w-0 flex-1">
+                      <span className="line-clamp-2 block leading-snug font-medium">
+                        {item.food.name}
+                      </span>
+                      {item.food.brand && (
+                        <span className="block truncate text-xs text-muted">{item.food.brand}</span>
+                      )}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setItems(items.filter((i) => i.food.id !== item.food.id))}
+                      aria-label={`Quitar ${item.food.name}`}
+                      className="-mt-1.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-lg text-faint active:bg-accent-soft"
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <QuantityField
+                    food={item.food}
                     value={item.quantity}
-                    onChange={(e) => setQuantity(item.food.id, e.target.value)}
-                    inputMode="decimal"
-                    aria-label={`Cantidad de ${item.food.name} en ${item.food.unit}`}
-                    className="tabular w-20 rounded-xl border border-line bg-bg px-2 py-2 text-right text-base outline-none focus:border-accent"
+                    onChange={(quantity) => setQuantity(item.food.id, quantity)}
                   />
-                  <span className="w-5 text-sm text-muted">{item.food.unit}</span>
-                  <button
-                    type="button"
-                    onClick={() => setItems(items.filter((i) => i.food.id !== item.food.id))}
-                    aria-label={`Quitar ${item.food.name}`}
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-lg text-faint active:bg-accent-soft"
-                  >
-                    ×
-                  </button>
                 </li>
               ))}
             </ul>
